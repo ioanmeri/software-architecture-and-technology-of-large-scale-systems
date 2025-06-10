@@ -59,5 +59,25 @@ Goal: To identify where this build up is happening
 
 ---
 
+## Performance Principles
 
+- Efficiency
+  - Efficient Resource Utilization
+      - IO - Memory, Network, Disk
+      - CPU
+  - Efficient Logic
+      - Algorithms
+      - DB Queries
+  - Efficient Data Storage
+      - Data Structures
+      - DB Schema
+  - Caching
+- Concurrency
+  - Hardware
+  - Software
+    - Queuing
+    - Coherence
+  - Capacity
+
+---
 
