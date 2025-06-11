@@ -77,7 +77,52 @@ Goal: To identify where this build up is happening
   - Software
     - Queuing
     - Coherence
-  - Capacity
+- Capacity
 
 ---
+
+## System Performance Objectives
+
+- Minimize Request-Response Latency
+  - Latency is Measured in Time Units
+  - Depends on
+    - Wait/Idle Time
+    - Processing Time
+- Maximize Throughput
+  - Throughput is Measured as Rate of Request
+  - Depends on
+    - Latency
+    - Capacity
+
+---
+
+## Performance Measurement Metrics
+
+- Latency
+  - Affects: User Experience
+  - Desired: As low as possible
+- Throughput
+  - Affects: Number os users that can be supported
+  - Desired: Greater than the request rate
+- Errors
+  - Affects: Functional Correctness
+  - Desired: None
+- Resource Saturation
+  - Affects: Hardware capacity required
+  - Desired: Efficient utilization of all system resources
+
+
+Also
+
+- Tail latency is an indication of queueing of requests
+  - Gets worse with higher workloads
+- Average latency hides the effects of tail latency
+  - Also measure 99 (or 99.9) percentile latency
+
+---
+
+
+
+
+
 
