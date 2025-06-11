@@ -1,6 +1,8 @@
 # Section 2: Performance
 
-## System Performance
+## Introduction
+
+### Scope 
 
 - Understanding Performance
   - Problems
@@ -24,9 +26,8 @@
 
 ![Sample System](assets/images/01.png)
 
----
 
-## What is Performance
+### What is Performance
 
 - Measure of how fast or responsive a system is under
     - A given workload
@@ -59,7 +60,10 @@ Goal: To identify where this build up is happening
 
 ---
 
-## Performance Principles
+
+## System Performance 
+
+### Performance Principles
 
 - Efficiency
   - Efficient Resource Utilization
@@ -79,9 +83,7 @@ Goal: To identify where this build up is happening
     - Coherence
 - Capacity
 
----
-
-## System Performance Objectives
+### System Performance Objectives
 
 - Minimize Request-Response Latency
   - Latency is Measured in Time Units
@@ -94,9 +96,8 @@ Goal: To identify where this build up is happening
     - Latency
     - Capacity
 
----
 
-## Performance Measurement Metrics
+### Performance Measurement Metrics
 
 - Latency
   - Affects: User Experience
@@ -121,6 +122,22 @@ Also
 
 ---
 
+## Serial Request Latency
+
+### Network transfer Latency
+
+- Data Transfer (Global / Regional / Local Network)
+  - Data Transfer Latency (wires) in Intranet communication is more reliable and fast compared to Internet
+  - Browser -> (Multiple hops in between / Lot of networks, latency) -> Web application (Internet) 
+- TCP Connection
+  - Latency due to creating of TCP connections, e.g. HTTP is over TCP
+  - Overhead: TCP SYN, TP SYN ACK (50ms + 50ms RTT, 1 round trip)
+- SSL/TLS Connection
+  - SSL is over TCP, overhead much more
+    - TCP SYN, TCP SYN ACK,
+    - SSL Client Hello, SSL Server Hello
+    - SSL Key Exchange, SSL Change Cipher
+  - Total 3 round trips
 
 
 
