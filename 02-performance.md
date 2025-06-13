@@ -139,6 +139,37 @@ Also
     - SSL Key Exchange, SSL Change Cipher
   - Total 3 round trips
 
+### Minimizing Network transfer
+
+**Connection Pool**: reusing connections that are already created to avoid connection creation latency
+
+ 1. Web server --> App server (Intranet RESTful application)
+ - Use of **Connection Pool**
+ - **Data Format & Compression**
+   - instead of RESTful HTTP that will use ascii characters, can use some RPC based protocol which uses binary
+     - gRPC, but not RESTful protocol anymore
+     - downside: reduces interoperability between applications
+
+2. App Server --> Database (Intranet)
+  - **Session/Data Caching**
+  - **Connection Pool**
+
+3. Browser --> Web server
+  - **Static Data Caching**
+  - **Compression** with e.g. zip format
+    - overhead of compressing the data e.g. ascii to binary and uncompressing, CPU cycles but not that costly
+  - **SSL Session Caching**
+    - when creating repeatedly SSL connections between client and server
+    - can reduces the round trips required to create SSL
+  - RESTful applications require interoperability that's why HTTP protocol is popular in the Internet
+  - Persistent Connections used by default in HTTP 1.1 and later
+
+
+
+
+
+
+
 
 
 
