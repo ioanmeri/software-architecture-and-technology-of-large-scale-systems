@@ -26,6 +26,7 @@
 
 ![Sample System](assets/images/01.png)
 
+---
 
 ### What is Performance
 
@@ -41,6 +42,8 @@
 
 1. As we increase the workload, performance should stay stable, it should not severely degrate
 2. If we increase the hardware capacity, system performance shoould improve
+
+---
 
 ### Performance Problems
 
@@ -83,6 +86,8 @@ Goal: To identify where this build up is happening
     - Coherence
 - Capacity
 
+---
+
 ### System Performance Objectives
 
 - Minimize Request-Response Latency
@@ -96,6 +101,7 @@ Goal: To identify where this build up is happening
     - Latency
     - Capacity
 
+---
 
 ### Performance Measurement Metrics
 
@@ -138,23 +144,25 @@ Also
     - SSL Client Hello, SSL Server Hello
     - SSL Key Exchange, SSL Change Cipher
   - Total 3 round trips
+ 
+---
 
 ### Minimizing Network transfer
 
 **Connection Pool**: reusing connections that are already created to avoid connection creation latency
 
- 1. Web server --> App server (Intranet RESTful application)
- - Use of **Connection Pool**
- - **Data Format & Compression**
+- Web server ➡️ App server (Intranet RESTful application)
+  - Use of **Connection Pool**
+  - **Data Format & Compression**
    - instead of RESTful HTTP that will use ascii characters, can use some RPC based protocol which uses binary
      - gRPC, but not RESTful protocol anymore
      - downside: reduces interoperability between applications
 
-2. App Server --> Database (Intranet)
+- App Server ➡️ Database (Intranet)
   - **Session/Data Caching**
   - **Connection Pool**
 
-3. Browser --> Web server
+- Browser ➡️ Web server
   - **Static Data Caching**
   - **Compression** with e.g. zip format
     - overhead of compressing the data e.g. ascii to binary and uncompressing, CPU cycles but not that costly
@@ -164,11 +172,30 @@ Also
   - RESTful applications require interoperability that's why HTTP protocol is popular in the Internet
   - Persistent Connections used by default in HTTP 1.1 and later
 
+---
 
+### Memery Access Latency
 
+**Web Server ➡️ App Server**
 
+- Finite Heap Memory
+  - any process that will exceed that amount of memory will crash
+  - Garbare collector will run very aggressively just before memory runs out, results to very bad performance
+- Large Heap Memory
+  - a process occupying more memory than what is available on that machine
+  - OS will have to use hard disk, swapping data between physical memory and hard disk
+  - that will severly bring down the performance of the process
+- GC Algorithm
+  - Apply the proper Garbage Collection Algorithm for runtimes that use GC 
 
+**App Server ➡️ Database**
 
+- Finite Buffer memory
+  - A write operation happens in DB, DB reads that record from hard disk to memory
+  - Space utilization of DB buffer memory is critical because that governs how many operations per second you can actually do
+  - If buffer memory is in shortage, either due to poor memory allocation or of inefficient schema, it will severly affect the performance of the entire system
+
+---
 
 
 
