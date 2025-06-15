@@ -197,7 +197,43 @@ Also
 
 ---
 
+### Minimizing memory access latency
 
+
+**Web Server ➡️ App Server**
+
+- Avoid Memory Bloat
+  - Processes should occupy as little memory as possible
+  - Codebase is also loaded im memory
+    - if number of instructions are lesser, the back and forth between RAM and processor will be lesser
+    - small codebase is a good thing
+  - Heap space that we are using should be as small as possible, that will create lesser job for Garbage Collector, also lesser changes of going out of memory
+- Weak / Soft References
+  - useful when we are allocating large objects
+- Multiple Smaller Processes
+  - Split a batch process among multiple nodes
+- Garbage Collection Algorithm
+  - Batch process GC
+    - goal not the liveness but the efficiency
+  - Live application GC
+
+**Database**
+
+already mentioned: should have adequate amount of buffer memory
+
+- Normalization
+  - leads to good utilization of buffer memory
+  - avoid duplicate data
+    - amount of storage becomes lesser, more DB performance
+  - sometimes denormalization happens for faster read times
+- Compute Over Storage
+  - tradeoff: it will add processing cost
+  - but will free database space
+  - not a problem in the hard disk, but when brought to RAM it will occupy unnecessary memory
+
+Database performance will consequenlty improve the overall system performance as well
+
+---
 
 
 
