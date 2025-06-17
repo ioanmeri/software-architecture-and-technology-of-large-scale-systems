@@ -1,5 +1,15 @@
 # Section 2: Performance
 
+[Introduction](#introduction)
+
+[System Performance](#system-performance)
+
+[Network transfer Latency](#network-transfer-latency)
+
+[Memory Access Latency](#memory-access-latency)
+
+[Disk Latency](#disk-latency)
+
 ## Introduction
 
 ### Scope 
