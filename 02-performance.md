@@ -128,9 +128,9 @@ Also
 
 ---
 
-## Serial Request Latency
+## Network transfer Latency
 
-### Network transfer Latency
+part of the **Serial Request Latency**
 
 - Data Transfer (Global / Regional / Local Network)
   - Data Transfer Latency (wires) in Intranet communication is more reliable and fast compared to Internet
@@ -151,30 +151,30 @@ Also
 
 **Connection Pool**: reusing connections that are already created to avoid connection creation latency
 
-- Web server ➡️ App server (Intranet RESTful application)
-  - Use of **Connection Pool**
-  - **Data Format & Compression**
-   - instead of RESTful HTTP that will use ascii characters, can use some RPC based protocol which uses binary
-     - gRPC, but not RESTful protocol anymore
-     - downside: reduces interoperability between applications
+**Web server ➡️ App server (Intranet RESTful application)**
+- Use of **Connection Pool**
+- **Data Format & Compression**
+ - instead of RESTful HTTP that will use ascii characters, can use some RPC based protocol which uses binary
+   - gRPC, but not RESTful protocol anymore
+   - downside: reduces interoperability between applications
 
-- App Server ➡️ Database (Intranet)
-  - **Session/Data Caching**
-  - **Connection Pool**
+**App Server ➡️ Database (Intranet)**
+- **Session/Data Caching**
+- **Connection Pool**
 
-- Browser ➡️ Web server
-  - **Static Data Caching**
-  - **Compression** with e.g. zip format
-    - overhead of compressing the data e.g. ascii to binary and uncompressing, CPU cycles but not that costly
-  - **SSL Session Caching**
-    - when creating repeatedly SSL connections between client and server
-    - can reduces the round trips required to create SSL
-  - RESTful applications require interoperability that's why HTTP protocol is popular in the Internet
-  - Persistent Connections used by default in HTTP 1.1 and later
+**Browser ➡️ Web server**
+- **Static Data Caching**
+- **Compression** with e.g. zip format
+  - overhead of compressing the data e.g. ascii to binary and uncompressing, CPU cycles but not that costly
+- **SSL Session Caching**
+  - when creating repeatedly SSL connections between client and server
+  - can reduces the round trips required to create SSL
+- RESTful applications require interoperability that's why HTTP protocol is popular in the Internet
+- Persistent Connections used by default in HTTP 1.1 and later
 
 ---
 
-### Memery Access Latency
+## Memory Access Latency
 
 **Web Server ➡️ App Server**
 
@@ -235,5 +235,74 @@ Database performance will consequenlty improve the overall system performance as
 
 ---
 
+## Disk Latency
+
+Disk IO is one of the slowest IO we can do
+- Logging
+
+Where disk access related **penalties are extremely high**, they are in
+- Web applications
+  - JS Files, CSS, images from hard disk
+- Databases
+  - Read / Written ultimately comes / written to hard disc
+
+---
+
+### Minimizing Disk Access Latency
+
+**Browser ➡️ Web Server**
+- Web Content Caching
+  - static data stored as files on disk, large files fetched very frequently
+  - keep that data in memory: caching
+  - utilize reverse proxy, has high memory
+    - separate the responsibility of hosting dynamic data and static data
+    - another machine in between for static content
+    - all dynamic request will be directed to web application
+- Page Cache, Zero Copy
+  - Page Cache, whatever files already read remain in RAM
+  - Zero Copy, copying files between disk and network we can do in kernel mode (faster)
+  - Those operations are available in reverse proxy
+    - Cache: Varnish
+    - Reverse proxy: nginx
 
 
+**Web Server ➡️ App Server**
+- Asynchronous Logging
+  - main thread remains free, transfers data to another thread
+  - slight disadvantage: if application crashes there is no guarantee the last statements will be logged
+- Sequential & Batch IO
+  - Batch logging will help reducing context switching related cost
+  - computation -> logging -> computation -> logging
+    - context switching many times, very inefficient
+  - combine 4 loggings in one logging statemenent would be more efficient
+
+
+**App Server**
+- Logging sequential write operation
+  - sequentially IO is much faster than random IO
+- Query Optimization
+  - Should be written in a way to fetch minimum data
+  - Goes hand in hand with Schema Optimization
+- Data Caching
+  - Cache DB read only data in memory instead of reading from DB
+
+
+**DB Disk Access**
+- Schema Optimization
+  - Denormalization vs Normalization
+    - Generally keep data normalized
+    - Denormalize data spread over multiple tables, to fetch them from one table
+      - fetching from multiple tables require disk rotation, separate IOs, more time than single IO
+      - when Disk IO is specifically a problem (and load test shows it), otherwise normalization will save memory
+  - Indexes
+    - Avoid lot of data that do not need to go through when we have to fetch data
+    - Full table scan to find a row without indexes
+    - Can use index for filter criteria to know the exact location of the record on the disk
+    - There can be inefficiencies because of incorrect indexing
+- Higher IOPS, RAID, SSD Disk
+  - SSD much faster than regular, higher cost
+  - Choose disks with hiher IOPS
+  - RAID: replication in multiple disks and partitioning / mirroring
+    - parallel reading data, makes IO faster
+
+---
