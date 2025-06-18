@@ -10,6 +10,8 @@
 
 [Disk Latency](#disk-latency)
 
+[CPU Latency](#cpu-latency)
+
 ## Introduction
 
 ### Scope 
@@ -314,5 +316,81 @@ Where disk access related **penalties are extremely high**, they are in
   - Choose disks with hiher IOPS
   - RAID: replication in multiple disks and partitioning / mirroring
     - parallel reading data, makes IO faster
+
+---
+
+## CPU Latency
+
+
+**Web Server ➡️ App Server**
+
+- Inefficient Algorithms
+- Context Switching
+
+**Context Switching**
+
+Often affects environments where we are running multiple processes or threads. It affects all components.
+
+e.g. Matchine with one Thread
+
+- Process 1 / Thread 1
+  - may do some IO, access the disk, network call
+- Process 2 / Thread 2
+  - gives oportunity to process 2 to occupy CPU, **after some delay**
+ 
+
+**Why there is a delay between end of process 1 and beginning of process 2?**
+
+OS has to evict process 1
+ - take process from CPU and save process to memory (Save state to PCB1)
+   - Process control block
+  - restore the process 2 and put it on CPU for execution
+    - Restore state from PCB2
+  - process 2 starts the execution
+
+This wasted time can be avoid by removing the context switch
+
+If we do IO between process execution, then each process will evict CPU for some time
+- significant time processes end up wasting
+- this hurts performance
+- e.g. instead of 100ms can be +100ms
+
+---
+
+### Minimizing CPU processing latency
+
+**Web Server ➡️ App Server**
+
+**Minimize Context Switching**
+
+- Batch / Async IO
+  - e.g. multiple calls to DB, not only network overhead but also for CPU
+  - should batch multiple calls to one call
+  - applies also to read / writes in a file
+    - every log is an IO context switching
+    - avoid that with async IO in a separate thread, the main thread keeps running
+- Single Threaded Model
+  - JavaScript engine in Chrome, node.js, VaultDB, nginx
+  - each process will execute on the main thread and on the async threads for IO jobs
+  - ideal for large flow of requests, with a lot of IO
+  - effective way of minimizing CPU latency
+- Thread Pool Size
+  - should have the right number of threads within a thread pool
+  - otherwise it results to a lot of context switching and CPU latency
+  - e.g. 2 CPU machine 10 / 20 threads
+- Multi-Process in Virtual Env
+  - when we run multiple processes on a single machine, we should run them in their own virtual environment
+  - e.g. running 4 processes, they will try to contend for the CPU
+    - if a process hog CPU, then the other processes they will not get enought CPU time
+  - create virtual environments with their dedicated quota of CPU and memory
+    - they will not interfere with each other
+
+
+Single process or virtual environements for each process in large size machines
+
+**App Server**
+- Efficient Algorithms
+- Efficient Queries
+
 
 ---
