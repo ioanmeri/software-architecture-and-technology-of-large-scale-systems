@@ -12,6 +12,8 @@
 
 [CPU Latency](#cpu-latency)
 
+[Common latency costs](#common-latency-costs)
+
 ## Introduction
 
 ### Scope 
@@ -394,3 +396,41 @@ Single process or virtual environements for each process in large size machines
 
 
 ---
+
+## Common latency costs
+
+| Latency Comparison Numbers (~2012) | Time | Comments |
+|------------------------------------|------|----------|
+| L1 cache reference | 0.5 ns | |
+| Branch mispredict  | 5 ns | |
+| L2 cache reference  | 7ns | 14x L1 cache |
+| Mutex lock/unlock   | 25 ns  | |
+| Main memory reference | 100ns | 20x L2 cache, 200x L1 cache |
+| Compress 1K bytes with Zippy | 3000ns / 3**us** | |
+| Send 1K bytes over 1Gps network | 10us | |
+| Read 4K randomly from SSD | 150 us | ~ 1GB/sec SSD |
+| Read 1 MB sequentially from memory | 250 us | |
+| Round trip within same datacenter | 500us | |
+| Read 1 MB sequentially from SSD | 1000us / 1ms | ~ 1GB / sec SSD, 4x memory |
+| Disk seek | 10 **ms** | 20x datacenter roundtrip |
+| Read 1 MB sequentially from disk | 20ms | 80x memory, 20x SSD |
+| Send packet CA->Netherlands->CA | 150ms |
+
+- Calculations
+  - Should stay in L1 / L2
+- Context Switching
+  - When happens the memory latency is introduced 
+- Internet cost
+  - 300x times the local call
+- Disk seek
+  - setting hardware pointer on the disk, 10ms
+  - read data: further cost (20ms for 1MB, very efficient sequentially from disk)
+  - 5 disk seek would be 50ms
+  - much better to read data in batches, sequentially fetching
+- Frequently accessed data should be cached
+  - latency cost low
+- Compress any data that has to be transferred over the network
+
+---
+
+
