@@ -433,4 +433,35 @@ Single process or virtual environements for each process in large size machines
 
 ---
 
+## Amdahl's law for concurrent tasks
+
+**Paraller Request Concurrency**
+
+Example: 3 requests, process them together in time. In action, requests are executing e.g. first parallely, then serially,
+then parallerly again etc. E.g. Java code executing parallely and then having a lock or code synchronization (serially)
+
+In a perfectly serial system, the processing is one request at a time, completely flat graph
+
+When processing is perfectly parallel, the graph will be linear, depending on how much serial processing happens,
+the graph will be in between.
+
+Amdhal's law show how much the serial portion affects the graph
+
+
+![Amdha's Law](assets/images/02.png)
+
+The graph will go completely flat after a given point, we can calculate that through Amdhal's law
+
+What tells as that a 90% paraller portion flatens very quickly compared to 95% paraller portion
+
+If you want to make a system highly performant, we have to make it perfectly concurrent, but we will need some locking
+because we will have to access shared resources (files, memory, reporting db) and that will introduce serial processing.
+
+We have to keep the serial portion as low as possible (less than 5%)
+
+---
+
+
+
+
 
