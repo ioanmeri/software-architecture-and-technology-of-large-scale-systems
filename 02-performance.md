@@ -10,9 +10,10 @@
   - [Disk Latency](#disk-latency)
   - [CPU Latency](#cpu-latency)
   - [Common latency costs](#common-latency-costs)
-- Paraller Request Latency
+- Parallel Request Latency
   - [Amdahl's law for concurrent tasks](#amdahls-law-for-concurrent-tasks)
   - [Gunther's Universal Scalability](#gunthers-universal-scalability)
+  - [Contention](#contention)
 
 ## Introduction
 
@@ -489,5 +490,31 @@ In order to make a system highly concurrent
 
 
 ---
- 
+
+## Contention 
+
+**Web Server ➡️ App Server ➡️ Database**
+
+- Listen / Accept Queue (1)
+  - an incoming request will be queued in the Listen Queue if e.g. app server overloaded
+  - network queue only, definite size
+  - if it reaches the limit, additional incoming requests are rejected
+  - first queue, in the network gateway itself
+- Thread Pool (2)
+  - a thread needs to be allocated for processing on CPU
+  - fixed size thread pool
+  - second contention a request may face
+- Connection Pool (3)
+  - thread will have to content for a connection in the connection pool
+- CPU / Disk / Network (4)
+  - CPU will see contentin in the form of threads
+  - When a lot of data are being fetched from disk (DB) or IO, there is contention for disk
+  - Network contention may happen in microservices
+- Locks
+  - Serial part of the synchorize code
+  - If multiple threads are trying to access the same lock, it can become a source of contention
+
+---
+
+
 
