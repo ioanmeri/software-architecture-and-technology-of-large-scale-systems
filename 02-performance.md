@@ -1,18 +1,18 @@
 # Section 2: Performance
 
-[Introduction](#introduction)
+- [Introduction](#introduction)
 
-[System Performance](#system-performance)
+- [System Performance](#system-performance)
 
-[Network transfer Latency](#network-transfer-latency)
-
-[Memory Access Latency](#memory-access-latency)
-
-[Disk Latency](#disk-latency)
-
-[CPU Latency](#cpu-latency)
-
-[Common latency costs](#common-latency-costs)
+- Serial Request Latency
+  - [Network Transfer Latency](#network-transfer-latency)
+  - [Memory Access Latency](#memory-access-latency)
+  - [Disk Latency](#disk-latency)
+  - [CPU Latency](#cpu-latency)
+  - [Common latency costs](#common-latency-costs)
+- Paraller Request Latency
+  - [Amdahl's law for concurrent tasks](#amdahls-law-for-concurrent-tasks)
+  - [Gunther's Universal Scalability](#gunthers-universal-scalability)
 
 ## Introduction
 
@@ -142,7 +142,7 @@ Also
 
 ---
 
-## Network transfer Latency
+## Network Transfer Latency
 
 part of the **Serial Request Latency**
 
@@ -435,14 +435,14 @@ Single process or virtual environements for each process in large size machines
 
 ## Amdahl's law for concurrent tasks
 
-**Paraller Request Concurrency**
+**Parallel Request Concurrency**
 
-Example: 3 requests, process them together in time. In action, requests are executing e.g. first parallely, then serially,
+Example: 3 requests, process them together in time. In action, requests are executing e.g. first parallerly, then serially,
 then parallerly again etc. E.g. Java code executing parallely and then having a lock or code synchronization (serially)
 
 In a perfectly serial system, the processing is one request at a time, completely flat graph
 
-When processing is perfectly parallel, the graph will be linear, depending on how much serial processing happens,
+In a perfectly parallel system, the graph will be linear, depending on how much serial processing happens,
 the graph will be in between.
 
 Amdhal's law show how much the serial portion affects the graph
@@ -461,7 +461,33 @@ We have to keep the serial portion as low as possible (less than 5%)
 
 ---
 
+## Gunther's Universal Scalability
+
+Amdhal's Law: How serial portions in any code can limit the throughput that we can expect from a system
+- Serialization results in **Queueing**
+
+Universal Scalability Law: Coherence that limits the concurrency of any system
+- Combines both **Queueing** + **Coherence**
+
+Example: In Java you can declare a variable as volatile to have a coherent value between threads.
+If the value is modified in one thread, that will force refresh of that variable in other processors
+memory space as well. Their cache (L2) will be refreshed
+- this coherence comes at a performance cost
+- in applications with a lot of shared variables and modify them a lot, the coherence cost will be high
+- if we increase the numbers of processors/threads/users (multithreading), throughput starts **decreasing**
+
+Queueing, will never bring down your throughput graph, but coherence can bring down the throughput graph
+
+![Gunther's Universal Scalability](assets/images/03.png)
+
+In order to make a system highly concurrent
+- we need to minimize queueing
+  - serial execution within code
+- we need to minimize coherence effect
+  - caching of variables and their synchronization across multiple processors
 
 
 
+---
+ 
 
