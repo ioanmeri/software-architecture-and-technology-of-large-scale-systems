@@ -507,12 +507,79 @@ In order to make a system highly concurrent
 - Connection Pool (3)
   - thread will have to content for a connection in the connection pool
 - CPU / Disk / Network (4)
-  - CPU will see contentin in the form of threads
+  - CPU will see contention in the form of threads
   - When a lot of data are being fetched from disk (DB) or IO, there is contention for disk
   - Network contention may happen in microservices
 - Locks
   - Serial part of the synchorize code
   - If multiple threads are trying to access the same lock, it can become a source of contention
+
+---
+
+### Minimizing shared resource contention
+
+**CPU / Disk / Network**
+- as we increase load, CPU, disk, network, memory utilization go up
+- we need to make sure first serial request processing is in control
+  - we are utilizing there resources very efficiently
+- we can do **Vertical Scaling**
+  - Network
+    - better bandwidth between the system components
+  - **RAID Disk**
+    - parallel access to disk
+    - data copied on multiple disks
+    - multiple threads can access data simultaneously
+  - better CPU
+
+**Thread Pool Size**
+- collection of thread that are dedicated for single purpose
+- web server: server thread pool for worker threads, it is provided by the container
+- web application: similar in services there will be a thread pool for serving requests
+- smaller thread pool
+  - contention will increase
+  - listen queue will grow up
+  - lot of requests will wait for threads to be allocated
+- too many threads
+  - threads will stay idle, will wait for CPU
+  - e.g. 10 CPUs, 2000 threads, many requests
+    - each request will be allocated with a thread
+    - but the thread will be idle, waiting for CPU time
+- there is an **optimal range** for the thread pool size
+  - lower throughput will decrease
+  - higher also throughput will decrease
+  - we need to figure it by **load test**
+  - generally depends on
+    - **Wait Time**
+      - a lot of waiting in request processing, larger threadpool size
+      - certaintly bigger than the number of CPU
+      - depends on how much time the requests are consuming
+    - **CPU Time**
+      - e.g. a lot of calculation in services, we shouldn't go for high thread pool size
+      - e.g. CPU utilization 100%, wait time 0 then thread pool size === number of CPUs
+    - **Number of CPU**
+
+**Connection Pool Size**
+- rule of thumb
+  - e.g. thread pool size is 100, the connection pool should have at least 100 connections
+- e.g. worker threads in web application making calls to services
+  - we can have 1 to 1 correspondence between thread pool size and connection pool size
+  - each thread will need at least 1 HTTP connection to make a call to services / microservices
+- one thread will have one database connection at a time
+- one transaction each time
+  
+**Listen Queue**
+- depends on thread pool, build up if the web application cannot server requests
+at the rate they are coming
+- generally a problem only on extreme cases
+- we can **tune the OS parameters to increase the listen queue size**
+- but before that we need to make sure the requests are processed rapidly
+
+**Vertical Scaling**
+- goal is to increase performance with a single machine
+  - a single machine is able to handle all the contention
+- we can increase the number of threads by increasing the number of CPU
+- we can handle more DB load with better CPU, better disk, more DB memory
+- on services, more disk more CPU more network
 
 ---
 
