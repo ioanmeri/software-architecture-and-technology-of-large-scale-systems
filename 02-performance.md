@@ -14,6 +14,8 @@
   - [Amdahl's law for concurrent tasks](#amdahls-law-for-concurrent-tasks)
   - [Gunther's Universal Scalability](#gunthers-universal-scalability)
   - [Contention](#contention)
+    - [Minimizing shared resource contention](#minimizing-shared-resource-contention)
+    - [Minimizing locking related contention](#minimizing-locking-related-contention)
 
 ## Introduction
 
@@ -583,5 +585,24 @@ at the rate they are coming
 
 ---
 
+### Minimizing locking related contention
 
+- Reduce the duration for which a lock is held
+  - Move out the code, out of synchronization block, that doesn't require a lock (especially IO)
+    - e.g. log in code block requires an IO to be done
+  - Lock Splitting - Split locks into lower granularity locks that are experiencing moderate contention
+    - reduce scope of lock by dividing into smaller code blocks
+    - takes lock on different objects
+  - Lock Striping - Split locks for each partition of data like in Concurrent HashMap
+    - e.g. concurrent hashmap: devides buckets into partitions
+    - only locks the object associated with the bucket (for a key-value modification)
+    - e.g. 16 smaller locks instead of 1 lock, 16 times better performance
+- Replace exclusive locks with coordination mechanisms
+  - Use ReadWriteLock / Stamped Locks
+    - can protect data structures that are being accessed by 2 threads
+    - readers can take read lock (while the are reading a data structure it is not modified by anyone)
+    - writers can take write lock (needs to await readers to finish)
+  - Use Atomic Variables (protected by CAS)
+
+---
 
