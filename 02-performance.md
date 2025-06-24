@@ -16,6 +16,8 @@
   - [Contention](#contention)
     - [Minimizing shared resource contention](#minimizing-shared-resource-contention)
     - [Minimizing locking related contention](#minimizing-locking-related-contention)
+    - [Locking](#locking)
+      - [Pessimistic Locking](#pessimistic-locking)
 
 ## Introduction
 
@@ -606,3 +608,42 @@ at the rate they are coming
 
 ---
 
+## Locking
+
+When we are dealing with shared data, we often take locks so that we do not do concurrent updates. Otherwise, it will
+result in data corruption.
+
+---
+
+### Pessimistic Locking
+
+- Threads must wait to acquire a lock
+- Used when contention is high
+- May result in deadlocks
+  - One of the participating thread is backed up by receiving an exception
+
+
+**Example**
+
+- Fetch & **Lock Records**
+  - Begin transaction
+    - `connection.setAutoCommit(false);`
+  - Get available inventory and lock the records
+    - `connection.statement.executeQuery(" SELECT * from Inventory WHERE ProductID='XYZ' FOR UPDATE ")`
+- Process Records
+  - Do Cart Processing
+    - Get availability of other items
+    - Determine when they can be delivered
+    - Get the pricing and discounts of each item
+- Update Records
+  - Add item to cart and update inventory reservation
+    - `" UPDATE Invetory SET Quantity=(500-1) WHERE ProductId='XYZ' "`
+- Commit
+  - Commit transaction
+    - `connection.commit()`
+
+Transaction duration is long (compared to optimistic locking)
+
+After the select, only one thread will be able to execute the query, other threads will be blocked.
+
+---
