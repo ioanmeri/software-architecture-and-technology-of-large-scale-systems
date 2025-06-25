@@ -18,6 +18,7 @@
     - [Minimizing locking related contention](#minimizing-locking-related-contention)
     - [Locking](#locking)
       - [Pessimistic Locking](#pessimistic-locking)
+      - [Optimistic Locking](#optimistic-locking)
 
 ## Introduction
 
@@ -647,3 +648,53 @@ Transaction duration is long (compared to optimistic locking)
 After the select, only one thread will be able to execute the query, other threads will be blocked.
 
 ---
+
+### Optimistic Locking
+
+Apply optimistic locking to handle shared resource contention
+
+only the update statement will be executed serially: good for performance
+
+- Threads do not wait for a lock
+- Threads backup when they discover contention
+- Use when contention is between low to moderate
+- May result in starvation
+  - Switch to pessimistic locking
+
+**Process**
+
+- Fetch Data
+  - Get available inventory
+  - `connection.statement.executeQuery(" SELECT * from Inventory WHERE ProductID='XYZ' "`);
+- Process Data
+  - Get availability of other items
+  - Determine when they can be delivered
+  - Get the pricing and discounts of each item
+  - > Until this part requests are executing parallelly
+- Begin transaction
+  - `connection.setAutoCommit(false);`
+- Add item to cart and update inventory reservation
+  - `boolean success = connection.statement.executeUpdate(`
+  - `" UPDATE Inventory SET Quantity=(Quantity - 1) WHERE ProductId='XYZ'`
+  - `WHERE (Quantity - 1) >= 0 "`);
+    - we check whether it's the same record as in the first select
+- Verify
+  - `if (!success) {`
+  - `// if update failed due to qty mismatch,`
+  -  `// then retry by fetching the qty again`
+  -  `} else {`
+  -  `// Commit transaction`
+- Commit
+  -  `connection.commit()`;
+  -  `}`
+
+If a thread is not able to do an UPDATE because of a race condition, it has to back off
+
+> On Failure ➡️ Retry
+
+- If very few threads needs to restart the transaction, it's not a problem
+- If the race condition is so much that a lot of threads needs to restart the transaction, it's going to be costly
+
+---
+
+
