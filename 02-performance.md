@@ -19,6 +19,9 @@
     - [Locking](#locking)
       - [Pessimistic Locking](#pessimistic-locking)
       - [Optimistic Locking](#optimistic-locking)
+    - [Compare and Swap mechanism](#compare-and-swap-mechanism)
+
+---
 
 ## Introduction
 
@@ -694,6 +697,64 @@ If a thread is not able to do an UPDATE because of a race condition, it has to b
 
 - If very few threads needs to restart the transaction, it's not a problem
 - If the race condition is so much that a lot of threads needs to restart the transaction, it's going to be costly
+
+---
+
+## Compare and Swap mechanism
+
+- CAS is an optimistic locking mechanism
+  - non exclusive, more like coordination
+- All modern hardware (CPU) support it
+  - support by OS, OS builds on top of it like Java
+- Java implements support of CAS through Atomic `java.util.concurrent.atomic.*` classes
+
+**JAVA Example**
+
+e.g. multiple threads updating the atomic integer, check will happen on OS level
+```
+AtomicInteger ai = new AtomicInteger(10);
+ai.compareAndSet(10,20)
+// Returns true if the value was 10
+// and sets 20 as the new value
+
+// Returns false if the value was not 10 as a result
+// of a race condition with some other thread
+```
+this is optimistic locking, non exclusive, best for counters
+
+
+**DB Example**
+
+bet way to achieve atomicity in non sql dbs (through optimistic locking, CassandraDB)
+
+- locks are really short lived
+- increases the performance
+- ensures that we are not working on stale values, but on current values
+
+```
+select * from inventory where productId='Test-Product-7';
+```
+
+| productId | quantity |
+|----------| ---------|
+| Test-Product-7 | 100 |
+
+
+```
+update inventory set quantity=200 where productId='Test-Product-7' if quantity=0;
+```
+
+| [applied] | quantity |
+|----------| ---------|
+| False | 100 |
+
+```
+update inventory set quantity=200 where productId='Test-Product-7' if quantity=100;
+```
+
+| [applied] |
+|----------|
+| True | 
 
 ---
 
