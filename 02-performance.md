@@ -20,6 +20,7 @@
       - [Pessimistic Locking](#pessimistic-locking)
       - [Optimistic Locking](#optimistic-locking)
     - [Compare and Swap mechanism](#compare-and-swap-mechanism)
+    - [Deadlocks](#deadlocks)
 
 ---
 
@@ -757,5 +758,29 @@ update inventory set quantity=200 where productId='Test-Product-7' if quantity=1
 | True | 
 
 ---
+
+## Deadlocks
+
+Deadlocks can throttle the performance of our system, or they can completely brind it down to a standstill.
+
+**2 Reasons**
+
+- Lock Ordering Related
+  - Result of threads trying to acquire multiple locks
+    - Simultaneous money transfer from X and Y accounts by thread T1 and T2
+    - T1: from X to Y
+    - T2: from Y to X
+    - X ➡️ T1 ➡️ Y ➡️ T2 ➡️ X (loop) 
+  - Acquire locks in a fixed global order (Solution)
+    - Acquire locks only in the sort order of account numbers: X
+- Request Load Related
+  - Threads waiting for connections to multiple databases
+    - May run out enough connections resulting in deadlocks
+    - Gateway (10 requests / 10 users / 10 threads) ➡️ Service 1 ➡️ Gateway ➡️ Service 2
+    - The request from Service 1 to Gateway remain in a deadlock because gateway has run out of connections
+  - Threads waiting for other threads to be spawned and perform some work
+    - May run out of enough threads resulting in deadlocks
+
+  ---
 
 
