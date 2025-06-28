@@ -21,6 +21,7 @@
       - [Optimistic Locking](#optimistic-locking)
     - [Compare and Swap mechanism](#compare-and-swap-mechanism)
     - [Deadlocks](#deadlocks)
+    - [Coherence Delays](#coherence-delays)
 
 ---
 
@@ -785,6 +786,25 @@ Deadlocks can throttle the performance of our system, or they can completely bri
 
 ## Coherence Delays
 
+There are two factors that are affecting the concurrency of any system
+- queueing
+- coherence
+
+Coherence is related to **shared data**, e.g. mutliple threads that share data
+
+**Example**
+
+- Data in main memory, 2 threads running on two CPUs,  
+- the threads that work they will load the data into each own cache (L1 / L2 cache)
+- if no locks are taken, the memory object will have duplicate copies on both CPU
+  - any change done to one CPU, it will NOT be visible to the other CPU
+
+![Coherence](assets/images/04.png)
+
+**Solution**
+
+Coherence: when we modify a shared variable that is guarded by synchronized code, huge cost involved
+
 - Visibility (Volatile)
   - Java guarantees that a volatile object is always read from main memory and written back to main memory when updated in a processor
 - Locking (Synchronized)
@@ -792,6 +812,7 @@ Deadlocks can throttle the performance of our system, or they can completely bri
   - All variables modified in a sync block are flushed to the main memory when the associated thread exists the sync block
 
 > Synchronized ensures locking & visibility
+
 > Volatile only ensures visibility
 
 - These guarantees are provided using memory barriers which may result in invalidating or flushing of cashes
