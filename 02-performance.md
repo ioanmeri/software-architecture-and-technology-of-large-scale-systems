@@ -781,6 +781,22 @@ Deadlocks can throttle the performance of our system, or they can completely bri
   - Threads waiting for other threads to be spawned and perform some work
     - May run out of enough threads resulting in deadlocks
 
-  ---
+---
+
+## Coherence Delays
+
+- Visibility (Volatile)
+  - Java guarantees that a volatile object is always read from main memory and written back to main memory when updated in a processor
+- Locking (Synchronized)
+  - All variables accessed inside a sync block are read from the main memory at the start of the sync block
+  - All variables modified in a sync block are flushed to the main memory when the associated thread exists the sync block
+
+> Synchronized ensures locking & visibility
+> Volatile only ensures visibility
+
+- These guarantees are provided using memory barriers which may result in invalidating or flushing of cashes
+
+---
+
 
 
