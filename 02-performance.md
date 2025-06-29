@@ -22,6 +22,9 @@
     - [Compare and Swap mechanism](#compare-and-swap-mechanism)
     - [Deadlocks](#deadlocks)
     - [Coherence Delays](#coherence-delays)
+- [Caching](#caching)
+  - [System architecture for performance](#system-architecture-for-performance)
+  - [Caching for performance](#caching-for-performance)
 
 ---
 
@@ -819,5 +822,60 @@ Coherence: when we modify a shared variable that is guarded by synchronized code
 
 ---
 
+## Caching
+
+---
+
+## System architecture for performance
+
+Methods to improve performance
+
+**Web Application**
+
+- Persistent Connections
+- Response Compression
+- Efficient Encoding
+- Web Content Caching
+- SSL Session Caching
+- Session Caching
+
+**Web Server**
+
+- Thread Pool & Size
+- DB Connection Pool
+- Efficient Locking
+- Query Optimization
+- Asynchronous Logging
+- Sequential & Batch IO
+- Data Caching
+
+**Database**
+
+- Denormalization
+- Normalization
+- Indexing
+- Buffer/Page Cache
+
+---
+
+## Caching for performance
+
+![Caching](assets/images/05.png)
+
+- Object Cache
+  - caching of DB data
+  - for service layer to avoid repeated calls to DB
+  - dynamic data
+- Session Cache
+  - for web application layer
+  - associated with a user session
+  - dynamic data
+- Static Data Cache
+  - images, CSS files, JS files
+  - e.g. at Reverse Proxy, Load Balance / CDN / public cache
+- HTTP Cache
+  - browser cache
+  - static data and dynamic data
+  - doesn't change very frequently / access very frequently
 
 
