@@ -25,6 +25,7 @@
 - [Caching](#caching)
   - [System architecture for performance](#system-architecture-for-performance)
   - [Caching for performance](#caching-for-performance)
+  - [HTTP Caching for Static Data](#http-caching-for-static-data)
 
 ---
 
@@ -877,5 +878,58 @@ Methods to improve performance
   - browser cache
   - static data and dynamic data
   - doesn't change very frequently / access very frequently
+
+---
+
+## HTTP Caching for Static Data
+
+Browser Cache ➡️ Proxy Server Cache ➡️ Reverse Proxy Cache ➡️ Web App
+
+**Proxy server**
+
+A proxy server acts as an intermediary between client devices (e.g., employee computers) and the internet. Instead of each computer making direct requests to external servers, requests go through the proxy server.
+
+A Linux server (e.g., Ubuntu or CentOS) running:
+- Squid for caching
+- iptables for routing
+- SSH for remote management
+
+**Caching visibility**
+
+- Browser cache
+  - Private Cache
+- Proxy Server
+  - Public Cache
+    - data of any user can be cached (accessible to public)
+- Reverse Proxy
+  - Private Cache
+    - can deploy static data in the reverse proxy itself
+    - in that case reverse proxy is responsible for the cache headers
+
+**Caching headers**
+
+- GET method responses are idempotent and hence good candidates for caching
+- Headers
+  - Cache-control: If a resource can be reached
+    - No-cache
+      - Do not use cache without validating with origin server
+    - Must-revalidate
+      - Like no-cache but need validate only after its max-age (even if client is ready to accept stale data)
+    - No-store
+      - Do not cache at all
+    - Public
+      - Any shared cache can cache
+      - Useful for multiple users (e.g. logo image)
+    - Private
+      - Only a client cache can cache
+      - e.g. profile image
+    - Max-age
+      - Maximum age of a resource in cache, relative to resource request time
+  - ETAG: A hash code for indicating version of a resource
+    - Invalidates previous version cache
+    - e.g. label image as version 1
+
+---
+
 
 
