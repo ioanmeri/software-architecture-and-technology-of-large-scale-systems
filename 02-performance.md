@@ -26,6 +26,7 @@
   - [System architecture for performance](#system-architecture-for-performance)
   - [Caching for performance](#caching-for-performance)
   - [HTTP Caching for Static Data](#http-caching-for-static-data)
+  - [Caching Dynamic Data](#caching-dynamic-data)
 
 ---
 
@@ -930,6 +931,39 @@ A Linux server (e.g., Ubuntu or CentOS) running:
     - e.g. label image as version 1
 
 ---
+
+## Caching Dynamic Data
+
+**Use cases for caching dynamic data**
+
+- for services
+  - e.g. data from DB
+- web application
+  - e.g. user profile information
+
+**2 approches to cache dynamic data**
+    
+- Exclusive Cache
+  - caches per node
+    - each instance can cache data from services, in it's own memory
+  - Has low latency
+  - Without routing can lead to duplication
+    - Useful for smaller datasets
+  - With routing can lead to uneven load balancing
+    - Session cache
+    - can be achieved with intelligent routing e.g. cookies on requests
+- Shared Cache
+  - caching is externalised to another component
+  - Higher latency  due to an extra hop
+  - does not require intelligent routing
+  - Can scale out to distributed cache
+    - Memcache
+    - Redis
+    - can be clustered easily
+  - For large datasets
+ 
+---
+
 
 
 
