@@ -27,6 +27,7 @@
   - [Caching for performance](#caching-for-performance)
   - [HTTP Caching for Static Data](#http-caching-for-static-data)
   - [Caching Dynamic Data](#caching-dynamic-data)
+  - [Caching Challenges](#caching-challenges)
 
 ---
 
@@ -962,6 +963,27 @@ A Linux server (e.g., Ubuntu or CentOS) running:
     - can be clustered easily
   - For large datasets
  
+---
+
+## Caching Challenges
+
+- Limited cache space results in early evictions
+  - Prefer caching for frequently accessed objects
+    - Cache fast-moving consumer goods vs slow moving goods
+  - Average size of cached objects should be as small as possible
+    - Large sized objects results in cache getting full too soon causing evictions
+- Cache Invalidation & Cache Inconsistency
+  - Requires Update / Deletion of cached value upon update
+    - Not an option when a cache is outside of a system
+    - No cache inconsistency
+  - TTL value can be used to remove aged data
+    - High TTL results in more cache hits
+      - Inconsistency interval increases
+    - Low TTL decreases inconsistency interval
+      - Cache hits go down
+     
+> Cache Hit Ratio = # of cache hits / (#of cache hits + # of cache miss)
+
 ---
 
 
