@@ -28,6 +28,7 @@
   - [HTTP Caching for Static Data](#http-caching-for-static-data)
   - [Caching Dynamic Data](#caching-dynamic-data)
   - [Caching Challenges](#caching-challenges)
+- [Summary](#summary)
 
 ---
 
@@ -986,6 +987,20 @@ A Linux server (e.g., Ubuntu or CentOS) running:
 
 ---
 
+## Summary
 
+- Performance Problems are a result of request / job queue bulding up in a system
+- Performance measurement - Latency, Throughput, and Resource Saturation
+  - Watch out tail latency for hidden problems or future problems
+- Imporving Latency
+  - Reduce request response time of serial requests by imporving resource utilization
+    - CPU, Network, Memory, Disk
+  - Caching - Minimize fetching frequently read rarely mutated data from disk or network
+- Improving Throughput
+  - Improve concurrency of concurrent requests / jobs
+  - Minimize request / job serialization
+    - Reduce lock contention by reducing lock granulairity, lock striping, lock splitting and CAS
+    - Prefer Optimistic locking over Pessimistic locking when lock contention is low
+    - Eliminate deadlocks when using pessimistic locking
 
-
+---
