@@ -1,8 +1,8 @@
 # Section 3: Scalability
 
 
-[Performance vs Scalability](#performance-vs-scalability)
-
+- [Performance vs Scalability](#performance-vs-scalability)
+- [Vertical & Horizontal Scalability](#vertical--horizontal-scalability)
 ---
 
 ## Overview
@@ -50,3 +50,25 @@
   - Both ways - UP and DOWN
  
 ---
+
+
+## Vertical & Horizontal Scalability
+
+**Vertical**
+
+- Easier to achieve
+- Limited scalability
+- Cost raising exponentially
+- e.g 4 CPU / 16 GB RAM ➡️ 32 GPU / 256 GB RAM machine
+
+**Horizontal**
+- Hard to achieve
+- Unlimited scalability
+- Cost raising linearly
+- e.g. 4 CPU / 16 GB RAM ➡️ 3 x (4 CPU / 16 GB RAM)
+- practically immense amount of scalability
+- easy to scale down
+
+---
+
+
