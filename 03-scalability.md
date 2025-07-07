@@ -1,5 +1,10 @@
 # Section 3: Scalability
 
+
+[Performance vs Scalability](#performance-vs-scalability)
+
+---
+
 ## Overview
 
 - Scalability
@@ -20,4 +25,28 @@
   - SAGA Pattern
   - NoSQL
 
+---
+
+
+
+
+## Performance vs Scalability
+
+**Fixed Load**
+
+- Performance
+  - Low Latency
+  - High Throughput
+    - Concurrency
+      - Single Machine - Multi-Threading
+      - Multi Machine - Multi Threading + Multi Processing = Distributed Processing
+    - Capacity
+
+**Variable Load**
+
+- Scalability
+  - High Throughput
+    - Ability of a system to increase its throughput by adding more hardware capacity
+  - Both ways - UP and DOWN
+ 
 ---
