@@ -5,6 +5,7 @@
 - [Vertical & Horizontal Scalability](#vertical--horizontal-scalability)
 - [Reverse Proxy](#reverse-proxy)
 - [Scalability Principles](#scalability-principles)
+- [Modularity](#modularity)
 
 
 ---
@@ -100,3 +101,24 @@ Web Browser ➡️ Web Application ➡️ Business Application ➡️ Database
 
 ---
   
+## Modularity
+
+- Scalable architecture starts with modularity
+  - Provides the foundation for breaking an application into more specialized functions / services
+
+Web Browser ➡️ Web Application ➡️ Business Application ➡️ Database
+
+**Business Application**
+
+- API Protocol Layer
+- Service Modules
+  - User
+  - Catalog
+  - Order
+  - Inventory
+- Data Access Layer
+
+Coupled ➡️ Loosely Coupled ➡️ Decoupled
+
+---
+
