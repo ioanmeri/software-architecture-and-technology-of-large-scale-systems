@@ -4,6 +4,7 @@
 - [Performance vs Scalability](#performance-vs-scalability)
 - [Vertical & Horizontal Scalability](#vertical--horizontal-scalability)
 - [Reverse Proxy](#reverse-proxy)
+- [Scalability Principles](#scalability-principles)
 
 
 ---
@@ -29,9 +30,6 @@
   - NoSQL
 
 ---
-
-
-
 
 ## Performance vs Scalability
 
@@ -88,4 +86,17 @@ Web Browser ➡️ Web Application ➡️ Business Application ➡️ Database
 
 ---
 
+## Scalability Principles
 
+- Decentralization - Monolith is an anti-pattern for Scalability
+  - More workers - Instances, Threads
+  - Specialized workers - Services
+- Independence
+  - Multiple workers are as good as a single worker if they can't work independently
+    - They must work concurrently to maximum extent
+  - Independence is impeded by
+    - Shared resources
+    - Shared mutable data
+
+---
+  
