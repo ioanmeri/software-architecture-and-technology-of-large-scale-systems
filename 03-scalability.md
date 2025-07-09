@@ -6,6 +6,7 @@
 - [Reverse Proxy](#reverse-proxy)
 - [Scalability Principles](#scalability-principles)
 - [Modularity](#modularity)
+- [Replication](#replication)
 
 
 ---
@@ -121,4 +122,25 @@ Web Browser ➡️ Web Application ➡️ Business Application ➡️ Database
 Coupled ➡️ Loosely Coupled ➡️ Decoupled
 
 ---
+
+## Replication
+
+Web application now has three instances, running exactly the same code
+- Stateless / Statefull
+
+Service layer also has 3 instances, running also exactly the same code
+- Stateless
+
+Database layer has 2 Databases now, and both have same data
+- Stateful
+
+- For handling increasing workloads
+  - Stateless
+    - Code Replication
+    - No data involved in this layer
+  - Stateful
+    - Code & Data Replication
+
+---
+
 
