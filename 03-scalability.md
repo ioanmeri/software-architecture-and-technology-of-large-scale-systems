@@ -7,6 +7,7 @@
 - [Scalability Principles](#scalability-principles)
 - [Modularity](#modularity)
 - [Replication](#replication)
+- [Stateful replication in web applications](#stateful-replication-in-web-applications)
 
 
 ---
@@ -143,4 +144,36 @@ Database layer has 2 Databases now, and both have same data
 
 ---
 
+## Stateful replication in web applications
+
+**When low latency is required**
+
+- Sticky sessions / Session affinity
+- Sessions occupy memory
+- Session clustering for reliability
+
+When first time the request comes, there will be no data in the memory of the web application and we have to go
+to the database layer and get the user profile data.
+
+Before giving back the response, we have the opportunity of storing user profile data in the memory of that web application 
+instance the request was served
+
+The challenge is that next time the request can go to any web application node ➡️ Solution: Sticky sessions
+
+A cookie exist in the client, that carries the session Id and knows which instance to connect to
+
+**Serious limitations**
+
+- Scalability
+  - each session occupies memory
+  - maximum number of connections limited by overall memory of the machine
+- Reliability
+  - if node 1 is no longer alive, where the load balancer should route the request
+  - node 3 will have to fetch the information from the database ➡️ high latency, till caches are refreshed
+  - changes will be lost in session data ➡️ stale data
+    - weblogic provide clustered sessions (copied session data)
+
+In general stateles replication is favoured unless those factors are not considered serious limitations
+
+---
 
