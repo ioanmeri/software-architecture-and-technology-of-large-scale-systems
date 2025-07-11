@@ -7,7 +7,8 @@
 - [Scalability Principles](#scalability-principles)
 - [Modularity](#modularity)
 - [Replication](#replication)
-- [Stateful replication in web applications](#stateful-replication-in-web-applications)
+  - [Stateful replication in web applications](#stateful-replication-in-web-applications)
+  - [Stateless replication in web applications](#stateless-replication-in-web-applications)
 
 
 ---
@@ -176,4 +177,20 @@ A cookie exist in the client, that carries the session Id and knows which instan
 In general stateles replication is favoured unless those factors are not considered serious limitations
 
 ---
+
+## Stateless replication in web applications
+
+The latency of going to the service may not be that high, but the latency getting data from Database can be very high
+
+- For higher scalability at the expense of higher latency
+- Session data can be stored on
+  - Client Side in Cookies
+  - Server Side in Shared Cache (Memcached / Redis)
+
+preferred architecture, latency cost is only slightly higher
+
+go for stateful architecture when the requirements for latency are extremely critical
+
+---
+
 
