@@ -9,6 +9,7 @@
 - [Replication](#replication)
   - [Stateful replication in web applications](#stateful-replication-in-web-applications)
   - [Stateless replication in web applications](#stateless-replication-in-web-applications)
+  - [Stateless replication of services](#stateless-replication-of-services)
 
 
 ---
@@ -193,4 +194,15 @@ go for stateful architecture when the requirements for latency are extremely cri
 
 ---
 
+## Stateless replication of services
 
+**Service Replication**
+
+- Stateless replication - same as web stateless
+
+We can store again in a shared cache data that are frequently read, not frequently modified,
+and overcome the latency associated with stateless architecture
+
+When separate instances exist, there is extra complexity because locks cannot be applied. A common technique is to use a lock table in the database.
+
+---
