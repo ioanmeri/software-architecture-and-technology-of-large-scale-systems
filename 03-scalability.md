@@ -10,6 +10,7 @@
   - [Stateful replication in web applications](#stateful-replication-in-web-applications)
   - [Stateless replication in web applications](#stateless-replication-in-web-applications)
   - [Stateless replication of services](#stateless-replication-of-services)
+  - [Database replication](#database-replication)
 
 
 ---
@@ -204,5 +205,17 @@ We can store again in a shared cache data that are frequently read, not frequent
 and overcome the latency associated with stateless architecture
 
 When separate instances exist, there is extra complexity because locks cannot be applied. A common technique is to use a lock table in the database.
+
+---
+
+## Database replication
+
+In the context of RDBMS, when the throughput is getting higher we can create a **Read Replica** (Master-Slave configuration). Any change that happens on the primary DB gets automatically propagated and replicated on the Read Replica.
+
+We can also create a **Backup** with replication. If the master goes down, we can promote backup as the master and divert all the traffic load to the new master.
+
+- For higher read scalability
+- For high availability
+
 
 ---
