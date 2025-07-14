@@ -11,6 +11,7 @@
   - [Stateless replication in web applications](#stateless-replication-in-web-applications)
   - [Stateless replication of services](#stateless-replication-of-services)
   - [Database replication](#database-replication)
+  - [Database replication types](#database-replication-types)
 
 
 ---
@@ -219,3 +220,55 @@ We can also create a **Backup** with replication. If the master goes down, we ca
 
 
 ---
+
+## Database replication types
+
+- Master-Slave (Primary-Secondary)
+  - Asynchronous - **Read Replica**
+    - Low latency writes
+    - Eventually Consistent
+    - Data Loss
+      - In case master goes down, we can promote the secondary as a master but it may result in data loss
+    - When we need **high Read Performance**, low latency reads
+      - e.g. 5-6 read replicas
+  - Synchronous - **Backup**
+    - Consistent
+    - High latency writes
+    - Low write availability
+      - if any of both instances goes down, the write operations will have to hold
+    - **For backup puproses**
+      - e.g. one instance in sync with master which it can replace it in case of failure
+  - Common Asynchronous / Synchrous
+    - High Read Scalability
+    - High Read Availability
+    - No Write Conflicts
+- Master-Master (No-Master/Peer-To-Peer)
+  - Asynchronous - **Multi Geography**
+    - Write conflicts
+    - High availability
+  - Use case
+    - High Read Scalability
+    - High Read Write Availability
+    - Transaction ordering issues
+
+
+**Master-Slave**
+
+Client can only send read requests to a slave
+
+- Client ➡️ Read + Write ➡️ Master / Primary
+- Master / Primary ➡️ Uni-directional Replication ➡️ Slave / Secondary
+- Client ➡️ Read ➡️ Slave / Secondary
+
+
+**Master-Master**
+
+Client can write and read on any of those databases
+
+- Client ➡️ Read + Write ➡️ Master
+- Master ⬅️ Bi-directional Replication ➡️ Master
+- Client ➡️ Read + Write ➡️ Master
+
+---
+
+
