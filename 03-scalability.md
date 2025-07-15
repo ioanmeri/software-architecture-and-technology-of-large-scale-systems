@@ -12,6 +12,7 @@
   - [Stateless replication of services](#stateless-replication-of-services)
   - [Database replication](#database-replication)
   - [Database replication types](#database-replication-types)
+- [Need for specialized services](#need-for-specialized-services)
 
 
 ---
@@ -271,4 +272,20 @@ Client can write and read on any of those databases
 
 ---
 
+## Need for specialized services
+
+Business application is made of different modules
+
+**Service Modules**
+- User
+- Catalog
+- Order
+- Inventory
+- Notification
+
+We should be able to add more servers that are dedicated to e.g. host only Inventory module
+
+These issues can be fixed only if we break our monolith application into smaller services
+
+---
 
