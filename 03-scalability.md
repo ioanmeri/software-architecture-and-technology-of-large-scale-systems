@@ -12,7 +12,8 @@
   - [Stateless replication of services](#stateless-replication-of-services)
   - [Database replication](#database-replication)
   - [Database replication types](#database-replication-types)
-- [Need for specialized services](#need-for-specialized-services)
+- [Specialized services](#specialized-services)
+  - [Specialized services - SOAP / REST](#specialized-services---soap--rest)
 
 
 ---
@@ -272,7 +273,7 @@ Client can write and read on any of those databases
 
 ---
 
-## Need for specialized services
+## Specialized services
 
 Business application is made of different modules
 
@@ -288,4 +289,30 @@ We should be able to add more servers that are dedicated to e.g. host only Inven
 These issues can be fixed only if we break our monolith application into smaller services
 
 ---
+
+## Specialized services - SOAP / REST
+
+![Independent Services](assets/images/06.jpg)
+
+- Partially independent development and deployment
+  - e.g. patch only for User Service
+- Independent scalability
+  - e.g. we can have more number of instances only for a Catalog service
+- Independent technology
+  - User Service can be a .NET service
+  - Catalog a Java Service
+  - Order Service in C++
+
+by breaking the monolith application into the business services, we have made some gains in terms of scalability but we have increase the complexity of our system
+
+**RESTful Aggregator / Gateway Service**
+
+- a single point of contact for all of our clients, web / mobile client
+- all the background interaction and aggregating the responses will be taken care by gateway service
+- we can have an interoperable interface on the gateway
+  - we can have gRPC, thrift protocol for internal communication - binary not interoperable, but faster
+  - we can have REST protocol for external communication in the gateway
+
+
+
 
