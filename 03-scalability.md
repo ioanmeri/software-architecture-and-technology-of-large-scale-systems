@@ -14,6 +14,7 @@
   - [Database replication types](#database-replication-types)
 - [Specialized services](#specialized-services)
   - [Specialized services - SOAP / REST](#specialized-services---soap--rest)
+  - [Asynchronous services](#asynchronous-services)
 
 
 ---
@@ -313,6 +314,40 @@ by breaking the monolith application into the business services, we have made so
   - we can have gRPC, thrift protocol for internal communication - binary not interoperable, but faster
   - we can have REST protocol for external communication in the gateway
 
+
+---
+
+## Asynchronous services
+
+We often use message queues to integrate client and server when the interfaces are different and we also use message queues to reliably deliver messages from client to server
+
+- reliable delivery
+- integration of different interfaces
+- Async services effectively reduces write load from a database
+
+e.g. we want to make order process faster and more reliable ➡️ implement order queue as a buffer
+
+![Asynchronous services](assets/images/07.jpg)
+
+At the order service, we can validate, accept the order and persist it in a message queue
+
+Normally we would process the order but now we are putting it in a message queue (very fast operation)
+
+**Steps involved**
+
+- send a response back to the user when ready
+  - that we have accepted the order and we are processing it
+  - it is **NOT** the final confirmation that the order has been created
+  - it is an acknowledgement that the order has been received
+- next step is the order in the messege queue, has to be processed
+  - Order processing server
+  - it will be notified or pull the orders from the order queue
+- order processing server checks the inventory service
+- persists the order in the database
+
+We can use asynchronous processing wherever **write operation** is the main operation
+
+---
 
 
 
