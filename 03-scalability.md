@@ -15,6 +15,7 @@
 - [Specialized services](#specialized-services)
   - [Specialized services - SOAP / REST](#specialized-services---soap--rest)
   - [Asynchronous services](#asynchronous-services)
+  - [Asynchronous processing & scalability](#asynchronous-processing--scalability)
 
 
 ---
@@ -349,5 +350,30 @@ We can use asynchronous processing wherever **write operation** is the main oper
 
 ---
 
+## Asynchronous processing & scalability
 
+- Async services require infrastructure for average load as opposed to peak load
+
+We want to change the fact that the Database is facing the same load as the Order Service
+- The way to do that is asynchronous processing
+- the load on our system doesn't remain constant
+  - it varies over time
+  - peak and down periods
+- process requests during low periods of processing
+
+**Example**
+
+- we can scale a db that can process 10000 transactions / seconds to 20000 transactions / second by introducing
+  - a message queue
+  - an Order Processing Server
+- when the overall request rate goes below 10000, during that period the database and order processing server will be able to catch up with the backlog that will be accumulated at Order MQ
+- backlog will accumulate during peak periods
+- will go away during low periods
+- we have distributed the peak load over a period of time
+- can work with a lower capacity database
+  - but we don't reject any request
+  
+Order requests ➡️ Order Service PUSH ➡️ **Order MQ** ⬅️ PULL Order Processing ➡️ Order Database
+
+---
 
