@@ -15,7 +15,8 @@
 - [Specialized services](#specialized-services)
   - [Specialized services - SOAP / REST](#specialized-services---soap--rest)
   - [Asynchronous services](#asynchronous-services)
-  - [Asynchronous processing & scalability](#asynchronous-processing--scalability)
+- [Asynchronous processing & scalability](#asynchronous-processing--scalability)
+- [Caching for scalability](#caching-for-scalability)
 
 
 ---
@@ -376,4 +377,34 @@ We want to change the fact that the Database is facing the same load as the Orde
 Order requests ➡️ Order Service PUSH ➡️ **Order MQ** ⬅️ PULL Order Processing ➡️ Order Database
 
 ---
+
+## Caching for scalability
+
+- Caching reduces latency and reduces overall read load
+
+**Caching opportunities**
+
+- Data fetched from DB can be cached in Object Cache
+- Web application can cache data in Session Cache
+- Reverse proxy can cache static data in HTTP Cache
+- Browsers or proxies can cache static data in HTTP Cache
+
+Databases are harder to scale because we cannot remove state, that is what it stores
+
+If some of the read load can be served through caches that means we are relieving our database from read load, the additional capacity can be used for write load
+
+
+![Caching](assets/images/08.png)
+
+
+The two ways to scale our database, and our entire system
+- caching for read load
+- asynchronous processing - message queues - for write load
+
+---
+
+
+
+
+
 
