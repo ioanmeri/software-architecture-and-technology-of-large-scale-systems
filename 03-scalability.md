@@ -17,6 +17,7 @@
   - [Asynchronous services](#asynchronous-services)
 - [Asynchronous processing & scalability](#asynchronous-processing--scalability)
 - [Caching for scalability](#caching-for-scalability)
+- [Vertical partitioning with micro-services](#vertical-partitioning-micro-services)
 
 
 ---
@@ -402,6 +403,28 @@ The two ways to scale our database, and our entire system
 - asynchronous processing - message queues - for write load
 
 ---
+
+## Vertical Partitioning (Micro-Services)
+
+- Micro-Services completely decouples services and databases for higher scalability
+- Can no longer do inter service ACID transactions and need to deal with eventual consistency
+
+In order to scale our database we will have to look at what data the database is storing
+- Inventory service
+- Order service
+- Catalog service
+- User service
+
+which represent different business domains in our system. 
+
+We can have separate databases for each domain, we have made our system 4 times more scalable
+
+![Vertical Partitioning](assets/images/09.png)
+
+The challenge is if we have common tables, we need to get rid of them, we cannot have common tables, separation of responsibilities
+
+It partitions our database into independent databases and they can take higher write load
+
 
 
 
