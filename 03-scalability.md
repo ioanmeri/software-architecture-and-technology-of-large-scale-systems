@@ -18,6 +18,7 @@
 - [Asynchronous processing & scalability](#asynchronous-processing--scalability)
 - [Caching for scalability](#caching-for-scalability)
 - [Vertical partitioning with micro-services](#vertical-partitioning-micro-services)
+- [Database Partitioning](#database-partitioning)
 
 
 ---
@@ -424,6 +425,63 @@ We can have separate databases for each domain, we have made our system 4 times 
 The challenge is if we have common tables, we need to get rid of them, we cannot have common tables, separation of responsibilities
 
 It partitions our database into independent databases and they can take higher write load
+
+---
+
+## Database Partitioning
+
+Database partitioning is used for achieving extreme scalability
+
+### Vertical Partitioning of System
+
+- Catalog
+  - DB Node
+- Order
+  - DB Node
+- Inventory
+  - DB Node
+
+Splitting database into multiple instances for each domain. This is a vertical partitioning, there is a limit to the extend we can scale.
+
+### Horizontal Partitioning of Database
+
+Splitting of the Order domain into smaller datasets, which we can host into different nodes
+
+**Range Partitioning**
+
+- Order
+  - Id 1..100 ➡️ Node 1
+  - Id 100..200 ➡️ Node 2
+  - Id 200..300 ➡️ Node 3
+
+
+**Hash Partitioning**
+
+- Order
+  - Hash(Id)%N = 1 ➡️ Node 1
+  - Hash(Id)%N = 2 ➡️ Node 2
+  - Hash(Id)%N = 3 ➡️ Node 3
+
+If we need to rebalance our data (if a node goes down) there is minimum amount of disruption in terms of moving data around
+
+
+**Common features**
+
+- Partitioning depend on how many nodes we have
+  - if we increase / decrease the nodes we will have to change the way we have partitioned the db
+  - this is where it's getting complicated
+- We **no longer can do ACID transactions**
+  - same when they are in different domains
+  - we can do only if all records are in the same node
+  - in application we have to deal with eventual consistency
+  - these are No-SQL databases
+  - often RDMS provide also sharding / partitioning
+- Makes overall operations more complex because of the added hardware
+
+---
+
+
+
 
 
 
