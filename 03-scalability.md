@@ -17,8 +17,10 @@
   - [Asynchronous services](#asynchronous-services)
 - [Asynchronous processing & scalability](#asynchronous-processing--scalability)
 - [Caching for scalability](#caching-for-scalability)
-- [Vertical partitioning with micro-services](#vertical-partitioning-micro-services)
-- [Database Partitioning](#database-partitioning)
+- Database partitioning
+  - [Vertical partitioning with micro-services](#vertical-partitioning-micro-services)
+  - [Database Partitioning](#database-partitioning)
+  - [Database Partitioning selection](#database-partitioning-selection)
 
 
 ---
@@ -480,11 +482,35 @@ If we need to rebalance our data (if a node goes down) there is minimum amount o
 
 ---
 
+## Database Partitioning selection
 
+Where can we use range and hash partitioning, depends on how we are going to fetch the data
 
+**Range Partitioning**
 
+```
+SELECT * FROM Order WHERE id = 150
+SELECT * FROM Order WHERE id > 150 AND id < 250
+```
 
+- in the second query you have to visit Node 2 and Node 3
+- we have to go through a tree like structure in multiple nodes
+  - will result to performance penalty
 
+**Hash Partitioning**
+
+```
+SELECT * FROM Order WHERE id = 150
+```
+
+- we cannot do range queries
+- all separate queries will go on separate nodes
+- performance of query based of id is must faster than id based query in range partitioning
+- hash operation will directly determine the node for the location of key
+
+> Hash partitioning scheme is extremely useful when our access patern of data is predominately on key ids
+
+---
 
 
 
