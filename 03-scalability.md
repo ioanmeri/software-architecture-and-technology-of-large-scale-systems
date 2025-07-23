@@ -21,6 +21,7 @@
   - [Vertical partitioning with micro-services](#vertical-partitioning-micro-services)
   - [Database Partitioning](#database-partitioning)
   - [Database Partitioning selection](#database-partitioning-selection)
+  - [Routing with database partitioning](#routing-with-database-partitioning)
 
 
 ---
@@ -512,6 +513,23 @@ SELECT * FROM Order WHERE id = 150
 
 ---
 
+## Routing with database partitioning
 
+**How a database support CRUD operations**
 
+- Client Library (Order Service application)
+  - e.g. CouchDB, memcach come with a client library
+  - they are cluster-aware, how many nodes in the cluster
+  - they apply the hashing algorithm
+- Router
+  - e.g. MongoDB will provide clients with router component
+  - router will determine the node
+  - aware of the partitioning scheme
+- Go to any node
+  - client can contact any node
+  - e.g. DynamoDB, CassandraDB
+  - that node will take the responsibility of forwarding the request to the correct node
 
+![Routing with Database Partitioning](assets/images/10.png)
+
+---
