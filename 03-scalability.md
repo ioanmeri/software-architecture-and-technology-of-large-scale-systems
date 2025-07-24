@@ -22,6 +22,7 @@
   - [Database Partitioning](#database-partitioning)
   - [Database Partitioning selection](#database-partitioning-selection)
   - [Routing with database partitioning](#routing-with-database-partitioning)
+- [Methods for horizontal scalability](#methods-for-horizontal-scalability)
 
 
 ---
@@ -533,3 +534,23 @@ SELECT * FROM Order WHERE id = 150
 ![Routing with Database Partitioning](assets/images/10.png)
 
 ---
+
+## Methods for horizontal scalability
+
+- Services
+- Replication
+  - Stateful
+    - Database can only stateful
+  - Stateless
+    - Web application or services, can be stateless and are far more scalable
+- Partitioning
+  - Vertical / Functionality Partitioning
+  - Database Partitioning
+- Asynchronous Calls
+- Caching
+
+---
+
+   
+
+
