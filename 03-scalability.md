@@ -23,6 +23,8 @@
   - [Database Partitioning selection](#database-partitioning-selection)
   - [Routing with database partitioning](#routing-with-database-partitioning)
 - [Methods for horizontal scalability](#methods-for-horizontal-scalability)
+- Dealing with large scale systems
+  - [Load balancing multiple instances](#load-balancing-multiple-instances)
 
 
 ---
@@ -551,6 +553,21 @@ SELECT * FROM Order WHERE id = 150
 
 ---
 
-   
+## Load balancing multiple instances
 
+**Load Balancing**
+
+- Single IP address for a Component
+- Load Distribution
+
+A component can have mutliple instances
+- Web application
+- Gateway service
+- Catalog service
+
+The load balancer, if it seats in front of catalog service, it takes the responsibility of routing the requests to the right catalog with a certain stategy (round robin, random). Also, it takes the role of distributing the requests.
+
+The client just connects to the load balancer (1 IP)
+
+![Load balancing](assets/images/11.jpg)
 
