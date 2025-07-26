@@ -25,6 +25,7 @@
 - [Methods for horizontal scalability](#methods-for-horizontal-scalability)
 - Dealing with large scale systems
   - [Load balancing multiple instances](#load-balancing-multiple-instances)
+  - [Discovery service and load balancing](#discovery-service-and-load-balancing)
 
 
 ---
@@ -570,4 +571,32 @@ The load balancer, if it seats in front of catalog service, it takes the respons
 The client just connects to the load balancer (1 IP)
 
 ![Load balancing](assets/images/11.jpg)
+
+---
+
+## Discovery service and load balancing
+
+- Discovery - Registry for IP of Healthy Instances
+
+Now we have put the load balancers, inside the gateway service. Also, we have added a Discovery Service.
+
+Whenever the aggregator / Gateway Service wants to make a call to any of the backend services, it will make use of the embedded load balancer, which is basically code / a library.
+
+**Discovery Service**
+
+A convenient way of kwoning available services, which are healthy and their IPs
+
+- When an instance comes up will register with the Discovery Service
+- Instances will frequently update the Discovery Service with a heart beat
+- Gateway service will query Discovery Service for the instances that are available to serve the request
+- Gateway service decides which instance to call - based on load balancing strategy
+
+Discovery service can also be of used for the traditional load balancers
+
+Discovery service is present to all large scale systems because the number of instances is very large and dynamic, in K8s it is not needed, but traditionally yes.
+
+![Discovery Service](assets/images/12.png)
+
+---
+
 
