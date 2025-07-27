@@ -26,6 +26,7 @@
 - Dealing with large scale systems
   - [Load balancing multiple instances](#load-balancing-multiple-instances)
   - [Discovery service and load balancing](#discovery-service-and-load-balancing)
+  - [Load balancer discovery](#load-balancer-discovery)
 
 
 ---
@@ -600,3 +601,19 @@ Discovery service is present to all large scale systems because the number of in
 ---
 
 
+## Load balancer discovery
+
+- External Clients - Use DNS to discover the external load balancer
+- Internal Clients - Use a local / registry config to discover an discover an internal load balancer
+
+When we connect to a system, we first connect to external load balancer which has an external IP (and an internal IP)
+
+DNS will resolve to the external IP
+
+![Load balancer discovery](assets/images/13.png)
+
+Services and applications will connect to an internal Load Balancer
+- they can use registry service and get directly the IP
+- if there is a LB, services will connect to that and there will be a config option for this IP in the client
+
+---
