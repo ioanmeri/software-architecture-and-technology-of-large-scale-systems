@@ -27,6 +27,7 @@
   - [Load balancing multiple instances](#load-balancing-multiple-instances)
   - [Discovery service and load balancing](#discovery-service-and-load-balancing)
   - [Load balancer discovery](#load-balancer-discovery)
+  - [HLB vs SLB](#hlb-vs-slb)
 
 
 ---
@@ -615,5 +616,37 @@ DNS will resolve to the external IP
 Services and applications will connect to an internal Load Balancer
 - they can use registry service and get directly the IP
 - if there is a LB, services will connect to that and there will be a config option for this IP in the client
+
+---
+
+## HLB vs SLB
+
+- Hardware Based Load Balancer
+  - Load distribution for L4 & L7
+  - e.g. F5 Big IP i5000 series
+    - Connections: 300 million
+    - Throughput: 320/160 Gbps
+    - RPS (L7): 10 million
+  - very costly
+- Software Based Load Balaners
+  - Load distribution L7
+  - Features
+    - Content Based Routing
+    - Supports SSL Termination
+    - Support Sticky Sessions
+  - e.g. Nginx
+    - Connections: 225K
+    - Throughput: 70Gps
+    - RPS: 3 million
+  - free
+ 
+If the load justifies software based load balancers, then we can stick to them because they are free and upgrade to HLB if needed
+
+| TCP / IP Model | Protocol | OSI Model |
+| -------------- | -------- | --------- |
+| Application Layer | HTTP, HTTPS, SMTP, IMAP, FTP, DNS, NNTP ... | Application / Presentation  / Session 'Layer 7' Load Balancing|
+| Transport | UDP, TCP, SCTP | Transport 'Layer 4' Load Balancing|
+| Internet | | Network |
+| Network Access (Link) | Data Link / Physical |
 
 ---
