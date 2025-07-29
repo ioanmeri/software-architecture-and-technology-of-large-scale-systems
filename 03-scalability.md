@@ -28,6 +28,7 @@
   - [Discovery service and load balancing](#discovery-service-and-load-balancing)
   - [Load balancer discovery](#load-balancer-discovery)
   - [HLB vs SLB](#hlb-vs-slb)
+  - [Layer-7 load balancers](#layer-7-load-balancers)
 
 
 ---
@@ -650,3 +651,28 @@ If the load justifies software based load balancers, then we can stick to them b
 | Network Access (Link) | Data Link / Physical |
 
 ---
+
+## Layer-7 load balancers
+
+**Layer-7 load balancers do several things such as**
+
+- SSL Termination
+- Reverse proxy
+  - Breaks TCP connection
+    - TCP 1 ➡️ LB ➡️ TCP 2-2 Dynamic Content
+      - Web application
+      - `https://www.hotel.com/reserve`
+    - TCP 2 ➡️ LB ➡️ TCP 2-1 Static Content
+      - `https://images.hotel.com/room/standard`
+    - TCP 3 ➡️ LB ➡️ TCP 2-3 Static Content
+      - `https://images.hotel.com/reception`
+- Content based routing
+  - can look at cookies / body
+- Load Balancing
+  - Round Robin
+  - Least Connection
+  - Weighted RR/Least Conn
+  - Least Response Time
+
+---
+
