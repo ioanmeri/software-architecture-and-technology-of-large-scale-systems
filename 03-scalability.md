@@ -29,6 +29,7 @@
   - [Load balancer discovery](#load-balancer-discovery)
   - [HLB vs SLB](#hlb-vs-slb)
   - [Layer-7 load balancers](#layer-7-load-balancers)
+  - [DNS as load balancer](#dns-as-load-balancer)
 
 
 ---
@@ -675,4 +676,24 @@ If the load justifies software based load balancers, then we can stick to them b
   - Least Response Time
 
 ---
+
+## DNS as load balancer
+
+- Configure DNS records with multiple A records
+  - Return single IP in a round-robin fashion
+    - e.g. example DNS with 3 records, that results to load balancing
+  - Return a list of IP
+- Cloud based DNS can be configured along with health checks
+  - can ping a backend instance and know about it's health
+- Drawbacks
+  - Indefinite caching and not respecting TTLs
+  - Low or zero TTLs can create a very high load on DNS
+
+A Load Balancer in general is a very active piece of hardware that actively tracks which are the instances that are down, as soon as it discover instances that are down it stops sending traffic to that instance.
+- load balancers we want them to have really low TTL values
+- DNS TTLs can be high values and that may not be practical
+
+---
+
+
 
