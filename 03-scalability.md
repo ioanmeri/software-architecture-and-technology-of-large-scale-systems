@@ -30,6 +30,7 @@
   - [HLB vs SLB](#hlb-vs-slb)
   - [Layer-7 load balancers](#layer-7-load-balancers)
   - [DNS as load balancer](#dns-as-load-balancer)
+  - [Global server load balancing](#global-server-load-balancing)
 
 
 ---
@@ -694,6 +695,28 @@ A Load Balancer in general is a very active piece of hardware that actively trac
 - DNS TTLs can be high values and that may not be practical
 
 ---
+
+## Global server load balancing
+
+We need to update Load Balancer's IP addresses quickly and frequently
+
+DNS as a load balancer acts more like **a router between multiple regions**
+
+- Scalability
+  - Routing for multi-geographic systems
+- Performance
+  - Locally for multi-geographic users
+    - Client to Datacenter Latency
+    - Client to Datacenter Proximity
+    - Datacenter Geography
+- High Availability
+  - Multi region availability (not a quick switch over)
+- Disaster Recovery
+
+![Global scale load balancer](assets/images/14.png)
+
+---
+
 
 
 
