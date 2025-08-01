@@ -31,6 +31,7 @@
   - [Layer-7 load balancers](#layer-7-load-balancers)
   - [DNS as load balancer](#dns-as-load-balancer)
   - [Global server load balancing](#global-server-load-balancing)
+  - [Global data replication](#global-data-replication)
 
 
 ---
@@ -716,6 +717,26 @@ DNS as a load balancer acts more like **a router between multiple regions**
 ![Global scale load balancer](assets/images/14.png)
 
 ---
+
+## Global data replication
+
+Goal is to ensure data between two datacenters it remains in sync. A user can access the system from any datacenter.
+
+- Active-Active Setup
+  - All sites active all the time
+- Master-Master or Peer-to-Peer replication
+  - Mostly asynchronous
+- Failover is quick
+- Some data loss is a possibility
+
+![Global Data Replication](assets/images/15.png)
+
+
+---
+
+
+
+
 
 
 
