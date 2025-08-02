@@ -32,6 +32,7 @@
   - [DNS as load balancer](#dns-as-load-balancer)
   - [Global server load balancing](#global-server-load-balancing)
   - [Global data replication](#global-data-replication)
+  - [Auto scaling instances](#auto-scaling-instances)
 
 
 ---
@@ -734,10 +735,38 @@ Goal is to ensure data between two datacenters it remains in sync. A user can ac
 
 ---
 
+## Auto scaling instances
+
+We need a framework which can automatically scale your applications when it senses that is under load.
+
+It needs to be automated because manual processes won't be fast enough to scale in the required time frame, also the chances of any human error go away.
+
+- Monitoring Service
+  - Monitor Load
+    - CPU
+    - Network
+    - Disk
+  - Monitor Health
+    - Ping
+    - Http
+- Auto-Scaling Service
+  - Configure load thresholds
+  - Monitor load
+  - Launch New Instance
+  - Shutdown Instance
+
+**Process**
+
+- Monitoring & Health Check ➡️ 
+- Monitoring Feedback ➡️
+- AutoScaler ➡️
+- Pull out VM/Container image ➡️
+- Launch New Instance & Assign IP ➡️
+- Register New Instance
 
 
+![Global Data Replication](assets/images/16.png)
 
-
-
+---
 
 
