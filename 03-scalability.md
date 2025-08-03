@@ -33,6 +33,7 @@
   - [Global server load balancing](#global-server-load-balancing)
   - [Global data replication](#global-data-replication)
   - [Auto scaling instances](#auto-scaling-instances)
+- Micro-Services Architecture
 
 
 ---
