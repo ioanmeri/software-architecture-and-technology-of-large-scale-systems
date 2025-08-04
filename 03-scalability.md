@@ -34,6 +34,7 @@
   - [Global data replication](#global-data-replication)
   - [Auto scaling instances](#auto-scaling-instances)
 - Micro-Services Architecture
+  - [Micro-Services Motivation](#micro-services-motivation)
 
 
 ---
@@ -769,5 +770,34 @@ It needs to be automated because manual processes won't be fast enough to scale 
 ![Global Data Replication](assets/images/16.png)
 
 ---
+
+## Micro-Services Motivation
+
+Many times we takes the middle way of service oriented architecture and micro-services architecture
+
+The most important aspect of any architecture is how it impacts it's and users  in terms of performance, scalability or cost.
+
+**Mirco-Services**
+
+- **High Scalability**
+  - Based on Decentralization & Independence
+  - **Affects users**
+- **Frequent Deployment**
+  - Users get incremental / new features at higher frequency
+  - **Affects users**
+- Independent Deployment
+  - Partially release / deploy services
+- Independent Development
+- Independent Services
+
+---
+
+
+
+
+
+
+
+
 
 
