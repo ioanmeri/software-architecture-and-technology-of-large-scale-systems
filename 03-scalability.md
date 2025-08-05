@@ -35,6 +35,7 @@
   - [Auto scaling instances](#auto-scaling-instances)
 - Micro-Services Architecture
   - [Micro-Services Motivation](#micro-services-motivation)
+  - [Service Oriented Architecture](#service-oriented-architecture)
 
 
 ---
@@ -773,7 +774,7 @@ It needs to be automated because manual processes won't be fast enough to scale 
 
 ## Micro-Services Motivation
 
-Many times we takes the middle way of service oriented architecture and micro-services architecture
+Many times we take the middle way of service oriented architecture and micro-services architecture
 
 The most important aspect of any architecture is how it impacts it's and users  in terms of performance, scalability or cost.
 
@@ -792,6 +793,33 @@ The most important aspect of any architecture is how it impacts it's and users  
 
 ---
 
+## Service Oriented Architecture
+
+Before micro-services architecture we had service oriented architecture, which was the usual way of doing services.
+
+To make a system scalable, it should be decentralized and it's components should work independently.
+
+In service oriented architecture, there are independent and not independent entities:
+
+- Independent
+  - Each service can have its own technology stack, libraries, frameworks, etc
+  - Each service can be scaled independently and differently
+- Not Independent
+  - Common interface schema
+    - XML schema
+    - e.g. order data structure is the same in all services
+    - services are tightly coupled
+  - Common database schema
+    - RDBMS schema
+    - creates dependencies
+- **Issues**
+  - Service development may be independent but not the deployment
+  - Single database has scalability limitations
+    - only vertical scaling
+
+Service oriented architecture can be scaled vertically because database cannot be scaled horizontally
+
+---
 
 
 
