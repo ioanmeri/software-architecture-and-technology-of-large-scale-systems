@@ -36,6 +36,7 @@
 - Micro-Services Architecture
   - [Micro-Services Motivation](#micro-services-motivation)
   - [Service Oriented Architecture](#service-oriented-architecture)
+  - [Micro-Services Architecture Style](#micro-services-architecture-style)
 
 
 ---
@@ -821,9 +822,27 @@ Service oriented architecture can be scaled vertically because database cannot b
 
 ---
 
+## Micro-Services Architecture Style
+
+How to address the objectives of high scalability and frequent, independent deployment
+
+- Shared Nothing Architecture
+  - Services developed and deployed independently
+  - Achieved through vertical partitioning
+- Vertical / Domain Partitioning
+  - **Independent schema / database**
+  - Loosely coupled service interfaces
+    - REST interfaces instead of XML / WSDL schemas
+  - No reusable libraries except utilities
+- Issues
+  - Duplicate Codebase
+  - Transaction failures
+  - Transacton rollbacks
 
 
+![Micro-services architecture style](assets/images/17.png)
 
+---
 
 
 
