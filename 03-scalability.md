@@ -37,6 +37,7 @@
   - [Micro-Services Motivation](#micro-services-motivation)
   - [Service Oriented Architecture](#service-oriented-architecture)
   - [Micro-Services Architecture Style](#micro-services-architecture-style)
+  - [Transactions in Micro-Services](#transactions-in-micro-services)
 
 
 ---
@@ -841,6 +842,53 @@ How to address the objectives of high scalability and frequent, independent depl
 
 
 ![Micro-services architecture style](assets/images/17.png)
+
+---
+
+## Transactions in Micro-Services
+
+This is the most difficult part about micro-services, how do we do transactions in a distributed system like micro-services
+
+- Transactions involves multiple machines
+  - Distributed services with their own DB
+  - Local transaction not possible
+- Options
+  - Distributed ACID Transactions
+    - 2PC / 3PC
+      - 2 phase commit
+        - any transactions happens in two phases, order service acts like coordinator
+        - in the first phase will ask inventory service, shipment service if they ready to do transactions
+          - these services will take locks on their databases, and promise transaction to order service
+        - order service will commit the transaction, which is the second phase, issue request to all the participant services
+        - if any service cannot do the transaction, order service will issue a rollback statement to all the participants
+          - transaction will be rejected
+          - services with locks will rollback the changes
+        - the problem is that locks take a long duration, and transaction takes time, and they block other requests which are trying to access data
+        - these transactions they do not scale very well
+        - useful only in cases that scalability requirements are not very high
+      - 3 phase commit
+        - improvement over 2 phase commit to ensure more reliability to the whole transaction
+        - if coordinator or worker goes down then these transactions they get block for a long time, and they cannot proceed further
+        - 3 phase commit overcomes those drawbacks
+        - but same problems of scalability gets compound in 3 phase commit, solves the reliability problem
+    - Completely ACID
+    - these **do not provide availability and scalability, the primary reason we are doing micro-services**
+    - we are forced to switch to compensating transactions
+  - Compensating Transactions
+    - SAGA pattern
+    - Eventually consistent model
+      - Relaxes consistency and isolation
+
+
+**Example**
+
+Order service needs to check the Inventory service and then register the order to Shipment service. Once Shipment service persist the shipment to Shipment DB, the Order service will persist the order to Order DB, and the Order response will be sent back to Gateway Service
+
+- Book Order transaction consists of 3 local transactions
+  - Local transaction it is like a monolith application accessing it's own DB
+
+![Transactions in Micro-Services](assets/images/18.png)
+
 
 ---
 
