@@ -38,6 +38,7 @@
   - [Service Oriented Architecture](#service-oriented-architecture)
   - [Micro-Services Architecture Style](#micro-services-architecture-style)
   - [Transactions in Micro-Services](#transactions-in-micro-services)
+  - [Compensating Transactions - SAGA Pattern](#compensating-transactions---saga-pattern)
 
 
 ---
@@ -893,6 +894,60 @@ Order service needs to check the Inventory service and then register the order t
 ---
 
 
+## Compensating Transactions - SAGA Pattern
+
+A special framework is not needed for compensating transactions, but we do have to write some special code
+
+- 'Logical Undo' of a partially commited transactions
+  - Flow of reversal may not be exactly opposite, and some steps can be executed in parallel
+  - Compensation itself can fail. Should be able to restart itself and retry
+- Asynchronous processing for reliability
 
 
+**Example 1** 
+
+- Our system has received a request for booking order
+- This request will come to Order Service
+- Order Service will send the request to the Inventory Service for reserving Inventory
+  - Inventory service will make reservations in Inventory DB
+  - Local transaction for Inventory Service
+  - By itself it will be completely atomic
+  - But in the context of Booking order we do not do this entire transaction atomicly, but in parts
+- Order Service sends a request to the Shipment Service for making shipment reservations
+  - Shipment service makes those reservations in Shipment DB
+  - Control goes back to Order Service
+- Order service confirm that order in Order DB
+- Order service returns responds back to it's client
+
+
+![SAGA Pattern 1](assets/images/20.png)
+
+This is successful part.
+
+**Example 2**
+
+- We commit changes to the Inventory DB, no locks are taken here
+- But Shipment service returns back to Order service with a failure, that shipment cannot be created
+- Our system is in a dirty state 
+- We start reversing the effects of our previous transactions
+- We will write corresponding transactions that will undo a particular transaction
+  - Create shipment ➡️ Undo shipment
+  - Reserve Inventory ➡️ Undo Inventory
+  - Create Order ➡️ Undo Order
+
+
+We also write code to undo backwards the transaction. 
+
+We need to take extra steps to make sure that microservices transactions are available and reliable.
+- **durability** is guaranted
+- overal transaction not really atomic
+  - at the end, entire transaction gets commited, or entire transaction gets roll backed / undo / compensation
+  - **gives the effect of atomicity**
+- in the end the whole system is **eventually consistent**
+- these transactions **are not completely isolated**, they are not really atomic
+  - orders can intefere with each other
+
+![SAGA Pattern Undo](assets/images/19.png)
+
+---
 
