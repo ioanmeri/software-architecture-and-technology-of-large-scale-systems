@@ -39,6 +39,7 @@
   - [Micro-Services Architecture Style](#micro-services-architecture-style)
   - [Transactions in Micro-Services](#transactions-in-micro-services)
   - [Compensating Transactions - SAGA Pattern](#compensating-transactions---saga-pattern)
+  - [Micro-services communication](#micro-services-communication)
 
 
 ---
@@ -950,4 +951,23 @@ We need to take extra steps to make sure that microservices transactions are ava
 ![SAGA Pattern Undo](assets/images/19.png)
 
 ---
+
+## Micro-services communication
+
+There are two communication models:
+
+- Synchronous processing
+  - Immediate Response
+  - For read / query loads
+- Asynchronous processing
+  - Deferred response
+  - For write / transaction loads
+  - Higher scalability
+  - Higher reliability
+
+When there is high load on the system, and requests are failing because of high load, it is a better strategy to use 
+asynchronous processing because it defers the processing
+
+---
+
 
