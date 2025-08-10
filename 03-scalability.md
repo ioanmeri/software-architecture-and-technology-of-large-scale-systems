@@ -40,6 +40,7 @@
   - [Transactions in Micro-Services](#transactions-in-micro-services)
   - [Compensating Transactions - SAGA Pattern](#compensating-transactions---saga-pattern)
   - [Micro-services communication](#micro-services-communication)
+  - [Event driven transactions](#event-driven-transactions)
 
 
 ---
@@ -970,4 +971,81 @@ asynchronous processing because it defers the processing
 
 ---
 
+## Event driven transactions
+
+**Order Booking Example**
+
+### Successful transaction path 
+
+
+![Event Drive Transaction - Happy path](assets/images/21.png)
+
+- We have logically separated the Order Orchestrator path from Order Service
+- We can have 2 separated Orchestrator instances if that is required
+
+
+**Create Order Event**
+
+- Order Ochestrator will start a transaction
+  - Will Create Order Event in the Message Queue
+  - It subscriber - Order Service - will be notified for this event
+- Order service will receive this event along with the Order Request (payload)
+- Order service will create order
+  - Once the transaction is done it will notify the queue the Create Order Event has been processed
+  - If the instance goes down during processing, the Message Queue will notify again the service
+    - Order service did not acknownledge the Order Creation Event
+  - Order service should not process again a persisted order in db, and code should handle this case
+    - It should simply acknowledge the event
+
+We should put a **polling process** in Order service, which constantly polls the **Order Database** for newly created orders, then even if the service goes down, the next time it comes up, it will see that there is an order, for which we have not created an "Order Created Event".
+
+We can have a status to the database which is that the event has not been created
+
+When the new instance will see the status it will create an "Order Created Event" in the queue
+
+**Inventory Reserved Event** 
+
+- Order Orchestrator will notify Inventory Service for reserving Inventory
+- It will create "Reserve Inventory Event", which it will be subscribed by Inventory Service
+- Once Inventory service it is done processing the event, will put another message to the message queue the "Inventory Reserved Event"
+- Orchestrator knows that Inventory has been reserved
+
+**Shipment Created Event**
+
+- Orchestrator will create Shipment event
+- "Create Shipment Event" will be published to Shipment Service
+- Shipment Service will process it
+- Will create a "Shipment Created Event" as a response
+
+Order orchestrator now knows that the Order has been processed and send the response back to the client
+asynchronously that the Order has been created
+
+---
+
+### Unsuccessful Event - Sage Rollback
+
+![Event Drive Transaction - Unsuccessful path](assets/images/22.png)
+
+- Order Orchestrator creates event into the Message Queue
+- which is subscribed by Order Service, Creates the order, puts back an event into the Message Queue
+- Orchestrator creates "Reserve Inventory Event"
+  - It tries to reserve inventory but because it is not able to create inventory
+  - It will create the event **"Inv Res Failure Event"**
+- It will be seen by Order Orchestrator, and it will know that this order cannot be processed any further
+- It starts Compensation Phase for this transaction
+- It will create an event **Undo Order Event**
+- Order service will consume the event and needs to undo whatever has done
+- Once the Order service undo the order in the database
+- It will publish the event **Order Undone Event**
+- Order Orchestrator can notify the client about the order failure
+
+---
+
+This is how we do compensating transactions in micro-services in an event based fashion, through asynchronous processing
+
+The benefit of doing event driven transactions or asynchronous processing is that those transactions are able to scale much better, because they can distribute their load over a period of time, this is a luxury that synchronous transaction do not have
+
+There is always time outs associated with synchronous calls 
+
+---
 
