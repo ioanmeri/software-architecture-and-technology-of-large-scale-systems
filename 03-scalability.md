@@ -40,7 +40,8 @@
   - [Transactions in Micro-Services](#transactions-in-micro-services)
   - [Compensating Transactions - SAGA Pattern](#compensating-transactions---saga-pattern)
   - [Micro-services communication](#micro-services-communication)
-  - [Event driven transactions](#event-driven-transactions)
+- [Event driven transactions](#event-driven-transactions)
+- [Extreme scalability with NoSQL and Kafka](#extreme-scalability-with-nosql-and-kafka)
 
 
 ---
@@ -1048,4 +1049,52 @@ The benefit of doing event driven transactions or asynchronous processing is tha
 There is always time outs associated with synchronous calls 
 
 ---
+
+## Extreme scalability with NoSQL and Kafka
+
+Now that we have architected our system to handle eventually consistency through compensating transactions, we are in a position to scale our system to much higher limits (exteme scalability)
+
+- Microservices Transactions
+  - ACID within Service
+  - Compensating Transaction across services
+    - Eventually consistent
+- NoSQL DB
+  - ACID transaction at aggregate level
+  - Eventually consistent transactions across aggregates
+  - Low latency operations
+    - **Multiple nodes**
+    - We can partition our data into Multiple nodes because aggregate transaction is ACID in NoSQL (single row)
+  - High scalability
+    - Horizontal partitioning
+- Kafka
+  - Horizontal partitioning of topics
+
+![NoSQL with Kafka](assets/images/23.png)
+
+How can we have ACID within Service in NoSQL? We need to restructure our schema
+
+**Example**
+
+Order data can be splitted into multiple tables
+- Order data
+- Order Line table
+
+RDMS can handle multiple tables in a single transaction, but that is not possible in a NoSQL single transaction 
+- Combine Order Data, Order Line table in a single table
+- No need to visit multiple tables in a NoSQL schema
+- ACID transaction in NoSQL as well, with a single row
+
+Now our database is also horizontally distributed
+
+It is also possible to horizontally distribute message queue with the same partitioning scheme that we have used for our databases. For example, we can partition our data using order id as partition key
+- A message queue like Kafka provides horizontal partitioning of topics based on a key
+- Message queue becomes horizontally scalable
+
+That makes our system truly scalable, because every component of our system is now horizontally distributed
+
+---
+
+
+
+
 
