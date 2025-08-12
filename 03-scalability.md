@@ -42,6 +42,7 @@
   - [Micro-services communication](#micro-services-communication)
 - [Event driven transactions](#event-driven-transactions)
 - [Extreme scalability with NoSQL and Kafka](#extreme-scalability-with-nosql-and-kafka)
+- [Summary](#summary)
 
 
 ---
@@ -1094,7 +1095,22 @@ That makes our system truly scalable, because every component of our system is n
 
 ---
 
+## Summary
 
+- Scalable systems are decentralized, and their components function independently
+- To make a system scalable
+  - Cache frequently read and rarely mutating data to reduce load on the backend
+  - Asynchronous or Event driven processing for distributing load over time
+  - Vertical partitioning of functionality into independent, stateless, replicated services
+  - Partitioning and replication of state for extreme scalability
+- Scalable systems requires infrastructure
+  - Load balancers - Hardware based (L4 + L7) & Software based (L7)
+  - Discovery services for service discovery and health checks
+  - DNS as load balancers at global scale
+- Microservices for extreme scalability
+  - Fully vertically partitioned services and databases leads to eventual consistency
+
+---
 
 
 
