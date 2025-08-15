@@ -2,6 +2,7 @@
 
 - [Module contents overview](#module-contents-overview)
 - [Failures in large scale distributed systems](#failures-in-large-scale-distributed-systems)
+- [Partial system failures](#partial-system-failures)
 
 ---
 
@@ -49,3 +50,27 @@ We will look at what kind of failures can happen to the system, how they can imp
 use to make the system more resilient to these failures
 
 ---
+
+## Partial system failures
+
+- Network failure - LAN, WAN, Load Balancer
+- Machine Failure - CPU, Disk, Memory
+- Software Failure - Process
+- Disaster - Datacenter
+- Operations
+  - Deployment Failure
+  - Configuration Failure
+  - Load Induced Failure
+  - External Service Failure
+
+After a point, its much more economical to recover from a failure instead of preventing it altogether
+
+- **No matter how hard we try**
+  - **Hardware and Networks will fail**
+  - **A changing Software will fail**
+  - **Disasters will happen**
+
+---
+
+
+
