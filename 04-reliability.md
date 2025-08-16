@@ -3,6 +3,7 @@
 - [Module contents overview](#module-contents-overview)
 - [Failures in large scale distributed systems](#failures-in-large-scale-distributed-systems)
 - [Partial system failures](#partial-system-failures)
+- Reliability engineering topics
 
 ---
 
