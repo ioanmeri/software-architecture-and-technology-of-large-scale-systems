@@ -4,6 +4,7 @@
 - [Failures in large scale distributed systems](#failures-in-large-scale-distributed-systems)
 - [Partial system failures](#partial-system-failures)
 - Reliability engineering topics
+  - [Reliability](#reliability)
 
 ---
 
@@ -73,5 +74,10 @@ After a point, its much more economical to recover from a failure instead of pre
 
 ---
 
+## Reliability
 
+- A system is said to be reliable if it can continue to function correctly and remain available for operations even in the presence of partial failures
+- It is meausred as the probability of a system working correctly in a given time interval
+
+---
 
