@@ -5,6 +5,7 @@
 - [Partial system failures](#partial-system-failures)
 - Reliability engineering topics
   - [Reliability](#reliability)
+  - [Availability](#availability)
 
 ---
 
@@ -77,7 +78,17 @@ After a point, its much more economical to recover from a failure instead of pre
 ## Reliability
 
 - A system is said to be reliable if it can continue to function correctly and remain available for operations even in the presence of partial failures
-- It is meausred as the probability of a system working correctly in a given time interval
+- It is measured as the probability of a system working correctly in a given time interval
 
 ---
 
+## Availability
+
+Availability extends the reliability property, refers to the unavailable time
+
+- It is the probability of a system working correctly at any given time and being available for operations
+  - Time based availability = uptime / (uptime + downtime)
+  - Request based availability = successful requests / total requests
+- There can be downtime but the system is expected to recover from the same in a quick time
+
+---
