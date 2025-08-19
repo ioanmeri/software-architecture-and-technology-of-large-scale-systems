@@ -6,6 +6,7 @@
 - Reliability engineering topics
   - [Reliability](#reliability)
   - [Availability](#availability)
+  - [High Availability](#high-availability)
 
 ---
 
@@ -92,3 +93,31 @@ Availability extends the reliability property, refers to the unavailable time
 - There can be downtime but the system is expected to recover from the same in a quick time
 
 ---
+
+## High Availability
+
+- Availability requirements should come from the impact of availability on a business
+- Beyond business, availability is at the cost of
+  - New features
+  - Operational costs
+- The system should use downtimes permitted by SLA / SLO for rollout of new features
+  - New feature rollouts invariably cause disruptions
+
+
+**Availability Requirements**
+
+| Availability | Max Disruption (per year) | Application Categories |
+| -----------  | ------------------------- | ---------------------- |
+| 99% | 3 days 15 hours | Batch processing, data extraction, transfer, and load jobs |
+| 99.9% | 8 hours 45 minutes | Internal tools like knowledge management, project tracking |
+| 99.95% | 4 hours 22 minutes | Online commerce, point of sale |
+| 99.99% | 52 minutes | Video delivery, broadcast systems |
+| 99.999% | 5 minutes | ATM transactions, telecommunications systems |
+
+---
+
+
+
+
+
+
