@@ -7,6 +7,7 @@
   - [Reliability](#reliability)
   - [Availability](#availability)
   - [High Availability](#high-availability)
+  - [Fault Tolerance](#fault-tolerance)
 
 ---
 
@@ -117,7 +118,17 @@ Availability extends the reliability property, refers to the unavailable time
 ---
 
 
+## Fault Tolerance
 
+- Fault Tolerance is a technique to improve Availability and / or Reliability of a system
+- It is commonly referred to as an ability of a system to automatically
+  - Detect partial failures
+  - Handle partial failures
+  - Recover from partial failures
+- Serviceability
+  - The ease with which a system can be serviced in the event of a failure also determines the availabilit of a system
+
+ ---
 
 
 
