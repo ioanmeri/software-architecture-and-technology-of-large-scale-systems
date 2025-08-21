@@ -8,6 +8,7 @@
   - [Availability](#availability)
   - [High Availability](#high-availability)
   - [Fault Tolerance](#fault-tolerance)
+- Designing Fault Tolerance
 
 ---
 
