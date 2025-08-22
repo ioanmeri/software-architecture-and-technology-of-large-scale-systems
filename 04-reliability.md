@@ -9,6 +9,7 @@
   - [High Availability](#high-availability)
   - [Fault Tolerance](#fault-tolerance)
 - Designing Fault Tolerance
+  - [Fault Tolerant design](#fault-tolerant-design)
 
 ---
 
@@ -131,5 +132,14 @@ Availability extends the reliability property, refers to the unavailable time
 
  ---
 
+## Fault Tolerant design
+
+The are three steps in designing a fault tolerant system:
+
+1. Redundancy
+2. Fault Detection
+3. Recovery
+
+---
 
 
