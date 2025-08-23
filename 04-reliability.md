@@ -10,6 +10,7 @@
   - [Fault Tolerance](#fault-tolerance)
 - Designing Fault Tolerance
   - [Fault Tolerant design](#fault-tolerant-design)
+  - [Redundancy](#redundancy)
 
 ---
 
@@ -141,5 +142,22 @@ The are three steps in designing a fault tolerant system:
 3. Recovery
 
 ---
+
+## Redundancy
+
+- Replication / Duplication of critical components or functions of a system in order to increase its reliability
+- A secondary capacity is kept ready as a backup, over and above the primary capacity, in case the primary is not available
+
+**Example**
+
+It a three tier design: web serverice, business application, database
+
+The single instance of business application goes down and makes the entire application unavailable
+
+We will need to provision redundancy in case the primary instance goes down
+
+---
+
+
 
 
