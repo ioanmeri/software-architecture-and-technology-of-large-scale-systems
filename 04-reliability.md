@@ -11,6 +11,7 @@
 - Designing Fault Tolerance
   - [Fault Tolerant design](#fault-tolerant-design)
   - [Redundancy](#redundancy)
+  - [Types of redundancy](#types-of-redundancy)
 
 ---
 
@@ -158,6 +159,20 @@ We will need to provision redundancy in case the primary instance goes down
 
 ---
 
+## Types of redundancy
 
+- Active Redundancy - Hot Spare
+  - All nodes do the processing
+  - Ideal for providing highest availability
+- Passive Redundancy - Warm Spare
+  - Only actives nodes do the processing
+  - Ideal for quick recovery
+  - Redundancy is not in operation 
+- Cold Redundancy - Spare (Backup)
+  - Spare nodes are brought up only on a failover
+  - It is not a high availability option
+  - Only when primary instance goes down, we make arrangements to provision secondary capacity
+    - There is a significant time delay till second capacity take over
+    - low cost option
 
-
+---
