@@ -12,6 +12,7 @@
   - [Fault Tolerant design](#fault-tolerant-design)
   - [Redundancy](#redundancy)
   - [Types of redundancy](#types-of-redundancy)
+  - [Single point of failures](#single-point-of-failures)
 
 ---
 
@@ -176,3 +177,32 @@ We will need to provision redundancy in case the primary instance goes down
     - low cost option
 
 ---
+
+## Single point of failures
+
+A system that has:
+- a load balancer for web applications
+- a load balancer for microservices
+- caches
+- message queue
+- databases
+- service components
+
+If we want to make the system highly available, we need to provision redundancy for these components
+
+If we don't provide redundancy, these components can become single point of failures
+
+For example: 
+
+![Single point of failure](assets/images/24.png)
+
+
+Catalog database goes down ➡️ Catalog service is down ➡️ Web application will function partially 
+
+If a component fails it may completely affect the system or it can partially affect the system
+
+We need to identify all these components, which can act as a single point of failures and they can compromise the functionality of our system
+
+---
+
+
