@@ -13,6 +13,7 @@
   - [Redundancy](#redundancy)
   - [Types of redundancy](#types-of-redundancy)
   - [Single point of failures](#single-point-of-failures)
+  - [Redundancy for Stateless Components](#redundancy-for-stateless-components)
 
 ---
 
@@ -204,5 +205,26 @@ If a component fails it may completely affect the system or it can partially aff
 We need to identify all these components, which can act as a single point of failures and they can compromise the functionality of our system
 
 ---
+
+## Redundancy for Stateless Components
+
+We scale stateless components by creating replicas. We use the replication approach to create redundancy for stateless components.
+
+We need to create that many replicas that are **over and above our scalability needs** and it also provides redundancy.
+
+**Example**
+
+We need 2 instances for catalog service. In order to provide redundancy we need one more instance.
+If one instance goes down, we have enough replicas to handle the load of catalog service.
+
+Redundancy for stateless components are always **active-active**, because all replicas share the same code.
+
+**Stateless components**
+- Web application
+- Services
+
+---
+
+
 
 
