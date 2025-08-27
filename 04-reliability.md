@@ -14,6 +14,7 @@
   - [Types of redundancy](#types-of-redundancy)
   - [Single point of failures](#single-point-of-failures)
   - [Redundancy for Stateless Components](#redundancy-for-stateless-components)
+  - [Stateful component redundancy](#stateful-component-redundancy)
 
 ---
 
@@ -225,6 +226,74 @@ Redundancy for stateless components are always **active-active**, because all re
 
 ---
 
+## Stateful component redundancy
+
+**Stateful components**
+- Databases
+- Message Queue
+- Object Cache
+- Static Content Server
+
+We need to keep data in the redundancy as well, and that is the challenge with stateful components
+
+**Databases**
+
+Create a redundant db instance (Primary, Secondary / Master, Slave)
+
+We want any change in the primary instance to be propagated to the sencondary instance, with:
+- Synchronous replication
+  - Benefit: DBs will remain in the same state
+  - Transactions are atomic
+  - Active - Active redundancy
+    - switch over will be extremely fast
+- Asynchronous replication
+  - Benefit: Transactions are fast
+  - Transactions are **not atomic**, there is always a delay to the secondary DB in terms of state
+  - Active - Passive redundancy
+    - Secondary DB will need to sync with the primary based on logs
+    - Only then Secondary can be promoted as Primary
+    - Switch over won't be quick
+  - If the machine of the DB goes down, there is no way for the secondary to catch up with primary
+    - We lose data in that case
+
+If we are ready to suffer some data loss, we can have async replication and we get better write speed in terms of transactions
+
+**Message queues**
+
+Exactly the same as database replication (Primary / Secondary). We can have:
+
+- Synchronous replication
+  - Active replica
+- Asynchronous replication
+  - Passive replica
+
+Replications are provided by database vendors or message queue vendors
+- As tech architect we need to know what kind of replication / redundancies are being created
+  - this is how we get the throughput of the transaction
+  - synchronous will slow down the transactions
+  - in asynchronous there are chances of losing data 
+
+**Content Server**
+
+Will be handled by the content server
+
+- Data is immutable, no worry about write conflicts
+  - e.g. we never modify the uploaded image / always overwrite / update with new image
+- Content from one replica will be communicated to the other
+
+**Caches**
+
+We need first to think if we need a redundancy for the cached data
+
+- in case we lose cached data we do not lose them permanently
+  - data are persisted in database
+- only needed if we are concerned about performance database when cache starts
+- `memcache` does not provide redundancy
+- `redis` provides redundancy
+
+Load balancers can be configured to cache data through memcache / redis also
+
+![Redundancy for stateless components](assets/images/25.png)
 
 
-
+---
