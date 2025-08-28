@@ -15,6 +15,7 @@
   - [Single point of failures](#single-point-of-failures)
   - [Redundancy for Stateless Components](#redundancy-for-stateless-components)
   - [Stateful component redundancy](#stateful-component-redundancy)
+  - [Load balancer redundancy](#load-balancer-redundancy)
 
 ---
 
@@ -297,3 +298,18 @@ Load balancers can be configured to cache data through memcache / redis also
 
 
 ---
+
+## Load balancer redundancy
+
+Redundancy of infrastructural components
+
+If we do not provide redundancy for load balancers, they can easily become single point of failure
+
+If the client facing LB goes down, no requests reaches our system
+
+It is critical to provide redundancy for them too with secondary load balancers
+
+![Redundancy for load balancers](assets/images/26.jpg)
+
+---
+
