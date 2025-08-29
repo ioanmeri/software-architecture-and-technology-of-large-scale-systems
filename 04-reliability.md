@@ -16,6 +16,7 @@
   - [Redundancy for Stateless Components](#redundancy-for-stateless-components)
   - [Stateful component redundancy](#stateful-component-redundancy)
   - [Load balancer redundancy](#load-balancer-redundancy)
+  - [Datacentre infrastructure as SPOF](#datacentre-infrastructure-as-spof)
 
 ---
 
@@ -312,4 +313,23 @@ It is critical to provide redundancy for them too with secondary load balancers
 ![Redundancy for load balancers](assets/images/26.jpg)
 
 ---
+
+## Datacentre infrastructure as SPOF
+
+Other infrastructure components:
+- Local Area Network
+  - If LAN goes down, our system becomes unavailable
+- Internet connections
+  - If Internet goes down, application will become unavailable
+  - We can get Internet connections from different vendors
+- Power Supply
+
+All of them compose the: **Data Centre**
+
+![Datacentre infrastructure as SPOF](assets/images/27.png)
+
+---
+
+
+
 
