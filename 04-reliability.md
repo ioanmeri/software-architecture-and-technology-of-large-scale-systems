@@ -17,6 +17,7 @@
   - [Stateful component redundancy](#stateful-component-redundancy)
   - [Load balancer redundancy](#load-balancer-redundancy)
   - [Datacentre infrastructure as SPOF](#datacentre-infrastructure-as-spof)
+  - [Creating datacenter redundancy](#creating-datacenter-redundancy)
 
 ---
 
@@ -330,6 +331,38 @@ All of them compose the: **Data Centre**
 
 ---
 
+## Creating datacenter redundancy
+
+Some issues can affect the entire datacenter e.g. network goes down, fire outbreak in the datacenter, floods in the city. 
+
+The way to address that if we want high availability, is datacenter redundancy. Datacenters are completely isolated.
+
+**Datacenter Redundancy Provides**
+
+- Fault Isolation
+  - Independent infrastructure
+- Zonal Redundancy
+  - High Availability
+  - Active-Active Setup
+  - e.g. datacenters distance is 10 miles, located in same city, separated by areas or zones
+- Regional redundancy
+  - Disaster Recovery
+  - Active-Passive Setup
+    - replica will be in the secondary datacenter / one master only
+    - gives us the possibility of asynchronous backup
+    - data sync makes things complex
+
+Synchronous / Asynchronous replication will decide the distance between Zonal / Regional Datacenters
+- Synchronous: closely located
+  - e.g. it's impossible the two datacenters to be on fire at the same time
+  - fault isolation
+    - doesn't help in case of an earthquake in the city
+- Asynchronous: regional
+
+
+![Datacentre replication](assets/images/28.png)
+
+---
 
 
 
