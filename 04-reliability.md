@@ -9,8 +9,8 @@
   - [High Availability](#high-availability)
   - [Fault Tolerance](#fault-tolerance)
 - Designing Fault Tolerance
-  - [Fault Tolerant design](#fault-tolerant-design)
-  - [Redundancy](#redundancy)
+- [Fault Tolerant design](#fault-tolerant-design)
+- [Redundancy](#redundancy)
   - [Types of redundancy](#types-of-redundancy)
   - [Single point of failures](#single-point-of-failures)
   - [Redundancy for Stateless Components](#redundancy-for-stateless-components)
@@ -18,6 +18,7 @@
   - [Load balancer redundancy](#load-balancer-redundancy)
   - [Datacentre infrastructure as SPOF](#datacentre-infrastructure-as-spof)
   - [Creating datacenter redundancy](#creating-datacenter-redundancy)
+- Fault detection
 
 ---
 
