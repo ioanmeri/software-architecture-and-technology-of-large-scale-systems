@@ -19,6 +19,7 @@
   - [Datacentre infrastructure as SPOF](#datacentre-infrastructure-as-spof)
   - [Creating datacenter redundancy](#creating-datacenter-redundancy)
 - Fault detection
+  - [Fault models](#fault-models)
 
 ---
 
@@ -364,6 +365,26 @@ Synchronous / Asynchronous replication will decide the distance between Zonal / 
 ![Datacentre replication](assets/images/28.png)
 
 ---
+
+## Fault models
+
+What kind of response from a server process we say is a fault
+
+- Response Failure
+  - A server fails to receive or respond to incoming messages
+- Timeout Failure
+  - A server response duration is longer than timeout duration
+- Incorrect Response Failure
+  - A server's response is incorrect
+  - e.g. expecting 200 status but got HTTP 501
+- Crash Failure
+  - A server halts but is working correctly until it halts
+- Arbitrary Response Failure
+  - A server's response is incorrect because its security is compromised
+
+---
+
+
 
 
 
