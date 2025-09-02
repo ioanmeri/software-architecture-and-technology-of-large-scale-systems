@@ -20,6 +20,7 @@
   - [Creating datacenter redundancy](#creating-datacenter-redundancy)
 - Fault detection
   - [Fault models](#fault-models)
+  - [Health checks](#health-checks)
 
 ---
 
@@ -383,6 +384,25 @@ What kind of response from a server process we say is a fault
   - A server's response is incorrect because its security is compromised
 
 ---
+
+## Health checks
+
+When we want to find out if an instance of a service is healthy or not, there are two ways:
+
+- External Monitoring Service
+  - Ping based
+  - can send ping requests periodically to all the instances
+    - depndending on the response can determine if the instances are healthy or not
+- Internal Cluster Monitoring
+  - Heart-beat based
+  - can form a cluster and self monitor each other
+    - typically used in databases and load balancers
+    - each node exchanges heartbeats with other nodes in the cluster
+
+![Health checks](assets/images/29.png)
+
+---
+
 
 
 
