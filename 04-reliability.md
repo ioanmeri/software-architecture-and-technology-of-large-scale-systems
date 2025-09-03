@@ -21,6 +21,7 @@
 - Fault detection
   - [Fault models](#fault-models)
   - [Health checks](#health-checks)
+  - [External monitoring service](#external-monitoring-service)
 
 ---
 
@@ -402,6 +403,43 @@ When we want to find out if an instance of a service is healthy or not, there ar
 ![Health checks](assets/images/29.png)
 
 ---
+
+## External monitoring service
+
+We are doing health checks of various Service instances
+- on Cloud environments this service is available out of the box
+- on Premises we can use some tool or write our own service
+  - will periodically ping the various service instances
+
+**External Monitoring Service**
+
+- Health check service generates
+  - Alerts - for recovery
+  - Events - for scaling
+    - e.g. CPU goes higher than 90%, auto scaling service
+    - e.g. CPU is very low, auto scale can bring down the number of instances
+- Application Health Checks
+  - HTTP Response
+  - TCP Response
+- Periodic Health Checks
+  - Response Code
+    - when ping the service with HTTP request
+  - Response Time
+    - if response is delayed, the service should be declared as a timeout
+  - Number of Retries
+    - Up
+    - Down
+
+If the monitoring service goes down, we can have **another Health Check Service to monitor** our original Health Check Service
+and it will generate an alert is the case the first goes down.
+
+If the secondary Health Check Service goes down, it won't generate alerts unless we do it manually (will introduce manual process)
+- the solution is to setup a cluster of health check service instances, which can self-monitor each other
+
+---
+
+
+
 
 
 
