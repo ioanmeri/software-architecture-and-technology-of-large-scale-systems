@@ -22,6 +22,7 @@
   - [Fault models](#fault-models)
   - [Health checks](#health-checks)
   - [External monitoring service](#external-monitoring-service)
+  - [Internal cluster monitoring](#internal-cluster-monitoring)
 
 ---
 
@@ -438,7 +439,29 @@ If the secondary Health Check Service goes down, it won't generate alerts unless
 
 ---
 
+## Internal cluster monitoring
 
+- Periodic exchange of heartbeats between redundancy cluster nodes
+  - Requires protocols for communication and recovery
+- Useful for stateful cluster components
+  - Examples are NoSQL DB cluster and Load Balancers
+
+e.g. Primary Load balancers will send regular heart beats to Secondary Load Balancer
+- will indicate to the recipient that the sender of the message is alive
+- Secondary will send message to the Primary that is alive
+
+The difference with the External Monitoring Service is that if Monitoring goes down, Service Instance will not be aware of it
+
+Now Service Instance is sending messages to the Monitoring Service
+
+If Service Instance goes down, the alive one will initiate a Recovery Protocol to transfer the virtual IP address
+- then e.g. Secondary assumes the role of Primary / Primary becomes Secondary
+
+The moment Service Instance do not receive heartbeats they take some action
+
+Downside: Technically complicated to achieve / Not suitable for every component
+
+---
 
 
 
