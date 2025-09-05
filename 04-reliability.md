@@ -23,6 +23,7 @@
   - [Health checks](#health-checks)
   - [External monitoring service](#external-monitoring-service)
   - [Internal cluster monitoring](#internal-cluster-monitoring)
+  - [Fault detection in a system](#fault-detection-in-a-system)
 
 ---
 
@@ -463,9 +464,18 @@ Downside: Technically complicated to achieve / Not suitable for every component
 
 ---
 
+## Fault detection in a system
+
+**Fault Detection Overview**
+
+- Health Checks through external monitoring service
+  - e.g. Stateless components that we can monitor externally
+    - also use that service for scalability requirements
+- Heart Beats to make a cluster of nodes self-monitored
+  - e.g. Oracle rack - real application cluster / NoSQL databases
 
 
+![Fault Detection in a System](assets/images/30.png)
 
-
-
+---
 
