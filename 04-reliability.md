@@ -24,6 +24,7 @@
   - [External monitoring service](#external-monitoring-service)
   - [Internal cluster monitoring](#internal-cluster-monitoring)
   - [Fault detection in a system](#fault-detection-in-a-system)
+- Recovering from failures
 
 ---
 
