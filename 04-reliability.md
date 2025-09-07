@@ -25,6 +25,7 @@
   - [Internal cluster monitoring](#internal-cluster-monitoring)
   - [Fault detection in a system](#fault-detection-in-a-system)
 - Recovering from failures
+  - [Stateless Recovery](#stateless-recovery)
 
 ---
 
@@ -480,3 +481,18 @@ Downside: Technically complicated to achieve / Not suitable for every component
 
 ---
 
+## Stateless Recovery
+
+Detect a failure and respond to it by either restarting the old instance or starting a new fresh instance
+
+- Can use **existing scalability mechanism** for recovery
+- Hot standby
+  - Have active redundant instances up and running
+- Warm standby
+  - Bring up new instances as and when needed
+  - Terminate unhealthy instances if not dead already
+  - Launch a new instance
+
+![Stateless component](assets/images/31.png)
+
+---
