@@ -26,6 +26,7 @@
   - [Fault detection in a system](#fault-detection-in-a-system)
 - Recovering from failures
   - [Stateless Recovery](#stateless-recovery)
+  - [Stateful Failovers](#stateful-failovers)
 
 ---
 
@@ -494,5 +495,48 @@ Detect a failure and respond to it by either restarting the old instance or star
   - Launch a new instance
 
 ![Stateless component](assets/images/31.png)
+
+---
+
+## Stateful Failovers
+
+There are broadly two ways which we can do stateful failover
+
+**Virtual IP**
+
+- Client makes a request to DNS, DNS gives back an IP address (Floating IP address)
+  - Where will the actual load go depends upon this IP address - **Floating IP**
+- Client can send requests to either Primary or Standby - with their own IP addresses
+  - There is a heartbeat setup established between Primary and Standby
+  - instances can monitor each other, have direct connections apart from LAN connections
+  - if one of them goes down the other is aware of that
+    - if Primary goes down, it will initiate protocols to transfer the Floating IP address from Primary to Standby
+    - Standby will become the new Primary
+    - Changes will be informed across the network
+    - Network will route the requests to the new primary
+
+![Stateful Failover Virtual IP](assets/images/32.png)
+
+---
+  
+**Registry / Router / DNS**
+
+Client has no idea about which instance is trying to connect to
+
+- When Instance-1 & Instance-2 come up, they register themselves with Registry Server
+  - Client knows only the IP address of the Registry Server
+  - Primary & Secondary instances, they constantly send their heartbeats to the Registry Server
+  - If Primary goes down, Standy will be designated as the new Primary
+    - Registry Server will provide the IP address of the Standby instance - which became a new Primary
+- Client can contact the Registry Server, to know the actual instance that it should connect to
+- Client actually makes a call to the Primary that exists at that point in time
+
+Instead of Registry we can use a DNS, only difference is that DNS should not cache the IP address
+- should strictly rely on TTL provided by the DNS
+- should expire that IP address
+
+In Oracle, they use Registry Failover (Listener Service). In AWS they use DNS approach.
+
+![Stateful Failover Registry Service](assets/images/33.png)
 
 ---
