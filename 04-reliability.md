@@ -27,6 +27,7 @@
 - Recovering from failures
   - [Stateless Recovery](#stateless-recovery)
   - [Stateful Failovers](#stateful-failovers)
+  - [Load Balancer High Availability](#load-balancer-high-availability)
 
 ---
 
@@ -540,3 +541,20 @@ In Oracle, they use Registry Failover (Listener Service). In AWS they use DNS ap
 ![Stateful Failover Registry Service](assets/images/33.png)
 
 ---
+
+## Load Balancer High Availability
+
+- Two instances of load balancers
+- Both are capable to route requests to their downstreams instances
+- Only one will serve the load, the one with the **Floating IP**
+- Both are monitoring each other with Heartbeats
+- If primary goes down, Standby initiates the Recovery Protocol and the transfer of the floating IP
+
+In that way we recover load balancer from failure and thus we provide high availability
+
+![Load Balancer Recovery](assets/images/34.png)
+
+---
+
+
+
