@@ -28,6 +28,7 @@
   - [Stateless Recovery](#stateless-recovery)
   - [Stateful Failovers](#stateful-failovers)
   - [Load Balancer High Availability](#load-balancer-high-availability)
+  - [Database recovery with hot standby](#database-recovery-with-hot-standby)
 
 ---
 
@@ -556,5 +557,22 @@ In that way we recover load balancer from failure and thus we provide high avail
 
 ---
 
+## Database recovery with hot standby
+
+Master / Slave replication setup (instead of Master / Master setup which can result to write conflicts)
+
+**Hot standby when we need:**
+
+- Synchronous replication
+  - because of that, Secondary instance is ready to serve user requests immediately 
+- Almost no downtime
+- No data loss
+- Proximity needed
+  - need to be closely located for low latency, needs good network connectivity
+- Slow DB Writes
+
+![Database recovery hot standby](assets/images/35.png)
+
+---
 
 
