@@ -29,6 +29,7 @@
   - [Stateful Failovers](#stateful-failovers)
   - [Load Balancer High Availability](#load-balancer-high-availability)
   - [Database recovery with hot standby](#database-recovery-with-hot-standby)
+  - [Database recovery with warm standby](#database-recovery-with-warm-standby)
 
 ---
 
@@ -574,5 +575,26 @@ Master / Slave replication setup (instead of Master / Master setup which can res
 ![Database recovery hot standby](assets/images/35.png)
 
 ---
+
+## Database recovery with warm standby
+
+Only difference is that we setup **asynchronous** replication
+
+All changes are put to a log file and after a small period of time, they are communicated to the secondary instance.
+
+- Asynchronous Replication
+- Catchup before recovery
+- Possibility of Lost Updates
+- High Performance
+  - when lost updates is not a concern
+  - write transactions on a single database
+- Disaster Recovery
+  - any nearby replica does not survive, that is why a warm standby is used
+
+![Database recovery warm standby](assets/images/36.png)
+
+---
+
+
 
 
