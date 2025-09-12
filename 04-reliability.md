@@ -30,6 +30,7 @@
   - [Load Balancer High Availability](#load-balancer-high-availability)
   - [Database recovery with hot standby](#database-recovery-with-hot-standby)
   - [Database recovery with warm standby](#database-recovery-with-warm-standby)
+  - [Database recovery with cold backups](#database-recovery-with-cold-backups)
 
 ---
 
@@ -592,6 +593,31 @@ All changes are put to a log file and after a small period of time, they are com
   - any nearby replica does not survive, that is why a warm standby is used
 
 ![Database recovery warm standby](assets/images/36.png)
+
+---
+
+## Database recovery with cold backups
+
+Redundant machines are **not** needed for this recovery
+
+- Based on DB backups
+  - Cost effective
+- Significant Downtime
+  - Recovery from backups
+- DB Corruption
+  - Replication does not help
+- Recovery Process
+  - Log Updates
+    - Modifications before they enter to DB, they are made to log files - Redo log files
+    - Constantly updated - not periodically such as the DB Backups
+  - Backups
+    - Checkpoint
+  - Import
+  - Apply updates
+
+![Database recovery cold bakcup](assets/images/37.png)
+
+can also help in **disaster recovery** to take periodic cold backups and move them to a different country or continent
 
 ---
 
