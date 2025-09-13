@@ -31,6 +31,7 @@
   - [Database recovery with hot standby](#database-recovery-with-hot-standby)
   - [Database recovery with warm standby](#database-recovery-with-warm-standby)
   - [Database recovery with cold backups](#database-recovery-with-cold-backups)
+  - [High Availability in large scale systems](#high-availability-in-large-scale-systems)
 
 ---
 
@@ -621,6 +622,44 @@ can also help in **disaster recovery** to take periodic cold backups and move th
 
 ---
 
+## High Availability in large scale systems
+
+We put everything together in terms of high availability in large scale systems
+
+**3 datacenters**
+
+- 2 in Mumbai closely located 10 miles apart
+  - establish synchronous replication of data
+  - both active, Mumbai 2 can take over completely if Mumbai 1 goes down ➡️ Fault Isolation
+- 1 in Singapore
+  - used only in the case of Disaster Recovery, if both Mumbai 1, 2 goes down because of natural disaster
+  - DNS will route all requests to Singapore Datacenter
+  - not active, redundancies are cold redundancies except DBs which are warm redundancy
+    - none of the machines are running actively
 
 
+![High Availability in large scale systems](assets/images/38.png)
+
+How do we maintain consistent state between all 3 datacenters?
+
+- If Mumbai 1 goes down, Mumbai 2 should start with the same data
+- If both Mumbai 1, Mubmai 2 goes down then Singapore should work with the same data
+
+Solution: **Replication**
+
+- Databases replicated between the 3 Datacenters
+- Mumbai 1, 2 are active we can use ➡️ Synchronous Replication
+  - Secondary DB Replica in Mumbai 2 datacenter
+  - e.g. all Primary Databases in Mumbai 1 datacenter / all Secondary Databases in Mumbai 2 datacenter
+  - a request in Inventory of Mumbai 2 will go to the Primary Database of Mumbai 1
+    - can do it only if the distance is close
+  - the same for message queues, the same replication
+  - state between Mumbai 1 and Mumbai 2 is completely synchronized
+- Singapore 1 is a worst case scanario and we can afford to lose some Data ➡️ Asynchronous Replication
+  - cannot use synchronous replication because of the distance / latency
+  - only Databases and message queues remain live, other components only provision capacity and not running
+  - all state is asynchronously communicated
+  - may lose some data
+
+---
 
