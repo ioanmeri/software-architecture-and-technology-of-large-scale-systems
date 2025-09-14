@@ -32,7 +32,7 @@
   - [Database recovery with warm standby](#database-recovery-with-warm-standby)
   - [Database recovery with cold backups](#database-recovery-with-cold-backups)
   - [High Availability in large scale systems](#high-availability-in-large-scale-systems)
-  - [Failover best practices](#failover-best-practises)
+  - [Failover best practices](#failover-best-practices)
 
 ---
 
