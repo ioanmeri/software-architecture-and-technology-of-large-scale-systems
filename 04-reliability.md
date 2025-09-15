@@ -33,6 +33,7 @@
   - [Database recovery with cold backups](#database-recovery-with-cold-backups)
   - [High Availability in large scale systems](#high-availability-in-large-scale-systems)
   - [Failover best practices](#failover-best-practices)
+- [System stability](#system-stability)
 
 ---
 
@@ -668,6 +669,10 @@ Solution: **Replication**
 
 - Failover Automation
 - Regular Failover Testing in Production
+
+## System stability
+
+Approaches that are needed when a system in under severe load and that load is beyond what it can handle or can scale up to. That can ensure that system can remain stable.
 
 ---
 
