@@ -34,6 +34,7 @@
   - [High Availability in large scale systems](#high-availability-in-large-scale-systems)
   - [Failover best practices](#failover-best-practices)
 - [System stability](#system-stability)
+  - [Timeouts](#timeouts)
 
 ---
 
@@ -676,3 +677,31 @@ Approaches that are needed when a system in under severe load and that load is b
 
 ---
 
+## Timeouts
+
+- Client Components
+  - User Interface
+  - Service clients
+- Timeouts prevents call to integration points from becoming blocked threads
+  - Averts cascading failures
+
+Example: Service A has 100 threads, for every client request is supposed to make calls to Service B1 / B2 / B3
+- Service B1 **becomes very slow in responding**
+  - hasn't gone down because Service A would be able to detect that
+  - working very slow because of external load / hardware problem
+- Threads are going to get stack in Service A
+  - e.g. 50% of threads were stack
+  - in 50% more new requests
+    - 25% will go to Service B2 + B3
+    - 25% will go to Service B1
+  - now 75% of threads will be blocked
+ 
+![Timeouts](assets/images/39.png)
+
+eventually at some time we will lose all threads in Service A ➡️ will stop responding
+
+If we put some timeout for the service: 2 seconds / 3 seconds
+- after that duration we can free threads in Service A
+- can prevent a service from becoming completely unavailable
+
+---
