@@ -35,6 +35,7 @@
   - [Failover best practices](#failover-best-practices)
 - [System stability](#system-stability)
   - [Timeouts](#timeouts)
+  - [Retries](#retries)
 
 ---
 
@@ -705,3 +706,33 @@ If we put some timeout for the service: 2 seconds / 3 seconds
 - can prevent a service from becoming completely unavailable
 
 ---
+
+## Retries
+
+A pattern which stabilizes our system during transient failures
+
+- Client Components
+- For **1 - transient failures**
+  - Not for permanent failures
+  - e.g. two clients trying to book the same cinema ticket ➡️ race condition
+    - one client will do the reservation / the other one will fail
+    - if the other client retries the result might be successful
+- For **2 - system errors**
+  - Not for application errors
+  - e.g. one instance goes down ➡️ Instance Unavailability
+- Retries with exponential back-off
+  - e.g. if it fails retry after 1 sec, after 2 then after 4, 8, 16 etc
+- Return HTTP 503
+  - Clients can decide if and when to callback again
+- Use Idempotent Tokens
+  - For unacknowledged failed requests
+    - e.g. instance goes down just after it has processed the request, before giving back the response
+    - we might be doing a change in a DB twice if client retries ➡️ use idempotent tokens
+      - e.g. store in DB a requestId if it has been executed
+  - At least once guarantee instead of exactly once
+
+![Timeouts](assets/images/40.png)
+
+---
+
+
