@@ -36,6 +36,7 @@
 - [System stability](#system-stability)
   - [Timeouts](#timeouts)
   - [Retries](#retries)
+  - [Circuit Breaker](#circuit-breaker)
 
 ---
 
@@ -735,4 +736,27 @@ A pattern which stabilizes our system during transient failures
 
 ---
 
+## Circuit Breaker
+
+- Client Components
+- Deliberate service degradation when a system is under stress and a problem is detected
+- Process
+  - Keep track of success and failures
+  - In the event of too many failures, fallback to
+    - Default values
+    - Cached values
+    - Error messages
+  - Resume when stress dissipates
+
+Example:
+- Client is calling Service A
+  - Will keep track of the successful responses: Closed State
+  - Once it discovers there are failures in responses and in a given time period succeeds a threshold
+    - will stop making calls to the service: Open State
+    - Then it tries to rely on some default values or Cached values
+    - Or sends error messages
+
+![Circuit Breaker](assets/images/41.png)
+
+---
 
