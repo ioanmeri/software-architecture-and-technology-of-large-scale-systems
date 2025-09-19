@@ -37,6 +37,7 @@
   - [Timeouts](#timeouts)
   - [Retries](#retries)
   - [Circuit Breaker](#circuit-breaker)
+  - [Fail Fast and Shed Load](#fail-fast-and-shed-load)
 
 ---
 
@@ -759,4 +760,27 @@ Example:
 ![Circuit Breaker](assets/images/41.png)
 
 ---
+
+## Fail Fast and Shed Load
+
+- Server Components
+- Fail Fast
+  - Triggered due component's inability to process any request
+    - Validatin error
+    - Missing Parameters / Env Vars
+    - Service Timeouts (When Circuit Breaker is open)
+  - Return error as soon as a component discovers it
+- Shed Load
+  - Failing fast due to external load on a system as a result of which excess requests cannot be processed (e.g. can handle only 60%)
+    - Concurrency Limits - Threads, Connections, Request Count
+    - SLAs - if SLAs are not met, block / reject incoming requests
+- Back Pressure
+  - Shedding load for slowing down clients within a system boundary
+  - only when clients are in control (also e.g. browser's ajax calls)
+  - clients will see the request is being rejected and will do exponential backoff (increasing request delay)
+
+---
+
+
+
 
