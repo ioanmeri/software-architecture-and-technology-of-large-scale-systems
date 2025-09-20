@@ -38,6 +38,7 @@
   - [Retries](#retries)
   - [Circuit Breaker](#circuit-breaker)
   - [Fail Fast and Shed Load](#fail-fast-and-shed-load)
+- [Summary](#summary)
 
 ---
 
@@ -778,6 +779,23 @@ Example:
   - Shedding load for slowing down clients within a system boundary
   - only when clients are in control (also e.g. browser's ajax calls)
   - clients will see the request is being rejected and will do exponential backoff (increasing request delay)
+
+---
+
+## Summary
+
+- Highly Available & Highly Reliable systems are Fault-Tolerant by design
+- Fault tolerance is achieved by
+  - Provisioning redundancy for every SPOF
+    - Hot / Active, Warm / Passive, Cold / Backups
+    - Stateless redundancy & Stateful redundancy
+  - Building automated mechanism to detect faults
+  - Building automated failover mechanism to recover from faults
+    - Failover of stateless components
+    - Failover of stateful components
+- Stability patterns
+  - Clients - Timeouts, Retries, Circuit Breaker
+  - Server - Fail Fast, Shed Load, Back-pressure
 
 ---
 
