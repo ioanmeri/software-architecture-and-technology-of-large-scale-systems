@@ -2,6 +2,7 @@
 
 - [Module contents overview](#module-contents-overview)
 - [Security objectives](#security-objectives)
+- Network Security
 
 ---
 
