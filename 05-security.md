@@ -3,6 +3,7 @@
 - [Module contents overview](#module-contents-overview)
 - [Security objectives](#security-objectives)
 - Network Security
+  - [Symmetric key encryption](#symmetric-key-encryption)
 
 ---
 
@@ -59,5 +60,34 @@
 
 ----
 
+## Symmetric key encryption
+
+**Example**: A component in our system is interacting with an external client / or between private components
+- Web application working with a browser
+- Browser is connected to application through a public Internet
+- Everyone has access to the network between the two machines
+
+**Goal**: Make sure the communication between browser / web application remains secure
+
+Can be done with **Symmetric or Single / Secret Key** cryptography
+
+- Key is a set of characters provided by the person who has created the key
+- Can be used along with an encryption algorithm to transform plain text into cipher / encrypted text
+- In order to read the encrypted text we have to first de-crypt it
+- If we use the same key that were used for encryption to decrypt it ➡️ Symmetric Key
+- Achieved Privacy / Confidentiality
+  - Securely exchanging data between client and server
+
+Any data the browser send can encrypt it using the symmetric key
+- anyone in the public network can read this information but cannot make sense of it
+- server holds the same key and uses it to decrypt the information
+
+**Limitations**
+
+- We have to share the secret key with untrusted clients
+
+![Symmetric Key](assets/images/43.png)
+
+---
 
 
