@@ -4,6 +4,7 @@
 - [Security objectives](#security-objectives)
 - Network Security
   - [Symmetric key encryption](#symmetric-key-encryption)
+  - [Public key encryption](#public-key-encryption)
 
 ---
 
@@ -89,5 +90,41 @@ Any data the browser send can encrypt it using the symmetric key
 ![Symmetric Key](assets/images/43.png)
 
 ---
+
+## Public key encryption
+
+Also called as Asymmetric or Public-Private Key encryption
+
+- we have two different keys for encryption and decryption / public and private key
+- these two keys form a pair and they originate from the same information
+- any key can be designated for public or private
+- once the private key is designated, we don't share it with anyone else
+- we share only the public key
+
+**Scenario 1**
+
+- Take plain text and encrypt it with Public key ➡️ encrypted text
+- Encrypted text can only be decrypted by corresponding private key
+- Only the holder of the private key will be able to decrypt the message
+  - Only the intended recipient have access to the data
+
+**Scenario 2**
+
+- Encrypt text using private key
+- Can be converted to plain text by using the corresponding public key
+- Only the person who is holding the private key can create this message
+  - Identity of a sender, and the integrity of data as sent by the sender
+- Anyone who has public key can decrypt this message
+
+We have achieved the following security objectives:
+
+- Privacy / Confidentiality
+- Authentication
+  - Prove One's Identity
+- Non-Repudiation
+  - Only the sender (private key holder) could have sent this message
+
+---
+
 
 
