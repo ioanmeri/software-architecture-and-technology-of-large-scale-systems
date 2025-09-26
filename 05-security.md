@@ -5,6 +5,7 @@
 - Network Security
   - [Symmetric key encryption](#symmetric-key-encryption)
   - [Public key encryption](#public-key-encryption)
+  - [Secure network protocol](#secure-network-protocol)
 
 ---
 
@@ -126,5 +127,18 @@ We have achieved the following security objectives:
 
 ---
 
+## Secure network protocol
 
+Scenario: Web application and browser communicating over the Internet
 
+1. Client initiates SSL / TLS protocol by opting for HTTPS protocol
+2. Server transfers it's public key to the browser ➡️ as part of a certificate
+3. Client generates a symmetric key ➡️ symmetric key is encrypted using server's public key
+4. Encrypted symmetric key is transfered to the server ➡️ server uses it's private key to decrypt it
+5. Both client & server have symmetric key and can exchange secure messages over an insecure channel
+
+Encryption algorithms associated with **symmetric** keys are much faster and efficient than the asymmetric key encryption
+
+![Secure Network Protocol](assets/images/44.png)
+
+---
