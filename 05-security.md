@@ -6,6 +6,7 @@
   - [Symmetric key encryption](#symmetric-key-encryption)
   - [Public key encryption](#public-key-encryption)
   - [Secure network protocol](#secure-network-protocol)
+  - [SSL and TLS](#ssl-and-tls)
 
 ---
 
@@ -142,3 +143,32 @@ Encryption algorithms associated with **symmetric** keys are much faster and eff
 ![Secure Network Protocol](assets/images/44.png)
 
 ---
+
+## SSL and TLS
+
+**What we've learned**
+
+- To do secure communication over TCP layer we can use SSL / TLS protocol
+- How we can use SSL to create a secure channel
+
+HTTP over SSL ➡️ HTTPS
+
+Many other protocols can be done over SSL like:
+- Mail exchanging (POP)
+- IMAP
+- LDAP
+- FTP
+
+**How does a server prove to the client that is a genuine server?**
+- Will be part of the certificate
+
+**When a server transfer it's public key via the certificate how does this mechanism works?**
+- Related to certificates
+
+The client doesn't need to prove it's identity as part of SSL / TLS
+
+Client provides username / password to the application server, because we have established a secure channel
+
+---
+
+
