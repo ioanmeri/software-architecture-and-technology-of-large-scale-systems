@@ -7,6 +7,7 @@
   - [Public key encryption](#public-key-encryption)
   - [Secure network protocol](#secure-network-protocol)
   - [SSL and TLS](#ssl-and-tls)
+  - [Hashing](#hashing)
 
 ---
 
@@ -170,5 +171,27 @@ The client doesn't need to prove it's identity as part of SSL / TLS
 Client provides username / password to the application server, because we have established a secure channel
 
 ---
+
+## Hashing
+
+Basic building block of secure communication, widely used in digital signatures and digital certificates.
+
+- Generates a value or values from a string to text using a mathematical function
+  - MD-5 (Message Digest)
+    - 128 bits
+    - Has collision vulnerability
+  - SHA-1 (Secure Hash Algorithm)
+    - 160 bits
+  - SHA-2 (used predominately)
+    - 156, 512 bits
+- Generates same output for same text
+- Hashing is a one-way althorithm
+- Slightest change in the text changes the hash value drastically
+
+Ensures integrity of messages
+
+---
+
+
 
 
