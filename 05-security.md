@@ -8,6 +8,7 @@
   - [Secure network protocol](#secure-network-protocol)
   - [SSL and TLS](#ssl-and-tls)
   - [Hashing](#hashing)
+  - [Digital signatures](#digital-signatures)
 
 ---
 
@@ -192,6 +193,38 @@ Ensures integrity of messages
 
 ---
 
+## Digital signatures
+
+Digital signatures are a way of validating authenticity and integrity of a message or a document.
+
+- Encrypted hash of a message
+- Encrypted using signer's private key
+- Verified using public key of signer
+- Message is hashed independently, and compared with the hash present in the signature
+- like psysical signatures establish the validity of a document
+  - tells us who has signed the document
+  - tells us that the content of the document is not tampered by anyone
+
+**Algorithm for Signing**
+- A signer will generate the hash of the entire document (document is not a secret)
+- The signer will use it's private key to encrypt the **hash code**
+- We combine the original document and the signed signature in one single document
+- The certificate is a way of providing the public key
+- Send it to the receiver
+
+**Algorithm for Verification**
+- The receiver will split the data and the signature
+- It will compute the hash of the document
+  - hash function will be provided along with the signature
+- Receiver will use the public key to decrypt the signature
+
+If the hashes are equal, the signature is valid.
+
+![Digital Signatures](assets/images/45.png)
 
 
+Ensures: Integrity, Authentication, Non-repudiation
+
+
+---
 
