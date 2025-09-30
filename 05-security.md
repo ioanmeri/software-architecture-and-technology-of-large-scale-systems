@@ -9,6 +9,7 @@
   - [SSL and TLS](#ssl-and-tls)
   - [Hashing](#hashing)
   - [Digital signatures](#digital-signatures)
+  - [Digital certificates](#digital-certificates)
 
 ---
 
@@ -227,4 +228,38 @@ Ensures: Integrity, Authentication, Non-repudiation
 
 
 ---
+
+## Digital certificates
+
+Digital certificates is a way of providing the public key to our clients
+
+- Way of sharing public key with the world, in a trusted manner
+  - Any client should be able to verify who the public key owner is
+
+**Example**
+
+- Organization owned by Mario Rossi
+- Mario Rossi will go to the digital authority
+- Will request for a digital certificate which is a document that has
+  - the public key
+  - identifying information of public key's owner
+  - validity attribute to the certificate / from - to date
+  - CA will use it's private key and will digitally sign the document
+- Certificate can be hosted on a website
+- When a client makes a secure connection, the certificate will get downloaded on client's machine
+- That client will verify the digital signature
+  - Will need the public key of the Certifying Authority (Group CA)
+  - Their public keys are pre-install in the OS and browser can use
+  - The client will decrypt the signature
+  - Will get the hash of the entire document and match this with the hash provided in an encrypted form
+  - If they match that means the information provided is correct
+
+
+![Digital certificates](assets/images/46.png)
+
+---
+
+
+
+
 
