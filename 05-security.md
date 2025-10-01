@@ -10,6 +10,7 @@
   - [Hashing](#hashing)
   - [Digital signatures](#digital-signatures)
   - [Digital certificates](#digital-certificates)
+  - [Chain of trust](#chain-of-trust)
 
 ---
 
@@ -259,7 +260,35 @@ Digital certificates is a way of providing the public key to our clients
 
 ---
 
+## Chain of trust
 
+We made an assumption that the certificate was signed by root Certifying Authority
+- it is generally signed by a Tier 2 / 3 / 4 Certifying Authority
 
+**Example of CA Hierarchy of Trust**
+
+- Root CA (company like Verysign)
+  - Root CA can authorize another set of companies
+  - Tier 2 Certifying Authorities
+    - can authorize Tier 3 Certifying Authorities
+    - Tier 3 CA
+
+**Example: we have a certificate from a Tier 2 CA**
+
+- In order to verify this signature our clients will need public key of the Tier 2 CA
+- This certificate has a reference to another certificate which was issued by root CA
+  - Root CA's name
+  - Root CA's public key
+  - Root CA's signature
+- Browser will pull out the public key of the root CA e.g. Verysign (stored in OS)
+- It will validate the Root certificate by validating the signature
+- It will go back to the Intermediate Certificate
+  - has Public key of the Intermediate Certificate
+  - It will use the public key to verify that signature
+- It will peak up the trusted public key of the End-entity website
+
+![Chain of trust](assets/images/47.png)
+
+---
 
 
