@@ -11,6 +11,7 @@
   - [Digital signatures](#digital-signatures)
   - [Digital certificates](#digital-certificates)
   - [Chain of trust](#chain-of-trust)
+  - [TLS / SSL handshake](#tls--ssl-handshake)
 
 ---
 
@@ -291,4 +292,24 @@ We made an assumption that the certificate was signed by root Certifying Authori
 
 ---
 
+## TLS / SSL handshake
+
+**Protocol**
+
+- A client initiates a secure connection with the server
+  - **Client Hello Request**
+  - Accompanied with browsers capability of encryption algorithms that supports
+- Once a server receives this request
+  - It sends in it's response the Public Key by means of **Digital Certificate**
+  - Let's the client know what encryption algorithms it can support out of what client has requested
+  - Can also ask client's certificate (optional) - not always possible / can use application authentication
+- The client **verifies the Certificate** and it extracts Public Key out of it
+- The client **generates a symmetric key** and encrypts it using the Public Key it has extracted
+  - The symmetric key is sent to the server
+- The **server extracts the symmetric key** out of the encryption by using the Private Key
+- They are ready to communicate using the secure channel
+
+![TLS / SSL handshake](assets/images/48.png)
+
+---
 
