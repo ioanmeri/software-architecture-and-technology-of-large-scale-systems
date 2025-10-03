@@ -12,6 +12,7 @@
   - [Digital certificates](#digital-certificates)
   - [Chain of trust](#chain-of-trust)
   - [TLS / SSL handshake](#tls--ssl-handshake)
+  - [Secure network channel](#secure-network-channel)
 
 ---
 
@@ -312,4 +313,22 @@ We made an assumption that the certificate was signed by root Certifying Authori
 ![TLS / SSL handshake](assets/images/48.png)
 
 ---
+
+## Secure network channel
+
+We've learned that we can use TLS communication over the Internet, for that:
+
+- Certificates & keys are deployed on external load balancers
+  - Digital Certificates and Private Keys used for creating TLS communication
+  - More convenient way to put those in load balancers because e.g. web application may need to scale
+- TLS connection is terminated in the external load balancer
+- The rest communication in the Intranet happens on http
+  - non-secure communications are faster
+  - if it is needed though we can use TLS in the Intranet too
+  - we can use internal certificates
+
+![Secure network channel](assets/images/49.png)
+
+---
+
 
