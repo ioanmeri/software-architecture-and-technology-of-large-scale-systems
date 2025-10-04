@@ -13,6 +13,7 @@
   - [Chain of trust](#chain-of-trust)
   - [TLS / SSL handshake](#tls--ssl-handshake)
   - [Secure network channel](#secure-network-channel)
+  - [Firewalls](#firewalls)
 
 ---
 
@@ -331,4 +332,27 @@ We've learned that we can use TLS communication over the Internet, for that:
 
 ---
 
+## Firewalls
 
+We do not want any external entities to access our Intranet. Sometimes we need to deny certain origins from our application.
+
+Firewalls are a network component that can sit between our system and the clients
+- they can look if the request coming from a client it's permitted or not
+
+**Firewalls properties**
+
+- Function
+  - Allow
+  - Deny
+- Ingress Config
+  - Source IP (Range)
+  - Target IP (Range)
+  - Target Port
+  - Protocol
+- Egress Config
+  - Destination IP (Range)
+  - Target IP (Range)
+  - Target Port
+  - Protocol
+
+---
