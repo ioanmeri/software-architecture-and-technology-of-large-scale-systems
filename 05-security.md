@@ -14,6 +14,7 @@
   - [TLS / SSL handshake](#tls--ssl-handshake)
   - [Secure network channel](#secure-network-channel)
   - [Firewalls](#firewalls)
+  - [Network security](#network-security)
 
 ---
 
@@ -356,3 +357,30 @@ Firewalls are a network component that can sit between our system and the client
   - Protocol
 
 ---
+
+## Network security
+
+We have divided our application into 4 subnets. 
+
+A subnet is a a range of IP addresses within a network.
+
+We have allowed access to external application into
+- DMZ - Subnet 1
+  - only TLS port 443
+- DMZ - Subnet 2
+
+The other subnets are only for the applications that belong to our Intranet
+- Services Subnet
+  - only opened Port 8080
+- DB Subnet
+  - only Port 1522
+
+DB Subnet can only be accessed by Services subnet, not even from web application. because it is not needed.
+Access should be granted in need base only
+
+There is no access that we do not understand or we do not anticipate, only selective access which provides full network security
+
+![Network security](assets/images/50.png)
+
+---
+
