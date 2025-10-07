@@ -16,6 +16,7 @@
   - [Firewalls](#firewalls)
   - [Network security](#network-security)
 - Identity Management
+  - [Authentication and authorization](#authentication-and-authorization)
 
 ---
 
@@ -384,4 +385,21 @@ There is no access that we do not understand or we do not anticipate, only selec
 ![Network security](assets/images/50.png)
 
 ---
+
+## Authentication and authorization
+
+- Authentication
+  - Providing an identity
+      - ID
+      - Name
+      - Organization
+    - Who you are
+- Authorization
+  - Providing right to access
+    - Functions / Services
+    - Data
+  - What you an do
+
+---
+
 
