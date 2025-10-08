@@ -17,6 +17,7 @@
   - [Network security](#network-security)
 - Identity Management
   - [Authentication and authorization](#authentication-and-authorization)
+  - [Authentication](#authentication)
 
 ---
 
@@ -401,5 +402,28 @@ There is no access that we do not understand or we do not anticipate, only selec
   - What you an do
 
 ---
+
+## Authentication
+
+As part of authentication we will discuss
+- Stateful Authentication
+- Stateless Authentication
+
+then we will discuss how
+- Credentials transfer
+- Credentials Verification
+- Credential Storage in Client
+- Credential Storage in Server
+
+
+![Authentication](assets/images/51.png)
+
+---
+
+
+
+
+
+
 
 
