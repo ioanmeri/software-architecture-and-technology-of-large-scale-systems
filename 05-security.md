@@ -18,6 +18,7 @@
 - Identity Management
   - [Authentication and authorization](#authentication-and-authorization)
   - [Authentication](#authentication)
+  - [Credentials transfer](#credentials-transfer)
 
 ---
 
@@ -420,8 +421,26 @@ then we will discuss how
 
 ---
 
+## Credentials transfer
 
+How credentials are transfered from client to the server, when the client tries to authenticate itself
 
+- HTML Forms
+  - HTTP Post method over SSL / TLS
+  - this method is used when a human is interacting with the system / not programmating access
+- HTTP Basic
+  - Based on Challenge-Response
+  - HTTP Methods over SSL / TLS
+  - Base 64 encoded UserId:Password
+- Digest Based
+  - Like Basic but uses hashed password
+  - Hash = MD5 (username: realm :password)
+- Certificate Based
+  - Private-Public key-based certificates exchanged
+
+![Credential Transfer](assets/images/52_2.png)
+
+---
 
 
 
