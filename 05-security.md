@@ -19,6 +19,7 @@
   - [Authentication and authorization](#authentication-and-authorization)
   - [Authentication](#authentication)
   - [Credentials transfer](#credentials-transfer)
+  - [Credentials verification](#credentials-verification)
 
 ---
 
@@ -442,7 +443,30 @@ How credentials are transfered from client to the server, when the client tries 
 
 ---
 
+## Credentials verification
 
+2 set of information that we want to store
+- User Auth ➡️ ID, Name, Role, Group
+- User Info ➡️ Org, Address, Contact, ...
+
+**Credential verification options**
+
+- File Storage
+  - Not scalable
+- Database
+  - RDBMS
+  - NoSQL
+- LDAP / Directory Server
+  - Architecture
+    - Hierarchical database designed for reading, browsing, searching organization data
+      - Store user information in a tree format
+    - High scalability and high performance for read loads
+  - Environment
+    - Enterprise environment with multiple applications
+    - Interoperability with all LDAP clients
+    - Distributed / Federated storage
+
+---
 
 
 
