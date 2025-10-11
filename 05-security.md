@@ -20,6 +20,7 @@
   - [Authentication](#authentication)
   - [Credentials transfer](#credentials-transfer)
   - [Credentials verification](#credentials-verification)
+  - [Stateful authentication](#stateful-authentication)
 
 ---
 
@@ -467,6 +468,38 @@ How credentials are transfered from client to the server, when the client tries 
     - Distributed / Federated storage
 
 ---
+
+## Stateful authentication
+
+- Limited Scalability due to Sessions and Centralized Authentication
+- Sessions can be revoked by removing it from the session storage
+  - Benefit if the session has been compromised
+
+**Process**
+
+1. Credentials Transfer
+   - the system will receive username and password through a POST HTTPS form
+2. Credential Transfer
+   - will pass the credentials to the Auth Service using HTTP method
+3. Credentials Verification
+   - will fetch user details from LDAP / DBMS
+4. Outcome will be sent to web application
+5. Web application will create a Session ID
+   - every user connected will create a session in the web application memory
+   - can lead to memory load / routing problems
+   - If multiple instances of web applications exist, **will use a common Session Cache**
+     - stores Session objects, can scale seperately
+     - new component introduced
+6. Access Using Session ID
+   - next time user tries to connect, sends the session ID in the cookie
+   - can pass the request to the Business Service
+
+![Stateful authentication](assets/images/53.png)
+
+---
+
+
+
 
 
 
