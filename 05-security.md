@@ -21,6 +21,7 @@
   - [Credentials transfer](#credentials-transfer)
   - [Credentials verification](#credentials-verification)
   - [Stateful authentication](#stateful-authentication)
+  - [Stateless authentication](#stateless-authentication)
 
 ---
 
@@ -498,6 +499,22 @@ How credentials are transfered from client to the server, when the client tries 
 
 ---
 
+## Stateless authentication
+
+- Signed or encrypted tokens with {Id, Name, Role, ...}
+- Decentralized Authentication leads to better scalability
+- Requires centralized store for immediate token revocation
+
+Auth process is the same as in stateful authentication. The difference is that the auth Service generates a token which is provided to the client.
+
+Next time the browser sends a request it will accompanied with a token in the cookie
+- Business Service will receive the token that was created by Authorization Service
+- Business Service can verify the signature of the token by using the public key
+
+![Stateless authentication](assets/images/54.png)
+
+
+---
 
 
 
