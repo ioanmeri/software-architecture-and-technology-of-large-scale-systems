@@ -22,6 +22,7 @@
   - [Credentials verification](#credentials-verification)
   - [Stateful authentication](#stateful-authentication)
   - [Stateless authentication](#stateless-authentication)
+  - [Single Sign-On](#single-sign-on)
 
 ---
 
@@ -513,10 +514,27 @@ Next time the browser sends a request it will accompanied with a token in the co
 
 ![Stateless authentication](assets/images/54.png)
 
-
 ---
 
+## Single Sign-On
 
+Single sign-on using stateless authentication
+
+- A web or mobile client are connecting to the system for the first time
+  - They are routed to the Auth Service
+  - Auth Service provides them a token
+- Mobile client can go directly to the Gateway service
+  - Doesn't need to go to the web application
+  - For the web browser it makes sense to have the Web App as the access point
+    - but for AJAX calls within browser we cal also go to the Gateway Service directly
+- Services will do the validation of the token
+  - will extract authentication / authorization information
+  - the methods is using authorization header in the HTTP request
+  - if we are using hyperlinks we can pass the token as a cookie
+
+![Single sign on](assets/images/55.png)
+
+---
 
 
 
