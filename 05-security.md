@@ -24,6 +24,7 @@
   - [Stateless authentication](#stateless-authentication)
   - [Single Sign-On](#single-sign-on)
 - Access Management
+  - [Role based access control model](#role-based-access-control-model)
 
 ---
 
@@ -536,6 +537,40 @@ Single sign-on using stateless authentication
 ![Single sign on](assets/images/55.png)
 
 ---
+
+## Role based access control model
+
+We want to allow users to perform only those specific actions that we want them to allow to.
+
+We do this by defining Role based access control model for a system.
+
+**Who**
+
+- Identity
+  - User Id
+- Identity Group
+  - Set of User Ids
+
+**Can do what**
+
+- Permission
+  - Allowed Operation
+- Role
+  - Set of Permissions
+
+**Of which Resources**
+
+- Resources
+  - Service API
+
+We assign roles to User Groups. We avoid assigning roles to user ids because that is an administrative overhead.
+
+The resources allow only those users who have the particular role 
+- that role must have the right permission required to access the resource
+
+---
+
+
 
 
 
