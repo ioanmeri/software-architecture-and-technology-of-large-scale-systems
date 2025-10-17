@@ -25,6 +25,7 @@
   - [Single Sign-On](#single-sign-on)
 - Access Management
   - [Role based access control model](#role-based-access-control-model)
+  - [Role based access example](#role-based-access-example)
 
 ---
 
@@ -570,7 +571,12 @@ The resources allow only those users who have the particular role
 
 ---
 
+## Role based access example
 
+
+![Role based access example](assets/images/56.png)
+
+---
 
 
 
