@@ -26,6 +26,7 @@
 - Access Management
   - [Role based access control model](#role-based-access-control-model)
   - [Role based access example](#role-based-access-example)
+  - [Authorization](#authorization)
 
 ---
 
@@ -575,6 +576,31 @@ The resources allow only those users who have the particular role
 
 
 ![Role based access example](assets/images/56.png)
+
+---
+
+## Authorization
+
+Authorize clients for large scale systems where we can use stateless authentication
+
+Authorization server and resource server can be in different locations
+- e.g. Stackoverflow login with Google account
+
+**Options**
+
+- OAuth2
+  - Token Grant
+    - OAuth2 grant allows clients to access a protected resource on behalf of a resource owner
+    - Specifications do not specify how Authentication is done
+  - Token Types - Bearer, MAC
+  - Token Format Types - JWT, SAML
+- API Key
+  - Mostly used by server applications
+  - Provides access to APIs of other services
+    - Purpose is to identify the origin of a request
+      - Valid only for a Domain or IP
+    - Doesn't matter who the user is
+  - Example - API Key for Google maps
 
 ---
 
