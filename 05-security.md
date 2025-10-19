@@ -27,6 +27,7 @@
   - [Role based access control model](#role-based-access-control-model)
   - [Role based access example](#role-based-access-example)
   - [Authorization](#authorization)
+  - [OAuth2 token grant](#oauth2-token-grant)
 
 ---
 
@@ -603,6 +604,25 @@ Authorization server and resource server can be in different locations
   - Example - API Key for Google maps
 
 ---
+
+## OAuth2 token grant
+
+- Resource Owner
+  - User with access to resources
+- User Agent
+  - User's HTTP Browser
+- Client
+  - Application that needs access to user's resources
+- Authorization Server
+  - Identity Provider
+- Resource Server
+  - Host's user's resources
+  - Any client with user access token can access user's resources
+
+![OAuth2 token grant](assets/images/57.png)
+
+---
+
 
 
 
