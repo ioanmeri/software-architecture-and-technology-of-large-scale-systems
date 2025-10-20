@@ -27,7 +27,9 @@
   - [Role based access control model](#role-based-access-control-model)
   - [Role based access example](#role-based-access-example)
   - [Authorization](#authorization)
-  - [OAuth2 token grant](#oauth2-token-grant)
+  - OAuth2
+    - [OAuth2 token grant](#oauth2-token-grant)
+    - [Auth Code Flow](#auth-code-flow)
 
 ---
 
@@ -622,6 +624,27 @@ Authorization server and resource server can be in different locations
 ![OAuth2 token grant](assets/images/57.png)
 
 ---
+
+## Auth Code Flow
+
+Resource Owner using User-Agent (browser) goes to client's website and wants to login e.g. with Google identity
+
+A. Client will redirect user to the Authorization Server (with list of resources that needs to be authorized)
+
+B. User authenticates with the user / password form that Authorization server send back
+
+C. Authorization Server will generate an Authorization Code and will give it to User-Agent /  will be redirected to client
+
+D. Client takes the Authorization Code to Authorization Server (uses it's own login mechanism)
+
+E. Authorization Server will respond back to client with an Access Token. Will authorize client to access the resources listed in the request
+
+
+![OAuth2 token grant - Autho Code Flow](assets/images/58.png)
+
+---
+
+
 
 
 
