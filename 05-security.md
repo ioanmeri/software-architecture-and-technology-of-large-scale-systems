@@ -30,6 +30,7 @@
   - OAuth2
     - [OAuth2 token grant](#oauth2-token-grant)
     - [Auth Code Flow](#auth-code-flow)
+    - [Password Flow](#password-flow)
 
 ---
 
@@ -644,7 +645,15 @@ E. Authorization Server will respond back to client with an Access Token. Will a
 
 ---
 
+## Password Flow
 
+- A. Client is trusted to receive user (resource owner) credentials
+- B. Client passes user credentials to authorization server
+- C. Client receives access token that has authorization information
+
+![OAuth2 token grant - Password Flow](assets/images/59.png)
+
+---
 
 
 
