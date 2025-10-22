@@ -31,6 +31,7 @@
     - [OAuth2 token grant](#oauth2-token-grant)
     - [Auth Code Flow](#auth-code-flow)
     - [Password Flow](#password-flow)
+    - [OAuth2 in a system](#oauth2-in-a-system)
 
 ---
 
@@ -654,6 +655,30 @@ E. Authorization Server will respond back to client with an Access Token. Will a
 ![OAuth2 token grant - Password Flow](assets/images/59.png)
 
 ---
+
+## OAuth2 in a system
+
+**Code flow**
+
+- web applicaton will redirect user to the auth server
+- auth server will make us to login
+- auth server will redirect us - after verifying information - to web application
+- web application will get the token to access catalog service
+
+![Code flow](assets/images/60.png)
+
+
+**Password Flow**
+
+- use tries to access web application
+- it will go to auth service - with username, password - and will get a token in return
+- can access catalog service
+
+![Password flow](assets/images/61.png)
+
+---
+
+
 
 
 
