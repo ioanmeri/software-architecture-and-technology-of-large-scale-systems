@@ -32,6 +32,7 @@
     - [Auth Code Flow](#auth-code-flow)
     - [Password Flow](#password-flow)
     - [OAuth2 in a system](#oauth2-in-a-system)
+    - [OAuth2 token types](#oauth2-token-types)
 
 ---
 
