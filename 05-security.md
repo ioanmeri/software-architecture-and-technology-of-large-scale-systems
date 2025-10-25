@@ -679,7 +679,25 @@ E. Authorization Server will respond back to client with an Access Token. Will a
 
 ---
 
+## OAuth2 token types
 
+Different type of tokens that OAuth2 can handle
+
+- Bearer Token
+  - Any who has the token client can use it
+  - Only Integrity Protection
+  - Requires TLS for Confidentiality
+- MAC Token (Holder-of-the-Key)
+  - Integrity Protection and Data Origin Protection
+    - A client for which this token was issued can only use it
+  - Can work without TLS
+    - Requires TLS for getting access token from auth server
+  - Both client and server needs to possess a secret symmetric key
+  - Auth server and Resource server agree on a token encryption key
+
+![OAuth access tokens](assets/images/62.png)
+
+---
 
 
 
