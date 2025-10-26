@@ -33,6 +33,7 @@
     - [Password Flow](#password-flow)
     - [OAuth2 in a system](#oauth2-in-a-system)
     - [OAuth2 token types](#oauth2-token-types)
+    - [Json Web Tokens](#json-web-tokens)
 
 ---
 
@@ -698,6 +699,34 @@ Different type of tokens that OAuth2 can handle
 ![OAuth access tokens](assets/images/62.png)
 
 ---
+
+## Json Web Tokens
+
+- JSON based token specification
+  - Compact and URL safe
+- Carries information about
+  - A subject or a principal
+  - The party that issued the assertion
+  - When was it issued
+  - When and where it can be used
+- Format is
+  - {Header}:{Payload}:{Signature}
+  - Signature of Identity Provider
+    - HS256 ➡️ HMAC with SHA256
+    - rs256 ➡️ RSA with SHA256
+- May or may not be encrypted
+- Other alternative is SAML tokens
+
+![JSON Web tokens](assets/images/63.png)
+
+---
+
+
+
+
+
+
+
 
 
 
