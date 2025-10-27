@@ -33,7 +33,8 @@
     - [Password Flow](#password-flow)
     - [OAuth2 in a system](#oauth2-in-a-system)
     - [OAuth2 token types](#oauth2-token-types)
-    - [Json Web Tokens](#json-web-tokens)
+  - [Json Web Tokens](#json-web-tokens)
+  - [Token storage](#token-storage)
 
 ---
 
@@ -720,6 +721,28 @@ Different type of tokens that OAuth2 can handle
 ![JSON Web tokens](assets/images/63.png)
 
 ---
+
+## Token storage
+
+- Web Clients
+  - Browser Cookies
+    - Can be made Http Only
+      - Not accessible to JavaScript
+    - Vulnerable to CSRF attack
+      - Web frameworks can prevent it
+  - Browser Local Storage
+    - Accessible to JavaScript
+      - Vulnerable to XSS
+    - Should not be used
+- Single Page Applications
+  - No safe place to store tokens for SPA
+    - Local storage is unsafe
+  - Use username / password to authenticate and then store token temprarily in memory
+- Mobile Applications
+  - Mobile apps can use KeyChain on iOS and KeyStore on Android
+
+---
+
 
 
 
