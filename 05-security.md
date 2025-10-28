@@ -35,6 +35,7 @@
     - [OAuth2 token types](#oauth2-token-types)
   - [Json Web Tokens](#json-web-tokens)
   - [Token storage](#token-storage)
+  - [Securing data at rest](#securing-data-at-rest)
 
 ---
 
@@ -740,6 +741,23 @@ Different type of tokens that OAuth2 can handle
   - Use username / password to authenticate and then store token temprarily in memory
 - Mobile Applications
   - Mobile apps can use KeyChain on iOS and KeyStore on Android
+
+---
+
+## Securing data at rest
+
+- Hashed Passwords
+  - Protects user passwords from leaking
+- Transparent Data Encryption
+  - Encryption of data on hard drive
+  - Backups are protected
+  - Data can be viewed through queries
+- Client Data Encryption
+  - Extra layer of security
+  - Data cannot be viewed by queries
+  - Queries cannot be used to filter or directly update data
+
+![Encrypt data at rest](assets/images/64_2.png)
 
 ---
 
