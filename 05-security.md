@@ -36,6 +36,7 @@
   - [Json Web Tokens](#json-web-tokens)
   - [Token storage](#token-storage)
   - [Securing data at rest](#securing-data-at-rest)
+  - [Securing a Software System](#securing-a-software-system)
 
 ---
 
@@ -761,10 +762,21 @@ Different type of tokens that OAuth2 can handle
 
 ---
 
+## Securing a Software System
 
+- All external connections from the Internet must be TLS protocol protected / HTTPS
+- Between clients and Load Balancer we will use Digital Certificates & Private Keys on LB
+  - TLS connection will be terminated
+- Use of Decentralized Authentication scheme / Stateless Authentication / JWT Token
+- Restrict access to Internal system using Firewalls
+  - will block any external connections to Internal Application
+- Role Based Access Control for access to Services based on Roles
+- Store Hashed Passwords
+- TDE encryption for data at rest
 
+![Securing a Software System](assets/images/65.png)
 
-
+---
 
 
 
