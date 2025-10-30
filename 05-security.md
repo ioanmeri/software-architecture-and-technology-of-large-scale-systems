@@ -37,6 +37,7 @@
   - [Token storage](#token-storage)
   - [Securing data at rest](#securing-data-at-rest)
   - [Securing a Software System](#securing-a-software-system)
+  - Common Vulnerabilities
 
 ---
 
