@@ -38,6 +38,7 @@
   - [Securing data at rest](#securing-data-at-rest)
   - [Securing a Software System](#securing-a-software-system)
   - Common Vulnerabilities
+    - [SQL Injection](#sql-injection)
 
 ---
 
@@ -779,9 +780,21 @@ Different type of tokens that OAuth2 can handle
 
 ---
 
+## SQL Injection
 
 
+Example:
 
+```
+http://abc.com/products?category=Electronics';drop table Products'--
+```
 
+translates to:
 
+```
+select * from Products where category='Electronics'; drop table Products;--' and visibule='true';
+```
 
+Use precompiled prepared statements which accept parameters only by `?` substitution
+
+---
