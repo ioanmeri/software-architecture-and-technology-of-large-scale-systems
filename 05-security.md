@@ -40,6 +40,7 @@
   - Common Vulnerabilities
     - [SQL Injection](#sql-injection)
     - [Cross Site Scripting](#cross-site-scripting)
+    - [Cross Site Resource Forgery](#cross-site-resource-forgery)
 
 ---
 
@@ -842,6 +843,30 @@ Filter out all XSS characters
 
 ---
 
+## Cross Site Resource Forgery
 
+Example: 
+
+Login into bank website with username and password
+- Bank Website responds with cookie with login token
+- User visits a malicious site and responds with e.g.
+   - an image with location pointing to user's bank website
+   - with a request to transfer money
+- User clicks on the image (is logged in) and all cookies are carried over
+
+**Prevent with CSRF tokens**
+- bank provides a CSRF token in the response similar to login token
+- CSRF is **not** HTTP only (accessible by JavaScript)
+- Will send another header in each request with X-XSRF-Token
+  - after extracting in from the cookie
+
+> The request from attacker will not be able to extract CSRF token because the domain is different
+
+User should be able to demonstrate the ability to extract some information from the cookie
+- only those which belong to the bank website
+
+> Server is looking for CSRF Token in the header
+
+---
 
 
