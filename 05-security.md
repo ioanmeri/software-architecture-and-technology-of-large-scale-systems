@@ -41,6 +41,7 @@
     - [SQL Injection](#sql-injection)
     - [Cross Site Scripting](#cross-site-scripting)
     - [Cross Site Resource Forgery](#cross-site-resource-forgery)
+  - [Summary](#summary)
 
 ---
 
@@ -866,6 +867,24 @@ User should be able to demonstrate the ability to extract some information from 
 - only those which belong to the bank website
 
 > Server is looking for CSRF Token in the header
+
+---
+
+## Summary
+
+- Encryption
+  - Symmetric
+  - Public Key
+  - Hashing
+  - Digital Signatures and Certificates
+- Secure data transfer over network - HTTPS with SSL / TLS
+- Identity Management
+  - Authentication
+    - Credentials - Storage, Transfer, Verification
+  - Authorization
+    - Role based authorization
+    - OAuth2
+- Commmon Vulnerabilities
 
 ---
 
