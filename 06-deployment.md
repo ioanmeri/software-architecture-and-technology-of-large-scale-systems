@@ -1,6 +1,7 @@
 # Section 6: Deployment
 
 - [Module contents overview](#module-contents-overview)
+- [Large scale deployment challenges](#large-scale-deployment-challenges)
 
 ---
 
@@ -23,3 +24,12 @@
   - Canary Deployment
  
 ---
+
+## Large scale deployment challenges
+
+- Application Deployment
+- Infrastructure Deployment
+- Operations
+
+---
+
