@@ -2,6 +2,7 @@
 
 - [Module contents overview](#module-contents-overview)
 - [Large scale deployment challenges](#large-scale-deployment-challenges)
+- [Application deployment](#application-deployment)
 
 ---
 
@@ -32,4 +33,38 @@
 - Operations
 
 ---
+
+## Application deployment
+
+In Large scale systems we deal with lots of components which need to be replicated for scalability and reliability, that makes the deployment process complex.
+
+- Web Apps
+  - Replicas
+- Services
+  - Microservices & Replicas
+- Databases
+  - RDBMS, NoSQL
+  - Replication & Partitioning
+- Message Queues
+  - Replication & Partitioning
+- Caches
+- Directory Servers / LDAP
+- Content Storage
+- Log File Storage
+- Search & Analytics
+
+
+Deployment is not a one-time activity. It is continuous
+- Upgrades
+- Bug Fixes
+
+---
+
+
+
+
+
+
+
+
 
