@@ -3,6 +3,7 @@
 - [Module contents overview](#module-contents-overview)
 - [Large scale deployment challenges](#large-scale-deployment-challenges)
 - [Application deployment](#application-deployment)
+- [Infrastructure deployment](#infrastructure-deployment)
 
 ---
 
@@ -60,9 +61,38 @@ Deployment is not a one-time activity. It is continuous
 
 ---
 
+## Infrastructure deployment
 
+Application can be deployed on top of this infrastructure
 
+- Compute Infrastructure
+  - Compute VMs
+    - CPU, RAM, Disks
+- Network
+  - Routing, Domains
+    - Datacenters
+  - Internet access
+  - Secure access
+    - Firewalls, Certificates
+- Load Balancers
+  - HSL, SLB
+- DNS & Discovery Services
+- Storage
+  - Content, VM / Container
+  - Images, Backups, Logs
+- Mail Servers
+- CDN
 
+We need to provision adequate capacity of infrastructure so that our system can function and scale
+when required
+
+Also we need environments for
+- Dev
+- Test
+- Staging
+- Prod
+
+---
 
 
 
