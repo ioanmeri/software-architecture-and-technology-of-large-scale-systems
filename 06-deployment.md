@@ -4,6 +4,7 @@
 - [Large scale deployment challenges](#large-scale-deployment-challenges)
 - [Application deployment](#application-deployment)
 - [Infrastructure deployment](#infrastructure-deployment)
+- [System operations](#system-operations)
 
 ---
 
@@ -91,6 +92,16 @@ Also we need environments for
 - Test
 - Staging
 - Prod
+
+---
+
+## System operations
+
+How can we architect our system so that operations run smoothly 
+
+We are looking at engineering solutions which can facilitate these automated operations
+
+![System operations](assets/images/66.png)
 
 ---
 
