@@ -5,6 +5,7 @@
 - [Application deployment](#application-deployment)
 - [Infrastructure deployment](#infrastructure-deployment)
 - [System operations](#system-operations)
+- [Modern deployment solutions](#modern-deployment-solutions)
 
 ---
 
@@ -105,7 +106,22 @@ We are looking at engineering solutions which can facilitate these automated ope
 
 ---
 
+## Modern deployment solutions
 
+Any deployment process is all about automating the manual steps
 
+- Application Deployment
+  - Containers
+    - Docker
+- Infrastructure Deployment
+  - Cloud
+    - Google Cloud, AWS
+- Operations
+  - Kubernetes
+- Automation
+  - DevOps Tools
+    - Vargrant, Ansible, CHEF
+
+---
 
 
