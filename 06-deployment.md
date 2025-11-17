@@ -6,6 +6,7 @@
 - [Infrastructure deployment](#infrastructure-deployment)
 - [System operations](#system-operations)
 - [Modern deployment solutions](#modern-deployment-solutions)
+- Application Deployment
 
 ---
 
