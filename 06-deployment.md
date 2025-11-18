@@ -7,6 +7,7 @@
 - [System operations](#system-operations)
 - [Modern deployment solutions](#modern-deployment-solutions)
 - Application Deployment
+  - [Component Deployment](#component-deployment)
 
 ---
 
@@ -124,5 +125,25 @@ Any deployment process is all about automating the manual steps
     - Vargrant, Ansible, CHEF
 
 ---
+
+## Component Deployment
+
+Example: Web Application
+
+- Process
+  - Install JVM
+  - Install Web Container
+    - Configuration
+  - Deploy Web App
+    - Configuration
+- Issues
+  - Error Prone
+  - Time consuming
+  - Repetitive
+ 
+![Component Deployment](assets/images/67.png)
+
+---
+
 
 
