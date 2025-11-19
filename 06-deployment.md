@@ -8,6 +8,7 @@
 - [Modern deployment solutions](#modern-deployment-solutions)
 - Application Deployment
   - [Component Deployment](#component-deployment)
+  - [Component Deployment Automation](#component-deployment-automation)
 
 ---
 
@@ -144,6 +145,44 @@ Example: Web Application
 ![Component Deployment](assets/images/67.png)
 
 ---
+
+## Component Deployment Automation
+
+- Provision a machine with required operating system
+- Run a script to install the required software
+
+Benefits
+- Reliable
+- Easily repeatable
+- Less time consuming
+- Idempotent
+- Declarative
+- Remote
+
+Example
+```
+#!/bin/bash
+
+# Install open jdk 11
+apt-get install -y software-properties-common \
+&& add-apt-repository ppa:openjdk-r/ppa \
+&& apt-get update \
+&& apt install -y openjdk-11-jdk
+
+# Install web container Jetty
+apt-get install -y jetty9
+
+# Deploy web app: Remote copy war file to jetty war file location
+scp user@stagin:/war-files/WebApp.war $USER@localhost:/usr/war/
+
+# Start application: Start Jetty container
+java -jar /usr/share/jetty9/start.jar
+```
+
+---
+
+
+
 
 
 
