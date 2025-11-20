@@ -9,6 +9,7 @@
 - Application Deployment
   - [Component Deployment](#component-deployment)
   - [Component Deployment Automation](#component-deployment-automation)
+  - [Deployment with Virtual Machines](#deployment-with-virtual-machines)
 
 ---
 
@@ -181,8 +182,36 @@ java -jar /usr/share/jetty9/start.jar
 
 ---
 
+## Deployment with Virtual Machines
 
+We can take the component deployment one step further by doing **Virtualization of application components**
 
+We can install Virtual Machine software and we can use it as an image along with the Operation System
+- then we take that image to a different machine (running virtual machine software)
+- efficient way of repeating the installation
 
+Application had some dependencies on
+- OS Version
+- exact environment of OS
 
+we have lifted the entire environment and we have completely minimized any chance of incompatibility
+- very reliable
+- efficiently repeatable
+- less time consuming
+
+**Two ways of running a Virtual Machine**
+- Using Hypervisor - Type I
+  - efficient, typically used in cloud
+    - vmware ESXi, Microsoft Hyper-v
+    - Bare Metal
+    - No underlying OS between hypervisor and physical machine
+- Using Hypervisor - Type II
+  - Install Virtualization software
+    - vmware
+    - VirtualBox
+  - 2 OSs
+
+![Deployment with Virtual Machines](assets/images/68.png)
+
+---
 
