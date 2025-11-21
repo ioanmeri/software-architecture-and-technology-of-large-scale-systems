@@ -10,6 +10,7 @@
   - [Component Deployment](#component-deployment)
   - [Component Deployment Automation](#component-deployment-automation)
   - [Deployment with Virtual Machines](#deployment-with-virtual-machines)
+  - [Isolation through virtual machines](#isolation-through-virtual-machines)
 
 ---
 
@@ -214,4 +215,22 @@ we have lifted the entire environment and we have completely minimized any chanc
 ![Deployment with Virtual Machines](assets/images/68.png)
 
 ---
+
+## Isolation through virtual machines
+
+There is no fixed requirement of any application in terms of Operating System resources like CPU, RAM, disk etc
+
+A good strategy is to buy a large piece of hardware and run multiple applications
+- Issue: Hardware is shared across multiple applications
+  - e.g. if application 1 runs a batch process it may hog the entire CPU
+  - applications 2,3 which are client facing may slow down requests
+
+We can overcome this issue by running Virtual Machines
+- fixed quota of resources are allocated to each VM
+- No shared resources between applications running virtual machine on the same host machine
+
+![Isolation through virtual machines](assets/images/69.png)
+
+---
+
 
