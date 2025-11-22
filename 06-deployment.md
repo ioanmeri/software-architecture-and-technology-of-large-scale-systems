@@ -11,6 +11,7 @@
   - [Component Deployment Automation](#component-deployment-automation)
   - [Deployment with Virtual Machines](#deployment-with-virtual-machines)
   - [Isolation through virtual machines](#isolation-through-virtual-machines)
+  - [Deployment with Containers](#deployment-with-containers)
 
 ---
 
@@ -230,6 +231,28 @@ We can overcome this issue by running Virtual Machines
 - No shared resources between applications running virtual machine on the same host machine
 
 ![Isolation through virtual machines](assets/images/69.png)
+
+---
+
+## Deployment with Containers
+
+**Containers vs Virtual Machines**
+
+- The way we create images
+- VMs are heavy
+- VMs include the Operating System
+- Container image only needs instructions and Docker converts those into a Container Image
+- Container image does not contain the Guest OS
+  - Only system libraries for this OS (lightweight)
+  - Start up is very fast (no OS)
+  - All system calls go through Container Runtime
+    - Container Runtime will convert those to System calls
+
+**Containers Advantages**
+- Container image is light weight and can be install easily
+- Container start up time is fast
+
+![Virtual Machine image](assets/images/70.png)
 
 ---
 
