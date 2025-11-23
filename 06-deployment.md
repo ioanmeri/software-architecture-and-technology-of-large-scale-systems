@@ -12,6 +12,7 @@
   - [Deployment with Virtual Machines](#deployment-with-virtual-machines)
   - [Isolation through virtual machines](#isolation-through-virtual-machines)
   - [Deployment with Containers](#deployment-with-containers)
+  - [Docker containers](#docker-containers)
 
 ---
 
@@ -253,6 +254,45 @@ We can overcome this issue by running Virtual Machines
 - Container start up time is fast
 
 ![Virtual Machine image](assets/images/70.png)
+
+---
+
+## Docker containers
+
+**Dockerfile**
+
+Similar to shell script, slightly different
+
+
+```
+#Set the base image to ubuntu, will be downloaded from docker registry
+FROM ubuntu
+
+# Install open jdk 11
+RUN apt-get install -y software-properties-common \
+&& add-apt-repository ppa:openjdk-r/ppa \
+&& apt-get update \
+&& apt install -y openjdk-11-jdk
+
+# Install web container Jetty
+RUN apt-get install -y jetty9
+
+# Deploy web app
+COPY ./image/war/WebApp.war /usr/war/
+
+EXPOSE 8000 8000
+
+CMD ["/usr/bin/java", "-jar", "/usr/share/start.jar"]
+
+```
+
+![Docker Container](assets/images/71.png)
+
+
+
+This file now can be put to version control
+
+If only corrections are made, we can reuse the previous images (docker automatically do that).
 
 ---
 
