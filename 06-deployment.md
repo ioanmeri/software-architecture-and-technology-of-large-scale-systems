@@ -13,6 +13,7 @@
   - [Isolation through virtual machines](#isolation-through-virtual-machines)
   - [Deployment with Containers](#deployment-with-containers)
   - [Docker containers](#docker-containers)
+- Infrastructure Deployment
 
 ---
 
