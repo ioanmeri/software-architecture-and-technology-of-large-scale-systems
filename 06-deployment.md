@@ -14,6 +14,7 @@
   - [Deployment with Containers](#deployment-with-containers)
   - [Docker containers](#docker-containers)
 - Infrastructure Deployment
+  - [Infrastructure requirements](#infrastructure-requirements)
 
 ---
 
@@ -296,5 +297,24 @@ This file now can be put to version control
 If only corrections are made, we can reuse the previous images (docker automatically do that).
 
 ---
+
+## Infrastructure requirements
+
+As part of infrastructure we need to make sure that we have **host machines** that we can run application components.
+
+The next thing is how to connect these machines by a network so that external clients can connect to our system through Internet and internal clients can communicate with each other.
+- we give IP addresses to these machines as we connect them to a network
+
+We may need load balancers for applications, firewall for the system.
+
+**3-tier system**
+
+
+![Infrastructure requirements](assets/images/72.png)
+
+---
+
+
+
 
 
