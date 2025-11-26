@@ -15,6 +15,7 @@
   - [Docker containers](#docker-containers)
 - Infrastructure Deployment
   - [Infrastructure requirements](#infrastructure-requirements)
+  - [Provisioning and configuration](#provisioning-and-configuration)
 
 ---
 
@@ -311,6 +312,40 @@ We may need load balancers for applications, firewall for the system.
 
 
 ![Infrastructure requirements](assets/images/72.png)
+
+---
+
+## Provisioning and configuration
+
+When we have to deploy a system on a premises environment, in a traditional way without docker containers.
+
+Example: deploy a web application on 10 different nodes
+
+We can use Vagrant, requires to write a Ruby application when we specify infrastructure as code
+
+```
+(1..10).each do |i|
+  config.vm.define "web#{i}" do |node|
+    node.vm.box = "UbuntuTrusty64Web"
+    node.vm.hostname = "web#{i}"
+    node.vm.network :private_network, ip: "192.168.56.4#{i}"
+    node.vmprovider "virtualbox" do |vb|
+      vb.memory = "5120"
+    end
+    node.vm.privision :shell, path: "web/bootstrap.sh"
+  end
+end
+```
+
+`web/boostrap.sh`: script installs all the components once a node or a VM is allocated
+
+![On premise provisioning and configuration](assets/images/73.png)
+
+Assumes the availability of engineers who can setup network
+- then we can use DevOps tools like Vagrant, Chef, Ansible to do provisioning and configuration
+
+
+
 
 ---
 
