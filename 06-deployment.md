@@ -16,6 +16,7 @@
 - Infrastructure Deployment
   - [Infrastructure requirements](#infrastructure-requirements)
   - [Provisioning and configuration](#provisioning-and-configuration)
+  - [Deployment with containers on Cloud](#deployment-with-containers-on-cloud)
 
 ---
 
@@ -344,10 +345,35 @@ end
 Assumes the availability of engineers who can setup network
 - then we can use DevOps tools like Vagrant, Chef, Ansible to do provisioning and configuration
 
+---
 
+## Deployment with containers on Cloud
 
+We have replaced physical hardware, compute hardware and network hardware with
+- Virtual Cloud Machines
+- Virtual Cloud Network
+
+much simpler than having to manage physical machines or a network
+
+Virtual machines can be created by issuing just a command
+- we can create a script which can create thousand of Virtual Machines in no time
+- we can create Virtual Networks by using a script
+
+The entire infrastructure is replaced by an infrastructure which can be created through a script
+- Infrastructure as Code
+- Can be done in no time (biggest achievement)
+
+![Deployment with containers on Cloud](assets/images/74.png)
 
 ---
+
+
+
+
+
+
+
+
 
 
 
