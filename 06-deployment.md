@@ -17,6 +17,7 @@
   - [Infrastructure requirements](#infrastructure-requirements)
   - [Provisioning and configuration](#provisioning-and-configuration)
   - [Deployment with containers on Cloud](#deployment-with-containers-on-cloud)
+  - [Deployment with AWS cloud stack](#deployment-with-aws-cloud-stack)
 
 ---
 
@@ -367,8 +368,30 @@ The entire infrastructure is replaced by an infrastructure which can be created 
 
 ---
 
+## Deployment with AWS cloud stack
 
+**Reasons to migrate to the cloud**
 
+- Compute VM
+  - On Demand
+  - Multiple global locations
+- Serverless Compute
+- Network
+  - Global Connectivity
+  - Firewalls
+- Fully Cloud Managed Services
+  - Load Balancers
+    - External, Internal
+  - Databases
+    - RDBMS, NoSQL
+  - Storage
+    - Content, Backups
+  - Logging & Monitoring
+
+![Deployment with containers on Cloud](assets/images/75.png)
+
+---
+  
 
 
 
