@@ -18,6 +18,7 @@
   - [Provisioning and configuration](#provisioning-and-configuration)
   - [Deployment with containers on Cloud](#deployment-with-containers-on-cloud)
   - [Deployment with AWS cloud stack](#deployment-with-aws-cloud-stack)
+  - [Kubernetes lifecycle management](#kubernetes-lifecycle-management)
 
 ---
 
@@ -392,7 +393,23 @@ The entire infrastructure is replaced by an infrastructure which can be created 
 
 ---
   
+## Kubernetes lifecycle management
 
+The system after using 
+
+- Docker containers for applications
+- Cloud as Infrastructure
+
+![Kubernetes lifecycle management](assets/images/76.png)
+
+We need a framework to be able to
+
+- Start Containers
+- Stop Containers
+- Monitor Containers
+- Restart Crashed Containers
+
+---
 
 
 
