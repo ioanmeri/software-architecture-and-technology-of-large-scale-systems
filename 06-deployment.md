@@ -18,7 +18,9 @@
   - [Provisioning and configuration](#provisioning-and-configuration)
   - [Deployment with containers on Cloud](#deployment-with-containers-on-cloud)
   - [Deployment with AWS cloud stack](#deployment-with-aws-cloud-stack)
+- Kubernetes
   - [Kubernetes lifecycle management](#kubernetes-lifecycle-management)
+  - [Kubernetes naming and addressing](#kubernetes-naming-and-addressing)
 
 ---
 
@@ -411,11 +413,22 @@ We need a framework to be able to
 
 ---
 
+## Kubernetes naming and addressing
 
+We need IP addresses for each application component instance
+- Web application
+- Services (or Load Balancer)
+- Database
 
+names abstracts IP addresses from project code which DNS can resolve
 
+We need a mechanism that can provide IP addresses
 
+Much better if our framework / deployment has a DNS which can assign names and resolve names to an IP
 
+![Kubernetes naming and addressing](assets/images/77.png)
+
+---
 
 
 
