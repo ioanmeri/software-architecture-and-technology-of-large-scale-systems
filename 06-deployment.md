@@ -21,6 +21,7 @@
 - Kubernetes
   - [Kubernetes lifecycle management](#kubernetes-lifecycle-management)
   - [Kubernetes naming and addressing](#kubernetes-naming-and-addressing)
+  - [Kubernetes scaling with multiple instances](#kubernetes-scaling-with-multiple-instances)
 
 ---
 
@@ -430,5 +431,15 @@ Much better if our framework / deployment has a DNS which can assign names and r
 
 ---
 
+## Kubernetes scaling with multiple instances
 
+The other capability needed from the deployment framework is **scaling**
+- spin more instances with a command
 
+on top of it is expected that the framework should
+- monitor the load
+- autoscale 
+
+![Kubernetes scaling with multiple instances](assets/images/78.png)
+
+---
