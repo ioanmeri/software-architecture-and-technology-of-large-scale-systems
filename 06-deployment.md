@@ -22,6 +22,7 @@
   - [Kubernetes lifecycle management](#kubernetes-lifecycle-management)
   - [Kubernetes naming and addressing](#kubernetes-naming-and-addressing)
   - [Kubernetes scaling with multiple instances](#kubernetes-scaling-with-multiple-instances)
+  - [Kubernetes load balancing](#kubernetes-load-balancing)
 
 ---
 
@@ -443,3 +444,29 @@ on top of it is expected that the framework should
 ![Kubernetes scaling with multiple instances](assets/images/78.png)
 
 ---
+
+## Kubernetes load balancing
+
+How multiples instances can talk to a single point of contact
+- they should be able to do so by using one IP address
+- they can do that with a Load Balancer
+
+Load Balancer provides one single address through which all other applications components
+can communicate
+
+Load Balancer will also balance the load between all the instances that is responsible for
+
+We need some load balancing capability from our deployment framework
+
+![Kubernetes load balancing](assets/images/79.png)
+
+
+---
+
+
+
+
+
+
+
+
