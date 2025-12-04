@@ -23,6 +23,7 @@
   - [Kubernetes naming and addressing](#kubernetes-naming-and-addressing)
   - [Kubernetes scaling with multiple instances](#kubernetes-scaling-with-multiple-instances)
   - [Kubernetes load balancing](#kubernetes-load-balancing)
+  - [Kubernetes high availability](#kubernetes-high-availability)
 
 ---
 
@@ -463,10 +464,18 @@ We need some load balancing capability from our deployment framework
 
 ---
 
+## Kubernetes high availability
 
+While the application is in production it can happen that some instances of
+a particular component can actually go down. It can become unhealthy or unresponsive.
 
+Our deploy should identify when some instances become unhealhty and should replace that faulty instance
+with a healthy instance
+- kubernetes can do so
 
+We expect any deployment to have that capability. We can do some automation or have that out of the box with a framework.
 
+![Kubernetes load balancing](assets/images/80.png)
 
-
+---
 
