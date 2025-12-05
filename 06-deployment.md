@@ -24,6 +24,7 @@
   - [Kubernetes scaling with multiple instances](#kubernetes-scaling-with-multiple-instances)
   - [Kubernetes load balancing](#kubernetes-load-balancing)
   - [Kubernetes high availability](#kubernetes-high-availability)
+  - [Kubernetes rolling upgrades](#kubernetes-rolling-upgrades)
 
 ---
 
@@ -478,4 +479,47 @@ We expect any deployment to have that capability. We can do some automation or h
 ![Kubernetes load balancing](assets/images/80.png)
 
 ---
+
+## Kubernetes rolling upgrades
+
+We have seen so far all the capabilities that are required during operations
+- Starting instances
+- Stoping instances
+- Increasing the number of instances
+- Handling the addressing
+- Scaling the number of instances
+- Providing high availability
+
+the deployment framework should also allow us to do upgrades
+- blue / green deployments
+- a / b deployments
+- canary releases
+- rolling upgrades
+
+**Rolling upgrades**
+
+Example: we have 4 instances and we want to update them fromv V1 to V2
+
+![Kubernetes rolling upgrades](assets/images/81.png)
+
+
+Without reducing the capacity of the number of existing instances
+- we should be able to add more instances of V2
+- one by one we can start removing the old instances
+- we continue to add the newer ones
+
+in the end we are left with instances of V2
+
+---
+
+
+
+
+
+
+
+
+
+
+
 
