@@ -25,6 +25,7 @@
   - [Kubernetes load balancing](#kubernetes-load-balancing)
   - [Kubernetes high availability](#kubernetes-high-availability)
   - [Kubernetes rolling upgrades](#kubernetes-rolling-upgrades)
+  - [Kubernetes capabilities](#kubernetes-capabilities)
 
 ---
 
@@ -511,6 +512,22 @@ Without reducing the capacity of the number of existing instances
 in the end we are left with instances of V2
 
 ---
+
+## Kubernetes capabilities
+
+- Service Naming & Discovery
+  - Using DNS
+- Container Lifecycle Management
+  - Health checks, restarts, replacements of unhealthy containers
+- Load balancing
+- Automated rollouts and rollbacks
+- Automatic bin packing
+  - Allows to specify resource (CPU, memory) requiremetns for containers
+- Automating mounting of storage systems of choice
+
+---
+
+
 
 
 
