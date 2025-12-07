@@ -26,6 +26,7 @@
   - [Kubernetes high availability](#kubernetes-high-availability)
   - [Kubernetes rolling upgrades](#kubernetes-rolling-upgrades)
   - [Kubernetes capabilities](#kubernetes-capabilities)
+  - [Kubernetes deployment](#kubernetes-deployment)
 
 ---
 
@@ -527,9 +528,22 @@ in the end we are left with instances of V2
 
 ---
 
+## Kubernetes deployment
 
+With kubernetes, each component gets packaged as a Pod
+- Pod has one docker container
+- We can have another container in the same pod for auxiliary purpose
+  - e.g. Logs
 
+![Kubernetes deployment](assets/images/82.png)
 
+> Pod = IP Address + Container
+
+Kubernetes has created it's own network
+- It will use the IP Address of the Pod to communicate
+- Pods are part of their own network
+
+---
 
 
 
