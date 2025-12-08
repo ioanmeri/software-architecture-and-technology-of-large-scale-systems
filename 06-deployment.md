@@ -27,6 +27,7 @@
   - [Kubernetes rolling upgrades](#kubernetes-rolling-upgrades)
   - [Kubernetes capabilities](#kubernetes-capabilities)
   - [Kubernetes deployment](#kubernetes-deployment)
+  - [Kubernetes services and workloads](#kubernetes-services-and-workloads)
 
 ---
 
@@ -545,11 +546,23 @@ Kubernetes has created it's own network
 
 ---
 
+## Kubernetes services and workloads
 
+Service component it's called RESTful service component
 
+Now we have multiple instances of web application / pods
 
+**Config for Kubernetes**
 
+- The web instance
+- How many pods have to be created
+- If it's internal or external Service
 
+![Kubernetes services and workloads](assets/images/83.png)
+
+the service, it's similar to the Load Balancer 
+
+---
 
 
 
