@@ -28,6 +28,7 @@
   - [Kubernetes capabilities](#kubernetes-capabilities)
   - [Kubernetes deployment](#kubernetes-deployment)
   - [Kubernetes services and workloads](#kubernetes-services-and-workloads)
+  - [Kubernetes architecture](#kubernetes-architecture)
 
 ---
 
@@ -564,6 +565,49 @@ the service, it's similar to the Load Balancer
 
 ---
 
+## Kubernetes architecture
 
+In order to deploy our system to kubernetes
+
+![Kubernetes architecture](assets/images/84.png)
+
+**1. Create Cluser**
+
+- the first thing to do is to **arrange for virtual machines**
+- let kubernetes know it can use it for deployment purposes
+  - Install kubernetes on these machines
+  - master on one machine / other machines for creating pods (proxy components)
+  - Any command kubernetes sends via master through Kube proxy
+- A network is created on top of the physical network
+
+**2. Create Config**
+
+e.g we have
+- web component
+- service component
+- database component
+- we want load balancers ahead of these components
+
+We Issue commands from Kubernetes and all those goes to 
+- API Server (REST interface)
+- API takes the configuration and puts it in it's database
+  - e.g. 5 instances of web application
+  - 6 instances of RESTful service
+
+
+**3. Start Operations**
+
+Kubernetes regularly monitors VMs through Kube Proxy and it takes the note of the configuration
+
+If it does match the desired configuration it makes arrangements for that
+- if pods have to be created, it delegates the job to the **Scheduler**
+- Scheduler component starts pods on VM that are allocated to Kubernetes cluster
+- Images from starting pods can be obtained from Registry
+
+We can add more Virtual Machines on the cluster
+
+If it goes above a threshold Kubernetes can scale the application
+
+---
 
 
