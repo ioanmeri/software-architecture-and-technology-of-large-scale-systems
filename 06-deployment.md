@@ -29,6 +29,7 @@
   - [Kubernetes deployment](#kubernetes-deployment)
   - [Kubernetes services and workloads](#kubernetes-services-and-workloads)
   - [Kubernetes architecture](#kubernetes-architecture)
+- System upgrades
 
 ---
 
