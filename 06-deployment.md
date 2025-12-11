@@ -30,6 +30,7 @@
   - [Kubernetes services and workloads](#kubernetes-services-and-workloads)
   - [Kubernetes architecture](#kubernetes-architecture)
 - System upgrades
+  - [Rolling updates](#rolling-updates)
 
 ---
 
@@ -610,5 +611,19 @@ We can add more Virtual Machines on the cluster
 If it goes above a threshold Kubernetes can scale the application
 
 ---
+
+## Rolling updates
+
+- Used when it is okay to have both old version and new version simultaneously
+- Old version is incrementally replaced by a new version as the new version is incrementally rolled-out
+- New version nodes are added to load-balancer node-pool and old version nodes are removed
+- No downtime
+
+![Rolling updates](assets/images/85.png)
+
+---
+
+
+
 
 
