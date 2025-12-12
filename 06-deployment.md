@@ -31,6 +31,7 @@
   - [Kubernetes architecture](#kubernetes-architecture)
 - System upgrades
   - [Rolling updates](#rolling-updates)
+  - [Canary Deployment](#canary-deployment)
 
 ---
 
@@ -622,6 +623,19 @@ If it goes above a threshold Kubernetes can scale the application
 ![Rolling updates](assets/images/85.png)
 
 ---
+
+## Canary Deployment
+
+When we cannot test thoroughly on test environemnt
+
+- New update is exposed to a small fraction of requests
+- Once confident, the update is rolled out completely
+- No downtime involved
+
+![Canary updates](assets/images/86.png)
+
+---
+
 
 
 
