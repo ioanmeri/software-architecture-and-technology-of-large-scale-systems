@@ -32,6 +32,7 @@
 - System upgrades
   - [Rolling updates](#rolling-updates)
   - [Canary Deployment](#canary-deployment)
+  - [Recreate deployment](#recreate-deployment)
 
 ---
 
@@ -636,6 +637,16 @@ When we cannot test thoroughly on test environemnt
 
 ---
 
+## Recreate deployment
+
+- Old and New Versions cannot run at the same time
+- Migrations or Data Transformations required before new code starts
+- Involves a downtime
+
+
+![Recreate deployment](assets/images/87.png)
+
+---
 
 
 
