@@ -33,6 +33,7 @@
   - [Rolling updates](#rolling-updates)
   - [Canary Deployment](#canary-deployment)
   - [Recreate deployment](#recreate-deployment)
+  - [Blue Green Deployment](#blue-green-deployment)
 
 ---
 
@@ -647,6 +648,18 @@ When we cannot test thoroughly on test environemnt
 ![Recreate deployment](assets/images/87.png)
 
 ---
+
+## Blue Green Deployment
+
+- Entire environment is switched to a new environment using a reverse proxy
+- Quick rollback to old environment on failure
+- Goal is to avoid any downtime at the cost of extra hardware
+
+![Blue Green deployment](assets/images/88.png)
+
+---
+
+
 
 
 
