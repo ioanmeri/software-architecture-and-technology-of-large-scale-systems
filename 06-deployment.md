@@ -34,6 +34,7 @@
   - [Canary Deployment](#canary-deployment)
   - [Recreate deployment](#recreate-deployment)
   - [Blue Green Deployment](#blue-green-deployment)
+  - [A/B testing](#ab-testing)
 
 ---
 
@@ -659,6 +660,21 @@ When we cannot test thoroughly on test environemnt
 
 ---
 
+## A/B testing
+
+Needs code changes, old code and new code is running, new code is active only under conditions e.g. for certain user / certain group of users
+
+- Much like canary release which splits requests
+  - May or may not track users
+  - Low % of requests for new version
+- A / B Testing is augmented Canary release that tracks users
+- Compares user behavior for two feature variants
+- User splits may be even for A / B
+- Feature toggles (flags), smart logic switches are used
+
+![A/B Testing](assets/images/89.png)
+
+---
 
 
 
