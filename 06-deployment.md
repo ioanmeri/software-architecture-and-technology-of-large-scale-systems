@@ -35,6 +35,7 @@
   - [Recreate deployment](#recreate-deployment)
   - [Blue Green Deployment](#blue-green-deployment)
   - [A/B testing](#ab-testing)
+- [Summary](#summary)
 
 ---
 
@@ -676,8 +677,26 @@ Needs code changes, old code and new code is running, new code is active only un
 
 ---
 
+## Summary
 
+- Deployment
+  - Application
+  - Infrastructure
+  - Operations
+- Application Deployment
+  - Virtual Machines
+  - Docker Containers
+- Infrastructure Deployment
+  - Cloud
+  - Kubernetes
+- Upgrading Deployments
+  - Recreate
+  - Rolling
+  - Canary
+  - Blue-Green
+  - A/B Testing
 
+---
 
 
 
