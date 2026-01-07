@@ -2,6 +2,7 @@
 
 - [Module contents overview](#module-contents-overview)
 - [Reference system](#reference-system)
+- [Web applications](#web-applications)
 
 ---
 
@@ -47,5 +48,25 @@ Also, we are interested in the **non-functional** aspects of the product
 - Perform
 
 ---
+
+## Web applications
+
+The frontend part of the application, we are concert how to
+- build the server side of the system
+
+The most important challenges are
+- they receive the highest amount of load
+- they are connected to clients which are located in long distances
+- the communication must be secure
+
+as we go down the system the load decreases progressively
+
+We look at how efficiently it can serve the content and how much load it can handle.
+
+![Web applications](assets/images/91.png)
+
+---
+
+
 
 
