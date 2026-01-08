@@ -3,7 +3,7 @@
 - [Module contents overview](#module-contents-overview)
 - [Reference system](#reference-system)
 - [Web applications](#web-applications)
-- [Solutions for web applications](#solutions-for-web-applications)
+  - [Solutions for web applications](#solutions-for-web-applications)
 
 ---
 
@@ -67,6 +67,25 @@ We look at how efficiently it can serve the content and how much load it can han
 ![Web applications](assets/images/91.png)
 
 ---
+
+## Solutions for web applications
+
+- Static Content
+  - Apache Web Server
+  - Nginx Web Server
+  - Cloud storage
+- Dynamic Content
+  - Web Server - Apache HTTPD, NodeJS
+  - Java Web Containers - Tomcat, Jetty, Spring-Boot
+- Content Caching
+  - Nginx
+- Content Distribution
+  - CDN
+
+---
+
+
+
 
 
 
