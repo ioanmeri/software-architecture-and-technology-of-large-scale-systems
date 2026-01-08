@@ -3,6 +3,7 @@
 - [Module contents overview](#module-contents-overview)
 - [Reference system](#reference-system)
 - [Web applications](#web-applications)
+- [Solutions for web applications](#solutions-for-web-applications)
 
 ---
 
