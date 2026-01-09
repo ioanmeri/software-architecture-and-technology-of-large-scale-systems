@@ -4,6 +4,7 @@
 - [Reference system](#reference-system)
 - [Web applications](#web-applications)
   - [Solutions for web applications](#solutions-for-web-applications)
+  - [Apache web server](#apache-web-server)
 
 ---
 
@@ -84,6 +85,29 @@ We look at how efficiently it can serve the content and how much load it can han
 
 ---
 
+## Apache web server
+
+Apache Webserver can
+
+- Store Static Content
+  - HTML / CSS / JS files
+  - Images files
+  - Documents
+- Generate Dynamic Content
+  - Get data & generate pages dynamically
+  - PHP, Python, Perl
+  - No JSP / Servlets
+- Act as a Reverse Proxy LB
+  - Not great
+  - Single point of contact with IP and will proxy all requests to backend web application
+
+IO from disk can be slow, when fetching first time the file Apache will store the file in RAM 
+- 64 GB RAM minimum depending on static content
+- Heavily overloaded CPU and RAM for dynamic content
+
+![Apache Webserver](assets/images/92.PNG)
+
+---
 
 
 
