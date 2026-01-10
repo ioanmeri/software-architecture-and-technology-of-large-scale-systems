@@ -5,6 +5,7 @@
 - [Web applications](#web-applications)
   - [Solutions for web applications](#solutions-for-web-applications)
   - [Apache web server](#apache-web-server)
+  - [Apache webServer architecture](#apache-webserver-architecture)
 
 ---
 
@@ -109,7 +110,26 @@ IO from disk can be slow, when fetching first time the file Apache will store th
 
 ---
 
+## Apache webServer architecture
 
+- Based on Request-Response Model
+- Clients connect using HTTP protocol
+- Apache can provide persistent connections
+  - each connection will occupy some memory
+  - each connection will be allocated a thread from a thread pool
+  - thread may access CPU, memory or network
+
+When fetching dynamic pages the thread will 
+- use a lot of CPU to process the page
+- may use network to fetch data from database or service
+
+A thread either using CPU or IO 
+
+When processing a lot of pages Apache will run out of memory or CPU.
+
+![Apache Webserver](assets/images/92.png)
+
+---
 
 
 
