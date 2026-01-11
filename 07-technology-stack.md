@@ -6,6 +6,7 @@
   - [Solutions for web applications](#solutions-for-web-applications)
   - [Apache web server](#apache-web-server)
   - [Apache webServer architecture](#apache-webserver-architecture)
+  - [Apache webserver scalability](#apache-webserver-scalability)
 
 ---
 
@@ -131,6 +132,26 @@ When processing a lot of pages Apache will run out of memory or CPU.
 
 ---
 
+## Apache webserver scalability
+
+Depends on how Apache it is used
+- Apache as Webserver
+  - For serving static / dynamic content
+  - We can add more nodes when more CPU / memory is needed
+- Apache as Reverse Proxy
+  - Only sends requests to backend servers
+  - The thread will be blocked until response is returned
+    - which will send to client
+  - Load enterily on memory for lots of connections
+    - It will increase the thread pool size / 1 thread per client
+  - We can only scale Apache as LB only vertically / **poor design**
+ 
+
+![Apache Webserver](assets/images/93.png)
+
+Good option as a WebServer for dynamic webpages
+
+---
 
 
 
