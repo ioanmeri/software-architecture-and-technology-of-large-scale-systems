@@ -5,8 +5,9 @@
 - [Web applications](#web-applications)
   - [Solutions for web applications](#solutions-for-web-applications)
   - [Apache web server](#apache-web-server)
-  - [Apache webServer architecture](#apache-webserver-architecture)
-  - [Apache webserver scalability](#apache-webserver-scalability)
+    - [Apache webServer architecture](#apache-webserver-architecture)
+    - [Apache webserver scalability](#apache-webserver-scalability)
+  - [Nginx webserver](#nginx-webserver)
 
 ---
 
@@ -152,6 +153,24 @@ Depends on how Apache it is used
 Good option as a WebServer for dynamic webpages
 
 ---
+
+## Nginx webserver
+
+- Store Static Content
+  - HTML / CSS / JS files
+  - Image files
+  - Documents
+- Generate Dynamic Content
+  - Not the best
+- Act as a Reverse Proxy
+  - Excellent
+- Cache Content
+  - Good
+
+![Nginx Webserver](assets/images/94.png)
+
+---
+
 
 
 
