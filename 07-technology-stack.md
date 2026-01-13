@@ -8,6 +8,7 @@
     - [Apache webServer architecture](#apache-webserver-architecture)
     - [Apache webserver scalability](#apache-webserver-scalability)
   - [Nginx webserver](#nginx-webserver)
+    - [Nginx architecture](#nginx-architecture)
 
 ---
 
@@ -171,6 +172,36 @@ Good option as a WebServer for dynamic webpages
 
 ---
 
+## Nginx architecture
+
+- Event-Driven
+- Uses Asynchronous IO
+- Clients can connect to nginx using HTTP
+
+The difference with Apache is that Apache allocates a thread for each connection
+- Ngnix allocates a **Single thread** for all connections - no thread pool
+  - this is the thread that processes requests
+  - there will be threads for other activities
+  - single thread doesn't leave CPU - can do a lot more processing
+    - no thread context switching
+
+**Single Thread**
+
+- The thread will **issue an asynchronous IO Request**
+- It will continue to execute - check if there is other request
+- It will process IO response that comes back from OS
+
+Because there is one Thread only memory for One thread is consumed
+- 1M connections - One thread context
+
+
+![Nginx architecture](assets/images/95.png)
+
+Nginx scales immensely as a reverse proxy / load balancer
+
+Also suitable for static file data ➡️ asynchronous read
+
+---
 
 
 
