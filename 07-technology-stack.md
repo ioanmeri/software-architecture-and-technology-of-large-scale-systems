@@ -9,6 +9,7 @@
     - [Apache webserver scalability](#apache-webserver-scalability)
   - [Nginx webserver](#nginx-webserver)
     - [Nginx architecture](#nginx-architecture)
+    - [Nginx as reverse proxy and cache](#nginx-as-reverse-proxy-and-cache)
 
 ---
 
@@ -202,6 +203,36 @@ Nginx scales immensely as a reverse proxy / load balancer
 Also suitable for static file data ➡️ asynchronous read
 
 ---
+
+## Nginx as reverse proxy and cache
+
+Apache is a perfect server to host a PHP based web application
+
+**Nginx uses**
+
+- In front of Apache we place Nginx to act as a cache
+  - In case the file it's not in memory it will be a CacheMiss: Will be fetched from the Disk
+  - In case of a CacheHit: file will be fetched from the memory
+  - In that way nginx can act as a cache
+    - Typically a very large memory is used for static data
+- Acting as Reverse Proxy
+  - Proxying request to backend web servers
+  - can do load balancing of requests across multiple instances
+- Can front services as a Reverse Proxy Load Balancer
+  - e.g. RESTful service
+- It can cache HTTP responses in services
+  - can act as reverse proxy
+  - and as a cache
+
+
+![Nginx uses](assets/images/96.png)
+
+If there is any requirement in the application to reverse proxy HTTP requests and we have to cache HTTP responses, we can use Nginx.
+
+---
+
+
+
 
 
 
