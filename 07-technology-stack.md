@@ -10,6 +10,7 @@
   - [Nginx webserver](#nginx-webserver)
     - [Nginx architecture](#nginx-architecture)
     - [Nginx as reverse proxy and cache](#nginx-as-reverse-proxy-and-cache)
+- [Web containers & spring framework](#web-containers--spring-framework)
 
 ---
 
@@ -231,7 +232,41 @@ If there is any requirement in the application to reverse proxy HTTP requests an
 
 ---
 
+## Web containers & spring framework
 
+- Dynamic content using Java
+  - OO Language for complex logic
+- Web Containers (provide Servlet Engine)
+  - Tomcat
+  - Jetty
+- Application Servers
+  - Provide: Servlet Engine, EJB Container, Session Clustering, Connection Pools, Caching, JMX, JMS, OSGI, ...
+  - Wildfly / JBoss
+  - Weblogic
+  - Websphere
+- Spring Boot
+  - Runs embedded web container
+    - Tomcat, Jetty
+
+
+**MVC and Spring**
+
+- MVC Architecture
+  - Servlets for logic
+  - JSP for presentation
+- Spring Containers
+  - Runs inside a Web container
+  - Provides
+    - IOC / DI
+      - For business logic
+    - Model View Controller
+      - For frontends
+    - JDBC Templates
+      - For accessing DB
+    - Connection Pools
+      - Http, DB
+
+---
 
 
 
