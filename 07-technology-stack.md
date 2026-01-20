@@ -11,6 +11,7 @@
     - [Nginx architecture](#nginx-architecture)
     - [Nginx as reverse proxy and cache](#nginx-as-reverse-proxy-and-cache)
 - [Web containers & spring framework](#web-containers--spring-framework)
+  - [Jetty & Spring](#jetty--spring)
 
 ---
 
@@ -268,6 +269,23 @@ If there is any requirement in the application to reverse proxy HTTP requests an
 
 ---
 
+## Jetty & Spring
 
+**Jetty** can be used anywhere we have HTTP request
+
+- web container
+- can be used to host web applications
+- can host services based on HTTP, e.g. REST
+- HTML response
+
+On top of Jetty we can use **Spring framework**, for Java
+
+- Response in JSON / XML
+
+nginx web proxy alleviates RESTful services from some of the load by caching the responses
+
+![Jetty and spring](assets/images/97.png)
+
+---
 
 
