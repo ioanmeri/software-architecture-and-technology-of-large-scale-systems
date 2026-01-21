@@ -12,6 +12,7 @@
     - [Nginx as reverse proxy and cache](#nginx-as-reverse-proxy-and-cache)
 - [Web containers & spring framework](#web-containers--spring-framework)
   - [Jetty & Spring](#jetty--spring)
+- [Node.JS](#nodejs)
 
 ---
 
@@ -287,5 +288,25 @@ nginx web proxy alleviates RESTful services from some of the load by caching the
 ![Jetty and spring](assets/images/97.png)
 
 ---
+
+## Node.JS
+
+JavaScript on the server side
+
+- HTTP server
+  - Uses JavaScript engine to process requests
+- Highly efficient at handling a large-number of connections
+  - For requests that are IO bound and not CPU bound
+- Single threaded to handle all connections
+  - Saves memory
+  - Avoids context switching
+
+No transformation required end to end from browser to database
+- messages can be communicated in JSON
+
+---
+
+
+
 
 
