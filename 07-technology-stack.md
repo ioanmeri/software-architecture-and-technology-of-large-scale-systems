@@ -13,6 +13,7 @@
 - [Web containers & spring framework](#web-containers--spring-framework)
   - [Jetty & Spring](#jetty--spring)
 - [Node.JS](#nodejs)
+  - [Node.JS event loop](#nodejs-event-loop)
 
 ---
 
@@ -306,7 +307,37 @@ No transformation required end to end from browser to database
 
 ---
 
+## Node.JS event loop
 
+![Node.JS event loop](assets/images/98.png)
+
+Node.JS internally executes JavaScript engine and JavaScript engine has an **event loop**
+- Single thread which continuously executes
+- Processing all requests
+- Executes synchronous functions
+  - This blocks the event loop
+- Gives asynchronous functions to OS
+- Is polling OS IO to get incoming client requests
+- Is polling for any response to outgoing network calls
+
+Any asynchronous call will be put into the callback queue
+
+Node.js polls these callbacks and when it's done it will poll for any incoming requests
+
+Operating System may be
+- listening to client request for incoming calls
+- Execute outgoing calls made from Node.JS asynchronously
+
+External calls are made in asynchronous way, that's the purpose of Node.JS
+
+**Very efficient**
+
+- allows you to serve requests for huge number of clients
+  - can maintain lots of connections
+- has very small memory footprint
+  - One thread minimizes context switching
+
+---
 
 
 
