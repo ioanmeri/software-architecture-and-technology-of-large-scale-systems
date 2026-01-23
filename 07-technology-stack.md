@@ -14,6 +14,7 @@
   - [Jetty & Spring](#jetty--spring)
 - [Node.JS](#nodejs)
   - [Node.JS event loop](#nodejs-event-loop)
+- [Cloud Solutions for web](#cloud-solutions-for-web)
 
 ---
 
@@ -338,6 +339,24 @@ External calls are made in asynchronous way, that's the purpose of Node.JS
   - One thread minimizes context switching
 
 ---
+
+## Cloud Solutions for web
+
+ **Benefits of Managed Services in the Cloud**
+ 
+- Hardened solutions
+- Automated deployment
+- Built-in scalability & reliability
+- Global deployment solutions
+
+![Cloud Solutions for web](assets/images/99.png)
+
+
+---
+
+
+
+
 
 
 
