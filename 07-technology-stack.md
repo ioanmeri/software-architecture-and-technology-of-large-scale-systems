@@ -15,6 +15,7 @@
 - [Node.JS](#nodejs)
   - [Node.JS event loop](#nodejs-event-loop)
 - [Cloud Solutions for web](#cloud-solutions-for-web)
+- [Cloud Storage](#cloud-storage)
 
 ---
 
@@ -354,8 +355,22 @@ External calls are made in asynchronous way, that's the purpose of Node.JS
 
 ---
 
+## Cloud Storage
 
+- Unlimited Disk Space
+- Version Control
+- Access Control
+- Low Latency
+  - No overhead of Directory structure
+- High Throughput
+  - Parallel clients (storage **replicates** files in multiple locations)
+  - Large files can be broken into smaller chunks for parallel read
+- High Availability & Reliability
+  - Multiple copies
+  - Multiple physical locations
+- Static Website Creation
 
+---
 
 
 
