@@ -15,7 +15,8 @@
 - [Node.JS](#nodejs)
   - [Node.JS event loop](#nodejs-event-loop)
 - [Cloud Solutions for web](#cloud-solutions-for-web)
-- [Cloud Storage](#cloud-storage)
+  - [Cloud Storage](#cloud-storage)
+  - [Cloud CDN](#cloud-cdn)
 
 ---
 
@@ -372,6 +373,20 @@ External calls are made in asynchronous way, that's the purpose of Node.JS
 
 ---
 
+## Cloud CDN
 
+The amount of static data in a web application is much larger compared to dynamic data. 
+
+If we add the distance between the origin server and the user location, the problem becomes bigger.
+
+**Solution: Cloud CDN**
+
+- Low latency local access for cache hits
+- Persistent connections for cache miss
+- Lower load on the backend
+
+![Cloud CDN](assets/images/100.png)
+
+---
 
 
