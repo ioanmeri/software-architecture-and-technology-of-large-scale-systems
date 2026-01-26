@@ -392,7 +392,18 @@ If we add the distance between the origin server and the user location, the prob
 
 ## Services
 
+Biggest challenge while building services: Run business logic which can be complex
+- Web Services
+- RESTful services
 
+Related topics
+- Caching
+- Asynchronous processing: Queues
+- How to host business logic: Containers
+- Load Balancing: Reverse proxy
 
+![Services layer](assets/images/101.png)
+
+---
 
 
