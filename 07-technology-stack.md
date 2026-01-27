@@ -18,6 +18,7 @@
   - [Cloud Storage](#cloud-storage)
   - [Cloud CDN](#cloud-cdn)
 - [Services](#services)
+- [Services solutions](#services-solutions)
 
 ---
 
@@ -403,6 +404,23 @@ Related topics
 - Load Balancing: Reverse proxy
 
 ![Services layer](assets/images/101.png)
+
+---
+
+## Services solutions
+
+- Web Containers
+  - REST & Spring Containers
+- Object Caching
+  - Memcache
+  - Redis
+- Asynchronous Messaging
+  - Redis
+  - RabbitMQ
+  - Kafka
+- Service Mesh
+  -Netflix
+  - Istio
 
 ---
 
