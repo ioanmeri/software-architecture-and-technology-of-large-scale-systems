@@ -19,6 +19,7 @@
   - [Cloud CDN](#cloud-cdn)
 - [Services](#services)
 - [Services solutions](#services-solutions)
+  - [Memcached](#memcached)
 
 ---
 
@@ -423,5 +424,41 @@ Related topics
   - Istio
 
 ---
+
+## Memcached
+
+Popular solution for caching objects, it can be in:
+
+- web application layer
+  - for caching session objects
+- service layer
+  - cache objects created after computation / after fetching from DB
+- service memory itself
+  - Issues
+    - Less cache hits (request can hit another node)
+    - Key-Data duplication (storing data for the same key in multiple nodes)
+
+**Data**
+
+- frequently accessed
+- NOT modified very frequently
+
+
+**Properties**
+
+Memcached is a centralized cache so every node will connect to it
+
+- Stores key value pairs
+- Values can be
+  - Any blob
+  - Any size
+    - Preferred < 1 MB
+    - Max is configurable
+- TTL can be set differently for each data
+- Eviction expunges expired data followed by LRU (least recently used) data
+
+---
+
+
 
 
