@@ -20,6 +20,7 @@
 - [Services](#services)
 - [Services solutions](#services-solutions)
   - [Memcached](#memcached)
+  - [Memcached Architecture](#memcached-architecture)
 
 ---
 
@@ -388,7 +389,7 @@ If we add the distance between the origin server and the user location, the prob
 - Persistent connections for cache miss
 - Lower load on the backend
 
-![Cloud CDN](assets/images/100.png)
+![Cloud CDN](assets/images/100_2.png)
 
 ---
 
@@ -459,6 +460,37 @@ Memcached is a centralized cache so every node will connect to it
 
 ---
 
+## Memcached Architecture
 
+Memcached can be installed as a cluster of nodes, client knows all the IPs of the nodes. 
+
+Client will use a client library which makes a DNS call to get the IP address of any node.
+
+- Cache-aside pattern
+  - e.g. memcache is looking for key 3
+  - will go to DB and get the value of the key 3
+  - will put that key into mecache cluster, in one of the nodes
+  - next time it will be available in the node
+  - client knows to go node 3 using hash function and percentile with 2
+  - client itself is managing the state of all the nodes
+- Sub-millisecond Latency
+- Horizontally Scalable
+  - Data is partitioned
+- High throughput
+  - Parallel operations
+- Cluster aware client library
+  - Consistent hashing for resolving a node
+- Node failure is treated as a cache miss
+  - Use large number of nodes with less data
+- Data is lost if a node crashes or restarted
+
+
+![Memcached architecture](assets/images/100.png)
+
+ ---
+
+
+
+ 
 
 
