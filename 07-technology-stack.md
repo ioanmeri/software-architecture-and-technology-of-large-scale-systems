@@ -21,6 +21,7 @@
 - [Services solutions](#services-solutions)
   - [Memcached](#memcached)
   - [Memcached Architecture](#memcached-architecture)
+  - [Redis Cache & its architecture](#redis-cache--its-architecture)
 
 ---
 
@@ -487,7 +488,35 @@ Client will use a client library which makes a DNS call to get the IP address of
 
 ![Memcached architecture](assets/images/100.png)
 
- ---
+---
+
+## Redis Cache & its architecture
+
+For Object-caching, came after memcached and filled gaps, memcached + new features
+
+- Much like Memcached
+- It is a [**Key -> Data structure**] store, instead of key value
+  - Strings, Lists, SortedSets, Maps, ...
+  - memached has latency because it retrieves the entire list for e.g. adding a element
+- Data-Store mode for Persistence
+  - Stores data on a disk
+  - Allows backups
+  - Can be started pre-populated with a backup
+- Data Replication
+  - Asynchronous and synchronous
+  - Read load distribution
+  - High Availability
+- Can also be used as a messaging queue
+- **Data-Store mode requires fixed number of nodes**
+  - Cache mode is suitable for node scaling
+
+In order to support more read load, we can add slave instances to masters
+
+![Redis cache](assets/images/102.png)
+
+---
+
+
 
 
 
