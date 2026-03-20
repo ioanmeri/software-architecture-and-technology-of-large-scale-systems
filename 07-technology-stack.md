@@ -22,6 +22,7 @@
   - [Memcached](#memcached)
   - [Memcached Architecture](#memcached-architecture)
   - [Redis Cache & its architecture](#redis-cache--its-architecture)
+- [Cloud Caching Solutions](#cloud-caching-solutions)
 
 ---
 
@@ -513,6 +514,26 @@ For Object-caching, came after memcached and filled gaps, memcached + new featur
 In order to support more read load, we can add slave instances to masters
 
 ![Redis cache](assets/images/102.png)
+
+---
+
+## Cloud Caching Solutions
+
+On-premises solutions can be deployed to the cloud also as IaaS or fully managed by cloud
+
+- AWS Elastic Cache
+  - Memcached
+  - Redis
+- Google Memorystore
+  - Memcached
+  - Redis
+
+**Benefits**
+
+- Fully Managed
+- Sub-millisecond latency
+- Scalable to 5 TB
+- Highly available (99.9%)
 
 ---
 
