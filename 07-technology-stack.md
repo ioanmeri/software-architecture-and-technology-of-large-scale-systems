@@ -23,6 +23,7 @@
   - [Memcached Architecture](#memcached-architecture)
   - [Redis Cache & its architecture](#redis-cache--its-architecture)
 - [Cloud Caching Solutions](#cloud-caching-solutions)
+- [Rabbit MQ](#rabbit-mq)
 
 ---
 
@@ -536,6 +537,57 @@ On-premises solutions can be deployed to the cloud also as IaaS or fully managed
 - Highly available (99.9%)
 
 ---
+
+## Rabbit MQ
+
+General purpose messaging queue - most widely used
+
+**Push**
+
+- We want to pass a message from Service-1 to Service-2: **One to One**
+  - Service-1 is not looking for a response: **One-way message**
+  - In between services we can put a message queue
+  - Service-1 is putting it into the queue (instead of sending directly to Service-2)
+- We can deliver the message to multiple services: **One to Many**
+
+**Pull**
+
+The subscriber takes the responsibility of pulling the message
+- One to One
+- One to Many
+
+
+
+Why not pass the message directly to the service and use a message queue to do this asynchronously? Because of Delivery Goals
+
+- Design Goals
+  - At-Least-Once Delivery
+  - Message Sequencing - FIFO
+  - Interface Decoupling
+    - Service-2 doesn't need to know the technology used by Service-1
+  - Consumer Decoupling
+     - Service-1 doesn't know to which service it is delivering the message
+     - If the communication is synchronous, Service-1 needs to know the host and port of Service-2
+     - Only needs to know the host and port of the messaging queue
+     - Makes more sense in the One to Many delivery 
+  - Message Rate Decoupling
+    - e.g. producer of the message: Service-1 is producing messages in a very high rate
+    - the queue can absorb all those messages
+    - the message queue can deliver the messages in a rate the services can process
+    - Makes more sense in One to One communication
+      - the message processing (e.g. from Service-2 that writes data to DB) cannot happen at the same rate as the rate the messages are received by Service-1
+      - the rate of message receiving and the rate at which messages are processed are totally different
+      - If we don't have a message queue, the Service-2 will go down - cannot bare the load
+- Consumer Mode
+  - Push
+  - Pull
+- Use Cases
+  - Service Integration
+  - Message Buffer
+ 
+---
+
+
 
 
 
