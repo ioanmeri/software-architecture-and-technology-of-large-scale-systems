@@ -583,7 +583,24 @@ Why not pass the message directly to the service and use a message queue to do t
   - Pull
 - Use Cases
   - Service Integration
+    - Asynchronous messages can be passed between services - asynchronous integration
   - Message Buffer
+    - messages reveived in a high rate - in between Message Queue can act as a buffer
+    - message queue can store messages temporarily
+    - if the load decreases in Service-1, Service-2 eventually will be able to cope up with the load
+    - we can add more consumers to decrease the load
+
+
+**RabbitMQ vs Kafka**
+
+Rabbit MQ can be used as a general purpose messaging queue for all use cases (pull, push)
+
+Kafka can be used only for poll based messaging where consumers have to pull the message
+
+Kafka also shines in streaming workflows
+- incoming message flow rate is extremely high
+- queue is always full
+ 
  
 ---
 
