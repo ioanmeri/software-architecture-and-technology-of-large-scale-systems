@@ -606,8 +606,10 @@ Kafka can be used only for poll based messaging where consumers have to pull the
 Kafka also shines in streaming workflows
 - incoming message flow rate is extremely high
 - queue is always full
- 
- 
+
+In streaming workflows we need a queue to act as a message buffer
+- RabbitMQ cannot scale very high in case of streaming scenario
+
 ---
 
 
