@@ -542,6 +542,12 @@ On-premises solutions can be deployed to the cloud also as IaaS or fully managed
 
 General purpose messaging queue - most widely used
 
+![Rabbit MQ one way communication](assets/images/103.jpg)
+
+![Rabbit MQ push pull](assets/images/104.jpg)
+
+![Rabbit MQ subcribe services](assets/images/105.jpg)
+
 **Push**
 
 - We want to pass a message from Service-1 to Service-2: **One to One**
