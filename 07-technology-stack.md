@@ -23,7 +23,8 @@
   - [Memcached Architecture](#memcached-architecture)
   - [Redis Cache & its architecture](#redis-cache--its-architecture)
 - [Cloud Caching Solutions](#cloud-caching-solutions)
-- [Rabbit MQ](#rabbit-mq)
+- [RabbitMQ](#rabbitmq)
+  - [RabbitMQ architecture](#rabbitmq-architecture)
 
 ---
 
@@ -538,7 +539,7 @@ On-premises solutions can be deployed to the cloud also as IaaS or fully managed
 
 ---
 
-## Rabbit MQ
+## RabbitMQ
 
 General purpose messaging queue - most widely used
 
@@ -609,6 +610,54 @@ Kafka also shines in streaming workflows
 
 In streaming workflows we need a queue to act as a message buffer
 - RabbitMQ cannot scale very high in case of streaming scenario
+
+---
+
+## RabbitMQ architecture
+
+- General purpose message broker
+- Messages are pushed to consumers
+- Message deleted once acknowledged
+- Message ordering is guaranteed (compared to Kafka which is not)
+- Useful for asynchronous service integration
+- Both persistent and transient messages are supported
+  - Transient: Rabbit MQ delivers it immediatetly to it's consumer - doesn't store to disk
+    - for very high speed message delivery
+  - Persistent: When we need to guarantee that the message is definetely delivered
+    - it becomes possible because messages are stored to the disk
+- Uses built-in component called exchange for routing
+  - there can be multiple queues inside the MQ
+  - exchange controls to which queue / topic messages go by applying routing rules
+
+![Rabbit MQ architecture](assets/images/106.png)
+
+> In persistent mode message will be stored in the hard disk (2)
+
+> If we setup replication (must in production), we create a replica (master-slave) (3) and that MQ will store also the message
+
+> Once the message is stored to the disk and it is replicated, the message will be acknowledged to it's producer (4)
+
+> The queue takes the message from it's memory and tries to deliver to it's consumer (if available) (5)
+
+> Consumer processes the message and gives an acknowledgement back to the queue
+
+> The queue will delete the message from it's memory and disk
+
+> Also the slave will also delete the message
+
+Replication adds to the reliability / availability of messaging queue
+
+All the load comes to master messaging queue
+- client can connect to master or slave (but slave will not process any message, load handled my the master only)
+
+
+Also
+- Scales to 50K messages per second
+- Scales well vertically
+- Not horizontally scalable
+  - Master-Slave replication for high availability
+    - Clients can connect to any node
+    - All publish, consume operations first go to master
 
 ---
 
