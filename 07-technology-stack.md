@@ -25,6 +25,7 @@
 - [Cloud Caching Solutions](#cloud-caching-solutions)
 - [RabbitMQ](#rabbitmq)
   - [RabbitMQ architecture](#rabbitmq-architecture)
+- [Kafka architecture](#kafka-architecture)
 
 ---
 
@@ -660,6 +661,49 @@ Also
     - All publish, consume operations first go to master
 
 ---
+
+## Kafka architecture
+
+Useful when producers producing messaging at a very high rate
+
+We can think of Kafka as a distributed log file
+
+- Performance
+  - Million messages per second
+  - Sequential writes and reads on log files
+  - Relies on page cache for quick reads
+- Horizontally Scalable
+  - Topics are partitioned
+    - we can do more parallel operations
+- Order of data guaranteed only within a partition
+  - Global order in queue is lost (trade-off)
+  - Producer can decide the partition
+- Messages are not deleted, so can be replayed
+- Consumers can only pull the data (trade-off)
+  - No push by Kafka
+  - Not designed for service integration
+- Useful for streaming analytical workloads
+  - Where high throughput is required
+  - Click streams, Page views, Logging, Ingestion, Security
+
+
+![Kafka architecture](assets/images/107.png)
+
+The write overhead in RabbitMQ is significant because it internally uses a b-tree structure to store data
+
+The producer write operation in Kafka is extremely fast
+- producer keeps track of the indeces used
+- log files can live on Kafka forever
+- the OS will read the log file in chucks and those will be stored in OS memory (page cache)
+  - OS page cache responsibility
+  - that's why it reads very fast
+
+Consumers can also scale horizontally, they can be distributed in different partitions
+
+---
+
+
+
 
 
 
