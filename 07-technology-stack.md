@@ -26,6 +26,7 @@
 - [RabbitMQ](#rabbitmq)
   - [RabbitMQ architecture](#rabbitmq-architecture)
 - [Kafka architecture](#kafka-architecture)
+- [Redis Pub/Sub](#redis-pubsub)
 
 ---
 
@@ -702,9 +703,48 @@ Consumers can also scale horizontally, they can be distributed in different part
 
 ---
 
+## Redis Pub/Sub
+
+Redis is an excellent choice for in-memory data store
+
+Redis has another functionality called Pub/Sub
+- excellent messaging queue for specific use cases
 
 
+**Use cases**
+- fast messaging which does not require persistence
 
+**Features**
+
+- For short lived messages with no persistence
+  - Much like a synchronous call
+  - Fire and forget
+    - No delivery guarantee
+- Million operations per second
+- Useful for making dashboards
+  - Leaderboard
+- Comparison
+  - Kafka
+    - No push
+    - Writes to log
+  - RabbitMQ Transient
+    - Delivery acknowledgement
+    - Deletion of delivered messages
+
+> Channels === Topics
+
+
+![Redis Pub/Sub](assets/images/108.png)
+
+Redis cluster here has two nodes
+
+Publisher publishes messages to it's channel, and they are immediately delivered to it's subcribers
+
+Node 2 can subscribe to node 1
+
+TCP connection will only be disconned if it's closed by the client or the server
+
+---
 
 
 
