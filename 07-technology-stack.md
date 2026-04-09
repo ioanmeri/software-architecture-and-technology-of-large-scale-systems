@@ -27,6 +27,7 @@
   - [RabbitMQ architecture](#rabbitmq-architecture)
 - [Kafka architecture](#kafka-architecture)
 - [Redis Pub/Sub](#redis-pubsub)
+- [Cloud MQ solutions](#cloud-mq-solutions)
 
 ---
 
@@ -746,9 +747,36 @@ TCP connection will only be disconned if it's closed by the client or the server
 
 ---
 
+## Cloud MQ solutions
 
+![Cloud MQ](assets/images/109.png)
 
+- Community
+  - Rabbit MQ
+    - used for application integration (can push messages)
+  - Kafka
+    - Not a general purpose MQ - used when there is very high throughput
+    - Big Data, Streaming, IoT
+    - Not for application integration unless there is exceptional high load
+    - consumers can only pull messages
+- AWS
+  - SQS
+    - General purpose messaging queue like Rabbit MQ
+    - Can replace on-premise Rabbit MQ with SQS
+  - Kinesis
+    - Used in IoT, Big Data e.g. high throughput of data
+    - can replace Kafka with this managed service solution
+- Google Cloud
+  - Pub / Sub
+    - Can be used for both scenarios
+    - General messaging and for very high throughput messaging
+    - Horizontally scalable - managed service
 
+With RabbitMQ or Kafka you have to manage their clusters on your own
+
+Redis is a special case, not a general purpose messaging queue
+
+---
 
 
  
