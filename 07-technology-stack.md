@@ -28,6 +28,7 @@
 - [Kafka architecture](#kafka-architecture)
 - [Redis Pub/Sub](#redis-pubsub)
 - [Cloud MQ solutions](#cloud-mq-solutions)
+- [Datastores](#datastores)
 
 ---
 
@@ -777,6 +778,22 @@ With RabbitMQ or Kafka you have to manage their clusters on your own
 Redis is a special case, not a general purpose messaging queue
 
 ---
+
+## Datastores
+
+![Datastores](assets/images/110.png)
+
+Datastores or Databases
+
+We not only read data but we also modify data
+- Storage is done on disc
+- Can have high latency
+- Load on Databases is not as high as frontend layer or service layer
+
+
+---
+
+
 
 
  
