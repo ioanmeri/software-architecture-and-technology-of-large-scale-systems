@@ -29,6 +29,7 @@
 - [Redis Pub/Sub](#redis-pubsub)
 - [Cloud MQ solutions](#cloud-mq-solutions)
 - [Datastores](#datastores)
+- [Datastores solutions](#datastores-solutions)
 
 ---
 
@@ -793,8 +794,22 @@ We not only read data but we also modify data
 
 ---
 
+## Datastores solutions
 
+- RDBMS
+  - Oracle
+  - SQL Server
+- Distributed Databases
+  - Key-Value
+    - Dynamo
+  - Column Family
+    - Big Table
+    - Cassandra
+    - HBase
+  - Document Oriented
+    - MongoDB
 
+---
 
  
 
