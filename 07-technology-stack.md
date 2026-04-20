@@ -30,6 +30,7 @@
 - [Cloud MQ solutions](#cloud-mq-solutions)
 - [Datastores](#datastores)
 - [Datastores solutions](#datastores-solutions)
+- [RDBMS](#rdbms)
 
 ---
 
@@ -811,6 +812,34 @@ We not only read data but we also modify data
 
 ---
 
- 
+## RDBMS
+
+- General purpose database (< 1 - 5TB data, 10K connections)
+- ACID Transactions
+  - Update of multiple records or tables
+  - _Possible only on a single node or else it requires 2PC/3PC_
+- Data Consistency
+  - Data same for all readers at any given time
+  - _Leads to low availability_
+- Fixed Schema
+  - Data analysics - _Impedes application evolution_
+    - Columns can be selected
+    - Rows can be filtered
+    - Queries can Join Tables
+    - _Joins may slow down the system_
+  - Query pattern can change or evolve
+    - Any column can be indexed
+    - Indeces can be created whenever required
+  - Normalized Data
+    - Efficient storage and writes
+  - Overwrite for updates
+    - _Allows only one version of data_
+    - _Old design for expensive disk space_
+
+
+NoSQL came out of the limitations of RDBMS scalability
+
+---
+
 
 
