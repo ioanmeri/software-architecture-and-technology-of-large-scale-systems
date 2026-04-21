@@ -31,6 +31,7 @@
 - [Datastores](#datastores)
 - [Datastores solutions](#datastores-solutions)
 - [RDBMS](#rdbms)
+  - [RDBMS scalability architecture](#rdbms-scalability-architecture)
 
 ---
 
@@ -840,6 +841,37 @@ We not only read data but we also modify data
 NoSQL came out of the limitations of RDBMS scalability
 
 ---
+
+## RDBMS scalability architecture
+
+Although RDBMS are vertically scalable, still we can do few enhancements to scale RDBMS and make it more reliable
+
+**Methods**
+
+- Vertical Partitioning for Scalability
+  - one RDBMS for each service
+  - deployed on separate nodes
+  - code should work in an isolated way (cannot do transactions between services)
+    - 2 Phase Commit
+    - Eventual Consistency
+- Replication for Reliability / Availability
+- Can use read replicas for sharing load
+  - Drawback: read queries not consistent with master db (time for replication)
+  - Reads are scalable, Writes still not scalable
+
+
+![RDBMS architecture](assets/images/111.png)
+
+In Oracle even with Real Application Cluster still the same DB is used and share the same disk
+
+Cost of scalability is getting higher with RDBMS
+
+
+
+---
+
+
+
 
 
 
