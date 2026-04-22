@@ -32,6 +32,7 @@
 - [Datastores solutions](#datastores-solutions)
 - [RDBMS](#rdbms)
   - [RDBMS scalability architecture](#rdbms-scalability-architecture)
+- [NoSQL objectives & trade-offs](#nosql-objectives--trade-offs)
 
 ---
 
@@ -867,6 +868,18 @@ In Oracle even with Real Application Cluster still the same DB is used and share
 Cost of scalability is getting higher with RDBMS
 
 
+---
+
+## NoSQL objectives & trade-offs
+
+NoSQL are overcoming the limitations of RDBMS - particularly the scalability
+
+| Objective | Architectural Choice | Trade-Off |
+| --------- | -------------------- | --------- |
+| **Scalability** | Horizontal Partitioning,<br>Commodity Hardware | ACID Transactions, <br> Joins |
+| Availability | Data Replication,<br>Eventual Consistency | Data Consistency |
+| Flexible Schema | Key-Value, Column Family,<br>Document-Oriented | SQL, Secondary Indexes,<br> Integrity Constraints|
+| Performance | Aggregate Schema,<br>In-Memory R/W | Normalization,<br>Non-Key Queries |
 
 ---
 
