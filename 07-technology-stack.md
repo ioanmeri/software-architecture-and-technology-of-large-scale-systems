@@ -33,6 +33,7 @@
 - [RDBMS](#rdbms)
   - [RDBMS scalability architecture](#rdbms-scalability-architecture)
 - [NoSQL objectives & trade-offs](#nosql-objectives--trade-offs)
+- [Amazon DynamoDB](#amazon-dynamodb)
 
 ---
 
@@ -882,6 +883,29 @@ NoSQL are overcoming the limitations of RDBMS - particularly the scalability
 | Performance | Aggregate Schema,<br>In-Memory R/W | Normalization,<br>Non-Key Queries |
 
 ---
+
+## Amazon DynamoDB
+
+- Key-Value Pair Datastore
+- Used for High Scalability & Availability
+- Table is a Hash-Map
+  - Persistent
+  - Distributed
+- API
+  - Put, Get, Update, Delete, Query
+- Index Key - has two parts
+  - Partition Key
+    - Can have only one attribute
+    - Key is hashed to determine the partition
+  - Sort Key
+    - Determines sort order of an item within a partition
+    - Can be used for range query <. >, like
+- R / W ops for a key are atomic
+
+![Amazon DynamoDB](assets/images/112.png)
+
+---
+
 
 
 
