@@ -930,6 +930,9 @@ NoSQL are overcoming the limitations of RDBMS - particularly the scalability
   - Favors high availability over consistency
   - users can have different values
   
+---
+
+### Ring cluster
 
 ![DynamoDB Architecture](assets/images/113.png)
 
