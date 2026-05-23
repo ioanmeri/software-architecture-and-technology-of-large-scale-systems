@@ -34,6 +34,7 @@
   - [RDBMS scalability architecture](#rdbms-scalability-architecture)
 - [NoSQL objectives & trade-offs](#nosql-objectives--trade-offs)
 - [Amazon DynamoDB](#amazon-dynamodb)
+  - [DynamoDB architecture](#dynamodb-architecture)
 
 ---
 
@@ -906,7 +907,45 @@ NoSQL are overcoming the limitations of RDBMS - particularly the scalability
 
 ---
 
+## DynamoDB architecture
 
+- Suitable for storing **small chunks of data**
+  - Key values less than 1MB
+- Peer-To-Peer cluster
+  - No master - write on any node
+  - Each node responsible for a set of keys
+    - through consistent hashing of virtual nodes for key allocation
+- Highly Scalable
+  - Practically any number of nodes
+  - Petabytes of data
+  - Can handle 10 million RW ops requests / second
+- Highly Available
+  - Updates are not rejected even in case of network partitions or server failures
+    - not possible in master-slave architecture
+  - Vector clocks and business rules to resolve merge conflicts
+    - because we can write to any node, 2 users may write at the same time
+    - it will be resolved via timestamps or vector clocks or business rules
+- Consistency guarantee is adjustable
+  - (nodes to read) R + (nodes to write) W > (total number of nodes) N for strong consistency
+  - Favors high availability over consistency
+  - users can have different values
+  
+
+![DynamoDB Architecture](assets/images/113.png)
+
+- Ring represents range of values for a partition key column
+- Machine IP/Name is hashed to occupy a position on the ring
+
+Nodes B,C,D: responsible for key 1
+- client can connect to any node to the cluster to
+  - get this key
+  - update this key
+- the node will forward the request
+
+GOSSIP protocol: each node randomly connects to other nodes in the cluster
+- will propagate the state of the cluster
+
+---
 
 
 
