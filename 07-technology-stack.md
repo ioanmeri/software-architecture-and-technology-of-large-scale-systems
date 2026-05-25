@@ -36,6 +36,7 @@
 - [Amazon DynamoDB](#amazon-dynamodb)
   - [DynamoDB architecture](#dynamodb-architecture)
 - [Google BigTable](#google-bigtable)
+  - [BigTable architecture](#bigtable-architecture)
 
 ---
 
@@ -986,6 +987,49 @@ Now the data is not sparsely stored.
 
 ---
 
+## BigTable architecture
+
+Can be used for very high throughput and low latency, e.g. stream data
+
+**Properties**
+
+- Schema-less, structured (CF), sorted data (for range queries, extremely efficient)
+  - Index for every column
+- GFS (Google File System) for reliable persistent storage
+  - Replicated storage for large files
+- In-memory tablet servers
+  - High R/W throughput with low latency
+  - Single copy of data for read and write
+    - No write conflicts
+- Horizontally scalable
+  - Stores peta / exabytes of data
+  - Client load is distributed
+- Strongly consistent
+
+![Google BigTable Architecture](assets/images/115.jpg)
+
+**Tablet servers**
+
+- Intermediate layer between GFS and BigTable
+- mostly acts like a cache
+- read / write operations become very fast
+  - write always happens in memory
+  - if node goes down, data still will be written becomes of log file
+  - writes are reliable
+
+
+**Client**
+- Caches tablet metadata
+- directory works with tablet servers
+- never connects to master or lock server
+- only interacts with master / lock server to get tablet metadata
+  - b-tree clients stores in each memory
+
+**Master**
+- Checks if tablet servers are live
+- Assigns tablets to node servers
+
+---
 
 
 
