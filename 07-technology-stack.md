@@ -38,6 +38,7 @@
   - [Google BigTable](#google-bigtable)
     - [BigTable architecture](#bigtable-architecture)
   - [HBase](#hbase)
+  - [Cassandra](#cassandra)
 
 ---
 
@@ -1055,6 +1056,81 @@ APIs are slightly different than BigTable
 ![HBase](assets/images/116.jpg)
 
 ---
+
+## Cassandra
+
+Becomes like an RDB table
+
+- Open source Database
+- Came out after DynamoDB and BigTable
+  - has features from both of them
+
+**Features**
+
+**Data Model: Column-Family Storage**
+
+Can store structured data and million of columns with column family architecture
+
+- similarities to DynamoDb and BigTable
+- a table is called a column family
+- has a partition key and a sort key, like DynamoDB
+  - primary key = partition key + sort key
+    - partition key: decides the row
+    - sort key: decides the order for that partition key
+- can have any number of columns, because they are really rows
+- you can store structured data like BigTable and gets exploded into multiple rows
+- **the difference is that each product id goes to a different partition**, like DynamoDB
+
+![Cassandra column family rows](assets/images/117.png)
+
+
+**Like BigTable and DynamoDB**
+- Cassandra is also clustered
+- horizontaly scalable DB
+- data can be partitioned into different nodes
+
+**Clustering functionality is borrowed from DynamoDB**
+- Peer-to-Peer topology, no master
+- each node responsible for a set of nodes etc..
+- Cassandra DB has di-centralized architecture
+  - high availability even in the precence of network partitions
+  - can have conflicting writes on replica nodes of the same key
+
+![Cassandra topolgy similary to DynamoDB](assets/images/118.png)
+
+
+
+----
+
+### Write Operations in Cassandra
+
+Borrowed from BigTable
+
+1. Write Operation comes to Cassandra
+2. Write Operation is logged on a write ahead log file - quickly sequencial IO
+3. Write is actually done in Memtable (same as tablet in BigTable) - no disk write - extremely fast
+4. Write operation is acknowledged to each client that is done
+5. Memtables are flashed into SSTables - to disk - when there is shortage of memory (like BigTable)
+
+
+![Cassandra Write Operations](assets/images/119.png)
+
+
+After a failure, when a node comes back, can recreate the Memtable by
+- reading data from the SSTable
+- applying the operations from the log 
+
+
+
+If the node cannot be restarted, we have replica nodes (the node which is responsible for a particular key)
+
+Read also works like BigTable, state come out of the memory if they are in the memory otherwise from SSTable.
+- Cassandra like BigTable can be used for very high throughput
+
+---
+
+
+
 
 
 
