@@ -37,6 +37,7 @@
     - [DynamoDB architecture](#dynamodb-architecture)
   - [Google BigTable](#google-bigtable)
     - [BigTable architecture](#bigtable-architecture)
+  - [HBase](#hbase)
 
 ---
 
@@ -1032,7 +1033,28 @@ Can be used for very high throughput and low latency, e.g. stream data
 ---
 
 
+## HBase
 
+APIs are slightly different than BigTable
+- Memory: Region Server vs Tablet
+- Persistence: Hadoop HDFS vs GFS
+
+**HBase Properties**
+
+- Open source implementation of BigTable
+- Column Family schema
+- Keys are Range Partitioned
+- Storage on Hadoop HDFS
+- Strong consistency over high availibility
+  - a cluster if it doesn't have quorum (min num), entire goes down
+    - vs in Mongo DB even 1 instance can serve
+    - impacts high availability when no available nodes
+- Highly scalable
+- High throughput and low latency writes
+
+![HBase](assets/images/116.jpg)
+
+---
 
 
 
