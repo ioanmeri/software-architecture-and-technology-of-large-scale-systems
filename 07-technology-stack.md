@@ -35,6 +35,7 @@
 - [NoSQL objectives & trade-offs](#nosql-objectives--trade-offs)
 - [Amazon DynamoDB](#amazon-dynamodb)
   - [DynamoDB architecture](#dynamodb-architecture)
+- [Google BigTable](#google-bigtable)
 
 ---
 
@@ -949,6 +950,49 @@ GOSSIP protocol: each node randomly connects to other nodes in the cluster
 - will propagate the state of the cluster
 
 ---
+
+## Google BigTable
+
+**NoSQL DB**
+
+- Basis for Apatche HBase (open source implementation)
+- Column-Family Storage
+  - save storage, makes searches faster
+  - data grouped into column families
+    - document
+    - language
+    - referrer (3 columns)
+      - list sites that have backlink to original site
+      - Column value: The Link Text
+  - no sort key like amazon db
+- Table as Tree-Map (instead of hash map in amazon db)
+  - Sparse
+  - **Sorted** (this means tree-map)
+  - Persistent
+  - Distributed
+- Limited CF (<100)
+- CFs are compressed
+- Unlimited columns
+- R/W ops atomic for a key
+- Timestamps for versioning
+
+This is the logical representation of the data. 
+
+The way is stored is different, **it uses the Index / Primary (Composite) Key**
+
+![Google BigTable](assets/images/114.jpg)
+
+Now the data is not sparsely stored.
+
+---
+
+
+
+
+
+
+
+
 
 
 
