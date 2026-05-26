@@ -42,6 +42,7 @@
     - [Cassandra features](#cassandra-features)
   - [MongoDB](#mongodb)
     - [MongoDB architecture](#mongodb-architecture)
+- [Analytics](#analytics)
 
 ---
 
@@ -1208,6 +1209,31 @@ Another No-SQL DB, horizontally scalable, eventually consistent etc.
 
 ---
 
+## Analytics
+
+**Special properties**
+
+- does not participate in transactions
+- no users are activily connected
+- offline
+- bulk / batch processing
+- stream processing
+  - If we decide to process the data as they arrive
+
+Whetever data we have accumulated, analytics layer is to analyze that data
+
+- historical data
+  - bulk / batch processing
+- current data
+  - real time processing
+
+**Challenges**
+
+- Structured + Unstructured Data Storage
+- huge amount
+- more real time data (IoT, social) is getting generated
 
 
+![Analytics](assets/images/123.png)
 
+---
