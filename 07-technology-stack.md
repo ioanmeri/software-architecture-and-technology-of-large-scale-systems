@@ -39,7 +39,8 @@
     - [BigTable architecture](#bigtable-architecture)
   - [HBase](#hbase)
   - [Cassandra](#cassandra)
-  - [Cassandra features](#cassandra-features)
+    - [Cassandra features](#cassandra-features)
+  - [MongoDB](#mongodb)
 
 ---
 
@@ -1148,6 +1149,29 @@ Read also works like BigTable, state come out of the memory if they are in the m
   - Business rules
 
 ![Cassandra Features](assets/images/120.png)
+
+---
+
+## MongoDB
+
+Another No-SQL DB, horizontally scalable, eventually consistent etc.
+
+**Schema is special in MongoDB** (structured data, key-value already used in others)
+
+- Key ➡️ Document
+  - In Binary JSON (bson) format
+  - **Allows nesting** designed for that
+  - can choose keys to update
+  - structure known to MongoDB
+- Columns created dynamically
+- Columns can be indexed
+  - search becomes faster
+- Documents can be queried
+  - on id and or column values
+- An operation on a single document is atomic
+  - 2 PC for multiple documents
+
+![Mongo DB](assets/images/121.png)
 
 ---
 
