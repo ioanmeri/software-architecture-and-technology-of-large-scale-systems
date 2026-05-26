@@ -41,6 +41,7 @@
   - [Cassandra](#cassandra)
     - [Cassandra features](#cassandra-features)
   - [MongoDB](#mongodb)
+    - [MongoDB architecture](#mongodb-architecture)
 
 ---
 
@@ -1175,8 +1176,37 @@ Another No-SQL DB, horizontally scalable, eventually consistent etc.
 
 ---
 
+## MongoDB architecture
 
+- Indexing for faster search
+  - It's write overhead
+- Sharding for Scalability
+  - Range sharding
+    - useful for range queries: id > 10 & < 200
+  - Hash sharding
+    - even distribution: id == 201, faster
+- Replication
+  - Master Slave
+    - No write conflicts
+    - For write only goes to Primary
+      - Asynchronly replicated in secondary
+      - eventually consistency
+        - can get strong consistency but latency goes high
+  - Asynchronous (default)
+  - Synchronous (on demand)
+  - Primary has additional set of secondary keys
+  - Load Distribution
+- Works very well with Node.js
+  - Javascript -> Node.js -> Mongo
+    - JSON format
 
+**Use Cases**
+- When we do not want transformation of objects
+- high scalability
+
+![Mongo DB architecture](assets/images/122.png)
+
+---
 
 
 
