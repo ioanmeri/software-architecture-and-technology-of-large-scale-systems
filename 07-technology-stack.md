@@ -43,6 +43,7 @@
   - [MongoDB](#mongodb)
     - [MongoDB architecture](#mongodb-architecture)
 - [Analytics](#analytics)
+  - [Analytics solutions](#analytics-solutions)
 
 ---
 
@@ -1237,3 +1238,33 @@ Whetever data we have accumulated, analytics layer is to analyze that data
 ![Analytics](assets/images/123.png)
 
 ---
+
+## Analytics solutions
+
+Platform products for analytics
+
+- Data Movement
+  - Logstash
+  - Fluentd
+- Storage
+  - Hadoop HDFS
+    - Map-Reduce
+  - Elastic Search
+    - Search
+- Stream Processing
+  - Kafka
+    - Buffer
+  - Storm, Flink
+    - Processing
+
+---
+  
+
+
+
+
+
+
+
+
+
