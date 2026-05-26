@@ -39,6 +39,7 @@
     - [BigTable architecture](#bigtable-architecture)
   - [HBase](#hbase)
   - [Cassandra](#cassandra)
+  - [Cassandra features](#cassandra-features)
 
 ---
 
@@ -1129,10 +1130,26 @@ Read also works like BigTable, state come out of the memory if they are in the m
 
 ---
 
+## Cassandra features
 
+- Schema-less, Column-Family Structured Data
+  - Sparse
+  - Persistent
+  - Distributed by hash partitioning
+- Horizontally Scalable
+  - **Petabytes of data**
+- Highly Available (at the cost of consistency)
+  - Even during network partitions
+  - spread of ring can be huge: over continents
+- **High throughput** R/**W** operations
+- Merge conflicts
+  - Vector clocks
+  - Timestamps
+  - Business rules
 
+![Cassandra Features](assets/images/120.png)
 
-
+---
 
 
 
