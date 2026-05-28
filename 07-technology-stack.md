@@ -45,6 +45,7 @@
 - [Analytics](#analytics)
   - [Analytics solutions](#analytics-solutions)
   - [Logstash architecture](#logstash-architecture)
+    - [Logstash data streaming architecture](#logstash-data-streaming-architecture)
 
 ---
 
@@ -1275,7 +1276,16 @@ Platform products for analytics
 
 ---
 
+## Logstash data streaming architecture
 
+- Streaming log data for Real-Time Analytics
+- Horizontally Scalable & Highly Available - Any number of Logstash nodes
+- Fault Tolerance - Needs reliable disk storage (RAID, Cloud persistent disks)
+- Use Kafka as buffer - For heavy load that Logstash Queue cannot handle
+
+![Logstash data streaming architecture](assets/images/125.PNG)
+
+---
 
 
 
