@@ -32,18 +32,19 @@
   - [Datastores solutions](#datastores-solutions)
   - [RDBMS](#rdbms)
     - [RDBMS scalability architecture](#rdbms-scalability-architecture)
-- [NoSQL objectives & trade-offs](#nosql-objectives--trade-offs)
-  - [Amazon DynamoDB](#amazon-dynamodb)
-    - [DynamoDB architecture](#dynamodb-architecture)
-  - [Google BigTable](#google-bigtable)
-    - [BigTable architecture](#bigtable-architecture)
-  - [HBase](#hbase)
-  - [Cassandra](#cassandra)
-    - [Cassandra features](#cassandra-features)
-  - [MongoDB](#mongodb)
-    - [MongoDB architecture](#mongodb-architecture)
+  - [NoSQL objectives & trade-offs](#nosql-objectives--trade-offs)
+    - [Amazon DynamoDB](#amazon-dynamodb)
+      - [DynamoDB architecture](#dynamodb-architecture)
+    - [Google BigTable](#google-bigtable)
+      - [BigTable architecture](#bigtable-architecture)
+    - [HBase](#hbase)
+    - [Cassandra](#cassandra)
+      - [Cassandra features](#cassandra-features)
+    - [MongoDB](#mongodb)
+      - [MongoDB architecture](#mongodb-architecture)
 - [Analytics](#analytics)
   - [Analytics solutions](#analytics-solutions)
+  - [Logstash architecture](#logstash-architecture)
 
 ---
 
@@ -1259,7 +1260,20 @@ Platform products for analytics
 
 ---
   
+## Logstash architecture
 
+- Input / Output Plugins
+  - Collect & Move log / stream events
+- Queue
+  - Reliable data movement
+  - At least once delivery
+  - Tracks Acks, Applies Backpressure
+- Filter Plugins
+  - Filter, Transform, Aggregate
+
+![Logstash Architecture](assets/images/124.PNG)
+
+---
 
 
 
