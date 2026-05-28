@@ -47,6 +47,7 @@
   - [Logstash architecture](#logstash-architecture)
     - [Logstash data streaming architecture](#logstash-data-streaming-architecture)
   - [Fluentd](#fluentd)
+  - [Elasticsearch](#elasticsearch)
 
 ---
 
@@ -1306,7 +1307,38 @@ Platform products for analytics
 
 ---
 
+## Elasticsearch
 
+Where do we store the parsed unstructured data? Elasticsearch or Hadoop 
+- Hadoop is file storage for the log files
+- ElasticSearch is a NoSQL Datastore
+  - designed for doing full text search
+
+
+**Elastic Search Features**
+
+NoSQL Document DB that uses inverted index for full text search.
+
+Full Text Search works by creating inverted index on each word of each row on a document.
+
+
+- Full-Text Search
+  - Filter, Group, Aggregate
+  - Uses Inverted Index for that
+- Stores JSON Documents
+- Document Fetched using id
+- Indexes JSON keys and values
+- Structure
+  - Index     ➡️ Database
+  - Type      ➡️ Table
+  - Document  ➡️ Row
+    - JSON keys are flattened
+  - Supports data types
+- Users can specify mapping between terms & documents
+
+![Elasticsearch](assets/images/127.png)
+
+---
 
 
 
