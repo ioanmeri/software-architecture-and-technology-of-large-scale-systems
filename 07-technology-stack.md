@@ -46,6 +46,7 @@
   - [Analytics solutions](#analytics-solutions)
   - [Logstash architecture](#logstash-architecture)
     - [Logstash data streaming architecture](#logstash-data-streaming-architecture)
+  - [Fluentd](#fluentd)
 
 ---
 
@@ -1287,6 +1288,23 @@ Platform products for analytics
 
 ---
 
+## Fluentd
+
+- Older than Logstash
+- Memory Footprint
+  - Logstash - Heavyweight (GB)
+  - Filebeat - Lightweight (MB)
+  - Fluentd - Lightweight (MB)
+  - Fluent Bit - Super Lightweight (KB)
+- All features of Logstash
+- (+) Routing
+    - Tags
+- (+) Docker Logging
+    - Picks logs events from container console
+
+![Fluentd](assets/images/126.PNG)
+
+---
 
 
 
