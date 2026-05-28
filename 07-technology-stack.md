@@ -48,6 +48,7 @@
     - [Logstash data streaming architecture](#logstash-data-streaming-architecture)
   - [Fluentd](#fluentd)
   - [Elasticsearch](#elasticsearch)
+    - [Elasticsearch architecture](#elasticsearch-architecture)
 
 ---
 
@@ -1339,6 +1340,44 @@ Full Text Search works by creating inverted index on each word of each row on a 
 ![Elasticsearch](assets/images/127.png)
 
 ---
+
+## Elasticsearch architecture
+
+Even though the search request is going to one node, that node will forward the request to all the other nodes.
+
+All these nodes in parallel and independently will execute our search.
+- Distributed request
+- Throughput is high
+- Very low latency
+
+
+Results will be returned to coordinator, which will aggregate them and will provided to the client.
+
+- Document Oriented data-model
+- Horizontally Scalable
+  - Petabytes of data
+  - Data is sharded with key as Document Id
+  - Put / Get request goes to specific shard
+  - Search queries go to all shards
+- Highly Available
+  -Shards are replicated
+- Index structure is based on merge sort
+- Index not updated with every update or insert
+- Index maintained in memory
+  - Occasionally flushed to disk
+
+
+Updating a record, is slightly expensive. 
+
+Adding a new record is not expensive ➡️ no update of indexes, otherwise we would have to search, disable and then add a new document.
+
+![Elasticsearch Architecture](assets/images/128.png)
+
+The result set should not be huge, otherwise this is not the case for elastic search (Hadoop)
+
+---
+
+
 
 
 
