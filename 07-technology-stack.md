@@ -50,6 +50,7 @@
   - [Elasticsearch](#elasticsearch)
     - [Elasticsearch architecture](#elasticsearch-architecture)
   - [Hadoop HDFS](#hadoop-hdfs)
+    - [Map Reduce](#map-reduce)
 
 ---
 
@@ -1401,6 +1402,60 @@ Permanent storage of our files. can be used as a long term archive.
 ![Hadoop HDFS](assets/images/129.PNG)
 
 Now with can do parallel reads with map-reduce. 
+
+---
+
+## Map Reduce
+
+Map reduce is a processing algorithm that runs on top of Hadoop cluster.
+
+We want to count a certain number of exceptions we have received in our log files in the last 1 month ➡️ huge amount of data.
+
+**Process**
+
+- Will take all the log files and put it on Hadoop
+- Hadoop will split them and put them in different nodes
+  - hunderds of chunks on hundreds of nodes
+- it will parse each record further and split it in smaller records
+  - Map phase of Map - Reduce
+  - Also parses the records by map code
+  - split each line into different words - with word count
+- records are broken down to key value pairs (map)
+  - processing happens on the nodes the data was
+- reduce phase transfers the key value pairs to some nodes
+  - for reduce phase we can choose the number of machine(s) to run the reduce logic
+  - configuration e.g. reduce phase in 2 nodes
+  - reduce phase will have to shuffle all the keys to these two nodes
+  - on which node depends by the hash of the word
+  - e.g for each key will do the sum of each values (reduce logic)
+
+
+**Features**
+
+- Parallel file processing on Hadoop cluster
+- Processing code executes on datanodes
+- Input / Output sources
+  - HDFS, HBase, Cassandra
+- Map Phase
+  - Filtering and transformation
+- Reduce phase
+  - Shuffles map output across nodes
+  - Groups related information
+  - Computes aggregate data
+
+![Hadoop Map Reduce](assets/images/130.PNG)
+
+
+**Outcome**
+
+Large set of files, spread over mulitple nodes, GBs of data. Map reduce has done parallel processing of each record on the same node.
+
+Once the processing is done, the data is shuffled, grouping happens and finally the aggregation of results happen according to the reduce handler.
+
+They key to success of Hadoop is that the map processing runs on the data nodes, no need to extract / transfer them (high cost)
+- logic on each node
+
+In map reduce we bring logic to data instead of bringing data to logic.
 
 ---
 
