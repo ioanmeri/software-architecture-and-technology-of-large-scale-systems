@@ -52,6 +52,7 @@
   - [Hadoop HDFS](#hadoop-hdfs)
     - [Map Reduce](#map-reduce)
   - [Apache Spark](#apache-spark)
+  - [Stream processing](#stream-processing)
 
 ---
 
@@ -1502,6 +1503,61 @@ If you are considering to run any **batch processing for huge amount of data**, 
 
 
 ---
+
+## Stream processing
+
+Delivers real time analytics over any streaming data (e.g. log data)
+- e.g. detect fraud
+  - cannot do that with batch takes hours / days 
+
+**Properties**
+
+- Low latency
+  - Keep data moving 
+- High throughput
+  - Multiple sources
+- Event Issues
+  - Event delay
+  - Out-of-Order
+  - Missing
+- Fault Tolerance
+  - Event Replay
+- High Availability
+- Processing Engine
+  - Storm
+  - Flink
+  - Spark (Micro-Batching)
+- Buffer
+  - Kafka
+  - On input and ouput side in case of stream processing
+
+Stream process engine has to process the data in milliseconds, has to keep it continuously moving.
+
+---
+
+**Batch Workflows vs Stream Processing**
+
+- **batch** cannot do distributed processing
+  - data can be parsed, transformed, agreegated within the same node
+  - continuous stream until data is stored to ES/HDFS (can take days)
+  - then will analyze and produce graghs
+    - ES queries can take seconds but not to be used for the last e.g. 1 second 
+- **in stream** we process events on different nodes
+  - and bring them to one node and aggregate them and more ops...
+  - directly take that data into a stream processing engine
+    - Logstash / Fluentd on one node
+    - Strom / Flink / Spark for distributed systems
+  - put them to Kafka because outsource may be not be able to handle data in high flow rate
+    - data can go to archive
+    - notification
+    - real time dashboard
+  - stream processing engine can directly put data into Kafka or to the final destinations
+
+
+![Stream Processing](assets/images/132.PNG)
+
+---
+
 
 
 
