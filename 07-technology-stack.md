@@ -49,6 +49,7 @@
   - [Fluentd](#fluentd)
   - [Elasticsearch](#elasticsearch)
     - [Elasticsearch architecture](#elasticsearch-architecture)
+  - [Hadoop HDFS](#hadoop-hdfs)
 
 ---
 
@@ -1374,6 +1375,32 @@ Adding a new record is not expensive ➡️ no update of indexes, otherwise we w
 ![Elasticsearch Architecture](assets/images/128.png)
 
 The result set should not be huge, otherwise this is not the case for elastic search (Hadoop)
+
+---
+
+## Hadoop HDFS
+
+In Elastic Search we can only search small chunk of data. Result set has to be small.
+
+We want to store the log files into Hadoop HDFS.** We can process large amount of data**.
+
+Permanent storage of our files. can be used as a long term archive.
+
+- Distributed File Data Storage
+  - Unstructured data files
+  - Petabytes of data
+  - Large file size > 100MB
+- Distributed files
+  - Files broken into chunks
+  - For parallel reads
+    - Map-Reduce
+- Sequential Writes - Append
+  - Large blocks of data - 64MB
+- Replication for reliability
+
+![Hadoop HDFS](assets/images/129.PNG)
+
+Now with can do parallel reads with map-reduce. 
 
 ---
 
