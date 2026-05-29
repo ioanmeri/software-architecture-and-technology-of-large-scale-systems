@@ -51,6 +51,7 @@
     - [Elasticsearch architecture](#elasticsearch-architecture)
   - [Hadoop HDFS](#hadoop-hdfs)
     - [Map Reduce](#map-reduce)
+  - [Apache Spark](#apache-spark)
 
 ---
 
@@ -1383,7 +1384,7 @@ The result set should not be huge, otherwise this is not the case for elastic se
 
 In Elastic Search we can only search small chunk of data. Result set has to be small.
 
-We want to store the log files into Hadoop HDFS.** We can process large amount of data**.
+We want to store the log files into Hadoop HDFS. **We can process large amount of data**.
 
 Permanent storage of our files. can be used as a long term archive.
 
@@ -1458,6 +1459,51 @@ They key to success of Hadoop is that the map processing runs on the data nodes,
 In map reduce we bring logic to data instead of bringing data to logic.
 
 ---
+
+## Apache Spark
+
+- Evolution of Map-Reduce
+- In memory
+  - 10x to 100x times faster
+- DAG of operations
+  - Multiple operations in a DAG
+  - Multiple inbuilt operations
+  - we can create these directed acyclic graphs of multiple operations an Spark runs them
+    - avoids writing code
+- Interactive
+  - Interactive shell in Scala / Python / R
+- In built libraries for
+  - **SQL Interface, Machine Learning, Graph Processing, Streaming**
+  - **Hive** run on top of Map Reduce Framework and converts SQL queries into
+    - map reduce code
+    - executes that on Hadoop cluster
+  - **Pig**, scripting language to write the map reduce
+  - can be written in **Java**
+  - all provided by Spark
+  - can read from **Kafka** and creates micro-batches, run map reduce and write results
+    - **microbatching**, some amount of overhead
+
+If you are considering to run any **batch processing for huge amount of data**, on Hadoop Cluster, you should choose Apache Spark and not Hadoop's native Map Reduce.
+
+
+**Map Reduce Operations**
+- We read once from disk by map and write on disk once by map.
+- Similarly, reduce also reads once from disk and writes once on disk.
+- 4 disk operations
+
+**Spark Operations**
+
+- Spark Reads data of HDFS but maintain the result set in memory
+- The same result set will be used by reduce
+- Then, it writes back on HDFS
+- 2 map reduce operations instead of 4 in map reduce
+
+![Apache Spark](assets/images/131.PNG)
+
+
+---
+
+
 
 
 
