@@ -53,6 +53,7 @@
     - [Map Reduce](#map-reduce)
   - [Apache Spark](#apache-spark)
   - [Stream processing](#stream-processing)
+- [Summary](#summary)
 
 ---
 
@@ -1558,7 +1559,12 @@ Stream process engine has to process the data in milliseconds, has to keep it co
 
 ---
 
+## Summary
 
+![Summary](assets/images/133.PNG)
+
+
+---
 
 
 
